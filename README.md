@@ -12,7 +12,7 @@ External documentation for frontend libraries:
 
 ## Setup & Startup
 
-1. Create a `.env` file based on the [`.env.example`](.env.example) inside the `frontend` directory. The most (and currently only) important variable is the `VITE_API_URL` which should point to the backend API, e.g. to http://3.66.182.10:3000
+1. Create a `.env` file based on the [`.env.example`](.env.example) inside the `frontend` directory. The most (and currently only) important variable is the `VITE_API_URL` which should point to the backend API, e.g. to [http://3.69.78.92](http://3.69.78.92)
 2. Install all packages: `npm install`
 3. Run `npm start`
 
