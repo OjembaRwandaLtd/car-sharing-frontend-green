@@ -48,4 +48,4 @@ jobs:
         
     - name: Deploy
       working-directory: ./dist
-      run: aws s3 sync --delete . s3://monishare.ojemba.com
+      run: aws s3 sync --delete . s3://car.ojemba.com
