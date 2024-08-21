@@ -52,9 +52,9 @@ jobs:
       id: set_bucket
       run: |
         if [ "${{ github.ref }}" = "refs/heads/main" ]; then
-          echo "::set-output name=BUCKET_NAME::prod.$TEAM.monishare.ojemba"
+          echo "::set-output name=BUCKET_NAME::prod.$TEAM.car.ojemba"
         else
-          echo "::set-output name=BUCKET_NAME::staging.$TEAM.monishare.ojemba"
+          echo "::set-output name=BUCKET_NAME::staging.$TEAM.car.ojemba"
         fi
       env:
         TEAM: ${{ env.TEAM }}
