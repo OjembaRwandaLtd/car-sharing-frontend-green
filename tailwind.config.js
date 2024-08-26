@@ -4,24 +4,21 @@ module.exports = {
   theme: {
     extend: {
       colors:{
-       Indigo:{
-        800:"#265E78",
-        400:"#3E7591",
-        200:"#64A1C0"
+       primary:{
+        DEFAUL:"#265E78",
+        mid:"#3E7591",
+        light:"#64A1C0"
        },
-       Gray:{
-        800:"#111827",
-        200:"#C9CDD3",
-        100:"#F9FAFB"
+       secondary:{
+        DEFAULT:"#111827",
+       mid:"#C9CDD3",
+        light:"#F9FAFB"
        },
-       Mustard:{
-        200:"#EBF541",
-        100:"#F8FCAD",
+       mustard:{
+        dark:"#EBF541",
+        DEFAULT:"#F8FCAD",
        },
-       Lachs:{
-        200: "#FFC28A"
-       }
-
+      customLachs: "#FFC28A"
       },
       fontFamily: {
         'inter': ['Inter', 'sans-serif'],
