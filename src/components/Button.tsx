@@ -3,13 +3,16 @@ interface ButtonProp {
   border: string
   textColor: string
   backgroundColor: string
+  handleNavigation?: () => void
 }
-export default function Button({ value, border, textColor }: ButtonProp): React.ReactElement {
-  return (
-    <button
-      className={`h-11 w-80 rounded-3xl font-inter text-sm ${border} ${textColor} text-center `}
-    >
-      {value}
-    </button>
-  )
-}
+const Button = ({ value, border, textColor, handleNavigation }: ButtonProp): React.ReactElement => (
+  <button
+    onClick={() => {
+      if (handleNavigation) return handleNavigation()
+    }}
+    className={`h-11 w-80 rounded-3xl font-inter text-sm ${border} ${textColor} text-center `}
+  >
+    {value}
+  </button>
+)
+export default Button
