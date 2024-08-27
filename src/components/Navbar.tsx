@@ -18,31 +18,20 @@ const Navbar: React.FC = (): React.ReactElement => {
   }
   return (
     <nav className="relative flex items-center justify-between rounded-b-xl bg-[#111827] px-5 py-4 text-white">
-      <div className="absolute left-1/2 top-0 z-0 mx-auto h-[72px] w-[68px] -translate-x-1/2 rounded-full bg-[#111828] px-4 pb-[21px] pt-2">
-        <div className="mx-[-1.1px]">
+      <div className="absolute left-1/2 top-0 z-0 mx-auto h-20 w-16 -translate-x-1/2 rounded-full bg-[#111828] px-4 pb-5 pt-2">
+        <div className="-mx-1">
           <Logo className="z-10 w-10" />
         </div>
       </div>
 
-      <div className={`dropdown dropdown-bottom ${isOpen ? 'dropdown-open' : ''}`}>
-        <div
-          tabIndex={0}
-          role="button"
-          className="m-1"
-          onClick={toggleDropdown}
-          // Prevent blur from immediately closing the dropdown
-          onBlur={e => {
-            if (!e.currentTarget.contains(e.relatedTarget)) {
-              setIsOpen(false)
-            }
-          }}
-        >
-          Menu
+      <div className={`dropdown-bottom dropdown ${isOpen ? 'dropdown-open' : ''}`}>
+        <div tabIndex={0} role="button" className="m-1" onClick={toggleDropdown}>
+          {isOpen ? 'Close' : 'Menu'}
         </div>
         {isOpen && (
           <ul
             tabIndex={0}
-            className="rounded-box·z-[1] menu dropdown-content mt-10 w-[206px] rounded-md bg-[#3E7591] p-2 text-white shadow"
+            className="rounded-box·z-[1] menu dropdown-content mt-10 w-52 rounded-md bg-[#3E7591] p-2 text-white shadow"
           >
             <DropdownItem icon={<CarIcon />} text="Book A Car" />
             <DropdownItem icon={<TileIcon />} text=" My Bookings" />
