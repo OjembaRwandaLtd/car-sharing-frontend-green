@@ -5,20 +5,20 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#265E78',
-          mid: '#3E7591',
-          light: '#64A1C0',
+          800: '#265E78',
+          400: '#3E7591',
+          200: '#64A1C0',
         },
         secondary: {
-          DEFAULT: '#111827',
-          mid: '#C9CDD3',
-          light: '#F9FAFB',
+          800: '#111827',
+          400: '#C9CDD3',
+          200: '#F9FAFB',
         },
         mustard: {
-          dark: '#EBF541',
-          DEFAULT: '#F8FCAD',
+          800: '#EBF541',
+          200: '#F8FCAD',
         },
-        customLachs: '#FFC28A',
+        Lachs: '#FFC28A',
       },
       fontFamily: {
         inter: ['Inter', 'sans-serif'],
