@@ -1,6 +1,6 @@
 import { ReactElement } from 'react'
 import { configure } from 'axios-hooks'
-
+import Title from './title'
 // Configure axios hooks
 // Do not delete this if you want to use the provided API hooks in `src/hooks`
 configure({
@@ -15,6 +15,7 @@ function App(): ReactElement {
       <h1 className="text-4xl font-bold">Hello to MoniShare</h1>
       <p>If you can read this, you have successfully started the base frontend repository!</p>
       <p>Happy coding!</p>
+      <Title />
     </main>
   )
 }
