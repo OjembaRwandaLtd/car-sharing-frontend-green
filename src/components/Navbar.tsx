@@ -31,15 +31,16 @@ const Navbar: React.FC = (): React.ReactElement => {
         {isOpen && (
           <ul
             tabIndex={0}
-            className="rounded-box·z-[1] menu dropdown-content mt-10 w-52 rounded-md bg-[#3E7591] p-2 text-white shadow"
+            className="rounded-box·z-[1] h-90 menu dropdown-content mt-10 w-52 rounded-md bg-[#3E7591] p-2 text-base text-white shadow"
           >
             <DropdownItem icon={<CarIcon />} text="Book A Car" />
             <DropdownItem icon={<TileIcon />} text=" My Bookings" />
-            <hr />
+            <hr className="mx-auto w-40" />
+            <h2 className="px-4 pt-3 font-bold">My cars</h2>
             <DropdownItem icon={<CarsIcon />} text="See My Cars" />
             <DropdownItem icon={<ListIcon />} text="My car's Bookings" />
             <DropdownItem icon={<CarPlusIcon />} text="Add New car" />
-            <hr />
+            <hr className="mx-auto w-40" />
             <DropdownItem icon={<LogoutIcon />} text="Logout" />
           </ul>
         )}
