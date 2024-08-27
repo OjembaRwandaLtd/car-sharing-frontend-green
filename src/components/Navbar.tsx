@@ -17,8 +17,8 @@ const Navbar: React.FC = (): React.ReactElement => {
     setIsOpen(!isOpen)
   }
   return (
-    <nav className="relative flex items-center justify-between rounded-b-xl bg-[#111827] px-5 py-4 text-white">
-      <div className="absolute left-1/2 top-0 z-0 mx-auto h-20 w-16 -translate-x-1/2 rounded-full bg-[#111828] px-4 pb-5 pt-2">
+    <nav className="relative flex items-center justify-between rounded-b-xl bg-secondary-800 px-5 py-4 text-white">
+      <div className="absolute left-1/2 top-0 z-0 h-20 w-16 -translate-x-1/2 rounded-full bg-secondary-800 px-4 pb-5 pt-2">
         <div className="-mx-1">
           <Logo className="z-10 w-10" />
         </div>
@@ -31,7 +31,7 @@ const Navbar: React.FC = (): React.ReactElement => {
         {isOpen && (
           <ul
             tabIndex={0}
-            className="rounded-box·z-[1] h-90 menu dropdown-content mt-10 w-52 rounded-md bg-[#3E7591] p-2 text-base text-white shadow"
+            className="h-90 z-1 menu dropdown-content mt-10 w-52 rounded-box bg-primary-200 p-2 text-base text-white shadow"
           >
             <DropdownItem icon={<CarIcon />} text="Book A Car" />
             <DropdownItem icon={<TileIcon />} text=" My Bookings" />
