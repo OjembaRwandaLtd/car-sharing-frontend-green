@@ -4,16 +4,16 @@ interface ButtonProp {
   value: string
   type?: 'default' | 'outline' | 'disabled' | 'outlineLachs'
   width?: 'default' | 'regular'
-  handleNavigation?: () => void
+  handleClick?: () => void
 }
 
 const Button = ({
   value,
   type = 'default',
   width = 'default',
-  handleNavigation,
+  handleClick,
 }: ButtonProp): ReactElement => {
-  const defaultSyles = 'btn h-11 rounded-full mx-auto font-inter font-bold'
+  const defaultStyles = 'btn h-11 rounded-full mx-auto font-inter font-bold'
   const buttonWidth = {
     default: 'w-80',
     regular: 'w-44',
@@ -30,9 +30,9 @@ const Button = ({
     <div className="align-center flex">
       <button
         onClick={() => {
-          if (handleNavigation) return handleNavigation
+          if (handleClick) return handleClick
         }}
-        className={`${defaultSyles} ${buttonWidth[width]} ${buttonTypeStyle[type]}`}
+        className={`${defaultStyles} ${buttonWidth[width]} ${buttonTypeStyle[type]}`}
       >
         {value}
       </button>
