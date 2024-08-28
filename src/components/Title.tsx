@@ -2,7 +2,7 @@ import { ChevronBackIcon } from '../assets/ChevronBackIcon'
 
 interface Props {
   text: string
-  backButton: boolean
+  backButton?: boolean
   handleClick?: () => void
 }
 
