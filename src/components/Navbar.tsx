@@ -17,11 +17,9 @@ const Navbar: React.FC = (): React.ReactElement => {
     setIsOpen(!isOpen)
   }
   return (
-    <nav className="relative flex items-center justify-between rounded-b-xl bg-secondary-800 px-5 py-4 text-white">
-      <div className="absolute left-1/2 top-0 z-0 h-20 w-16 -translate-x-1/2 rounded-full bg-secondary-800 px-4 pb-5 pt-2">
-        <div className="-mx-1">
-          <Logo className="z-10 w-10" />
-        </div>
+    <nav className="relative flex h-14 items-center justify-between rounded-b-xl bg-secondary-800 px-5 py-4 text-white">
+      <div className="absolute left-1/2 top-0 z-0 -translate-x-1/2 rounded-full bg-secondary-800 px-4 pb-5 pt-2">
+        <Logo className="size-10 z-10" />
       </div>
 
       <div className={`dropdown dropdown-bottom ${isOpen ? 'dropdown-open' : ''}`}>
