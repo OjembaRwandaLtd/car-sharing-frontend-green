@@ -22,7 +22,7 @@ const Button = ({
     default: 'bg-secondary-200 hover:bg-secondary-200 text-primary-800 text-sm ',
     outline:
       'btn-outline hover:bg-transparent hover:border-white hover:text-white border-2 border-white text-white',
-    disabled: 'bg-secondary-400 hover:bg-secondary-400 text-primary-800',
+    disabled: 'bg-secondary-400 hover:bg-secondary-400 text-primary-800 pointer-events-none ',
     outlineLachs:
       'btn-outline hover:bg-transparent hover:border-Lachs hover:text-Lachs border-2 border-Lachs text-Lachs',
   }
