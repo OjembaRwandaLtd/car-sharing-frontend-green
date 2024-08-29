@@ -17,14 +17,7 @@ export default function ErrorIcon(): ReactElement {
         strokeWidth="2"
         strokeLinecap="round"
       />
-      <ellipse
-        cx="53.2857"
-        cy="26.7143"
-        rx="8.28571"
-        ry="8.57143"
-        stroke="#059669"
-        strokeWidth="2"
-      />
+      <ellipse cx="53.2857" cy="26.7143" rx="8.28571" ry="8.57143" stroke="#059669" strokeWidth="2" />
     </svg>
   )
 }
