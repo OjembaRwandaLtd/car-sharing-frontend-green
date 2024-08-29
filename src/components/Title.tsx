@@ -1,4 +1,4 @@
-import { ChevronBackIcon } from '../assets/ChevronBackIcon'
+import { ChevronBackIcon } from "../assets/ChevronBackIcon"
 
 interface Props {
   text: string
@@ -10,7 +10,7 @@ const Title = ({ text, backButton, handleClick }: Props): React.ReactElement => 
   <div className="flex items-center px-4 py-8">
     {backButton && (
       <button
-        className="btn mr-4 h-6 text-2xl"
+        className="btn mr-4 h-6 w-6 text-2xl"
         onClick={() => {
           if (handleClick) {
             return handleClick()

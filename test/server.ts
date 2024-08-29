@@ -1,8 +1,8 @@
-import { BookingState, CarState } from '../src/util/api'
+import { BookingState, CarState } from "../src/util/api"
 
-import { apiUrl } from '../src/util/apiUrl'
-import { rest } from 'msw'
-import { setupServer } from 'msw/node'
+import { apiUrl } from "../src/util/apiUrl"
+import { rest } from "msw"
+import { setupServer } from "msw/node"
 
 // This configures a request mocking server with the given request handlers.
 export const server = setupServer(
@@ -11,19 +11,19 @@ export const server = setupServer(
       ctx.json([
         {
           id: 1,
-          name: 'Text Car',
+          name: "Text Car",
           carTypeId: 1,
           carType: {
-            name: 'Moni Cooper',
-            imageUrl: 'https://placekitten.com/g/400/300',
+            name: "Moni Cooper",
+            imageUrl: "https://placekitten.com/g/400/300",
           },
           fuelType: {
-            name: 'petrol',
+            name: "petrol",
           },
           fuelTypeId: 1,
           ownerId: 1,
-          owner: { name: 'TestUser' },
-          info: 'This is a test information.',
+          owner: { name: "TestUser" },
+          info: "This is a test information.",
         },
       ]),
     ),
@@ -33,23 +33,23 @@ export const server = setupServer(
       ctx.json([
         {
           id: 3,
-          startDate: new Date('2023-08-17T14:00:00.000Z'),
-          endDate: new Date('2023-08-17T15:00:00.000Z'),
+          startDate: new Date("2023-08-17T14:00:00.000Z"),
+          endDate: new Date("2023-08-17T15:00:00.000Z"),
           bookingState: BookingState.PENDING,
-          renter: { id: 2, name: 'Test' },
+          renter: { id: 2, name: "Test" },
           renterId: 2,
           carId: 2,
           car: {
             id: 2,
-            name: 'Car 2',
+            name: "Car 2",
             carState: CarState.LOCKED,
             owner: {
-              name: 'TestUser',
+              name: "TestUser",
             },
             carType: {
               id: 2,
-              name: 'Moni Cooper',
-              imageUrl: 'https://placekitten.com/g/400/300',
+              name: "Moni Cooper",
+              imageUrl: "https://placekitten.com/g/400/300",
             },
           },
         },
@@ -59,9 +59,9 @@ export const server = setupServer(
   rest.get(`${apiUrl}/users`, (_req, res, ctx) =>
     res(
       ctx.json([
-        { id: 1, name: 'Beatrice' },
-        { id: 2, name: 'Bob' },
-        { id: 3, name: 'Izzeddin' },
+        { id: 1, name: "Beatrice" },
+        { id: 2, name: "Bob" },
+        { id: 3, name: "Izzeddin" },
       ]),
     ),
   ),
@@ -70,18 +70,18 @@ export const server = setupServer(
       ctx.json([
         {
           id: 1,
-          name: 'Moni Cooper',
-          imageUrl: 'https://images.local/moni-cooper.png',
+          name: "Moni Cooper",
+          imageUrl: "https://images.local/moni-cooper.png",
         },
         {
           id: 2,
-          name: 'Moni Electric',
-          imageUrl: 'https://images.local/moni-electric.png',
+          name: "Moni Electric",
+          imageUrl: "https://images.local/moni-electric.png",
         },
         {
           id: 3,
-          name: 'Moni Countryman',
-          imageUrl: 'https://images.local/moni-countryman.png',
+          name: "Moni Countryman",
+          imageUrl: "https://images.local/moni-countryman.png",
         },
       ]),
     ),
