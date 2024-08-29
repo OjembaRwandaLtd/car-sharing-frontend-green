@@ -1,4 +1,4 @@
-import { ReactElement } from 'react'
+import { ReactElement } from "react"
 
 interface XIconProps {
   className?: string
@@ -8,8 +8,8 @@ interface XIconProps {
 
 export default function XIcon({
   className,
-  width = '18',
-  height = '18',
+  width = "18",
+  height = "18",
 }: XIconProps): ReactElement {
   return (
     <svg
