@@ -9,8 +9,6 @@ configure({
   },
 })
 
-function App(): ReactElement {
-  return <div></div>
-}
+const App = (): ReactElement => <div></div>
 
 export default App
