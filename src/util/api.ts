@@ -10,14 +10,14 @@ interface CarTypeDto {
 }
 
 enum CarState {
-  LOCKED = 'LOCKED',
-  UNLOCKED = 'UNLOCKED',
+  LOCKED = "LOCKED",
+  UNLOCKED = "UNLOCKED",
 }
 
 export enum FuelType {
-  PETROL = 'petrol',
-  DIESEL = 'diesel',
-  ELECTRIC = 'electric',
+  PETROL = "petrol",
+  DIESEL = "diesel",
+  ELECTRIC = "electric",
 }
 
 interface CarDto {
@@ -47,11 +47,11 @@ interface ChangeCarStateDto {
 }
 
 enum BookingState {
-  ACCEPTED = 'ACCEPTED',
-  PICKED_UP = 'PICKED_UP',
-  RETURNED = 'RETURNED',
-  DECLINED = 'DECLINED',
-  PENDING = 'PENDING',
+  ACCEPTED = "ACCEPTED",
+  PICKED_UP = "PICKED_UP",
+  RETURNED = "RETURNED",
+  DECLINED = "DECLINED",
+  PENDING = "PENDING",
 }
 
 interface BookingDto {
