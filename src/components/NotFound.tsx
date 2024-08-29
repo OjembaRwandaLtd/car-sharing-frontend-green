@@ -1,8 +1,8 @@
-import React, { ReactElement } from "react"
+import { ReactElement } from "react"
 import CarError from "../assets/CarError"
 import Button from "./Button"
 
-const NotFound: React.FC = (): ReactElement => (
+const NotFound = (): ReactElement => (
   <div className="flex h-screen flex-col items-center gap-8 bg-primary-800 py-20 font-lora text-white">
     <h1 className="text-5xl font-bold">OOOOOPS!</h1>
     <CarError />
