@@ -1,5 +1,5 @@
 import { ReactElement } from "react"
 
-const ShowMyCar = (): ReactElement => <div>Show my car!</div>
+const ShowMyCar: React.FC = (): ReactElement => <div>Show my car!</div>
 
 export default ShowMyCar

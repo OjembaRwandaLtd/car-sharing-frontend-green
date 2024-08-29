@@ -1,5 +1,5 @@
 import { ReactElement } from "react"
 
-const ManageBookings = (): ReactElement => <div>Manage Bookings here!</div>
+const ManageBookings: React.FC = (): ReactElement => <div>Manage Bookings here!</div>
 
 export default ManageBookings

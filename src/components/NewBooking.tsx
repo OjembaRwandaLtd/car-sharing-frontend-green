@@ -1,5 +1,5 @@
 import { ReactElement } from "react"
 
-const NewBooking = (): ReactElement => <div>New booking!</div>
+const NewBooking: React.FC = (): ReactElement => <div>New booking!</div>
 
 export default NewBooking
