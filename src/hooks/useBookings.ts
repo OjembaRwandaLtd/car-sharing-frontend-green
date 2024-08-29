@@ -1,9 +1,9 @@
-import axios from 'axios'
-import useAxios from 'axios-hooks'
-import { useEffect, useState } from 'react'
-import { BookingDto, BookingWithReferences, CarDto, UserDto } from '../util/api'
-import { apiUrl } from '../util/apiUrl'
-import { getAuthToken } from '../util/auth'
+import axios from "axios"
+import useAxios from "axios-hooks"
+import { useEffect, useState } from "react"
+import { BookingDto, BookingWithReferences, CarDto, UserDto } from "../util/api"
+import { apiUrl } from "../util/apiUrl"
+import { getAuthToken } from "../util/auth"
 
 function useBookingData() {
   const [data, setData] = useState<BookingWithReferences[] | null>(null)
@@ -13,7 +13,10 @@ function useBookingData() {
 
   const [{ data: bookingsData, loading: bookingsLoading, error: bookingsError }] = useAxios<
     BookingDto[]
-  >({ url: `${apiUrl}/bookings`, headers: { Authorization: `Bearer ${token}` } })
+  >({
+    url: `${apiUrl}/bookings`,
+    headers: { Authorization: `Bearer ${token}` },
+  })
 
   useEffect(() => {
     if (bookingsData) {
