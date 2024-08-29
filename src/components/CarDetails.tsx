@@ -9,6 +9,7 @@ import { useCarTypes, useCars } from "../hooks"
 import IconWithLabel from "./IconWithLabel"
 import Title from "./Title"
 import ErrorMessage from "./ErrorMessage"
+import Loading from "./Loading"
 
 const CarDetails: React.FC = () => {
   const { carId } = useParams()
@@ -16,15 +17,8 @@ const CarDetails: React.FC = () => {
   const [{ data: carTypeData, loading: carTypeLoading }] = useCarTypes()
   const [{ data: carDetails, loading: carLoading, error: carError }] = useCars()
 
-  if (carTypeLoading || carLoading)
-    return (
-      <div className="mx-auto -mt-20 flex h-screen scale-150 items-center justify-center text-white">
-        <span className="loading loading-ring loading-xs"></span>
-        <span className="loading loading-ring loading-sm"></span>
-        <span className="loading loading-ring loading-md"></span>
-        <span className="loading loading-ring loading-lg"></span>
-      </div>
-    )
+  if (carTypeLoading || carLoading) return <Loading />
+
   if (carError) return <ErrorMessage text={"Error! Car Not found"} />
   return (
     <div className="h-screen overflow-x-hidden bg-primary-800">
