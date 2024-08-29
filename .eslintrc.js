@@ -49,6 +49,7 @@ module.exports = {
         "@typescript-eslint/array-type": "error",
         "@typescript-eslint/no-unused-vars": "error",
         "tailwindcss/no-custom-classname": "off",
+        quotes: ["error", "double"],
       },
     },
   ],
