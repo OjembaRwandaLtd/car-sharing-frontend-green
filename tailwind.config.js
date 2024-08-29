@@ -1,3 +1,5 @@
+import daisyui from "daisyui"
+
 /** @type {import('tailwindcss').Config} */
 import daisyui from "daisyui"
 
@@ -29,4 +31,10 @@ module.exports = {
     },
   },
   plugins: [daisyui],
+<<<<<<< HEAD
+=======
+  daisyui: {
+    themes: ["light"],
+  },
+>>>>>>> 3d0552bf4b6c0f9082e565155711b26fa4f76573
 }
