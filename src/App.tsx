@@ -15,7 +15,7 @@ configure({
 function App(): ReactElement {
   return (
     <BrowserRouter>
-    <Navbar />
+      <Navbar />
       <Routes>
         <Route path="/:carId" element={<CarDetails />} />
       </Routes>
