@@ -15,7 +15,10 @@ const CarItem = (): ReactElement => {
     <section className="h-full bg-primary-800 pt-10">
       {carData &&
         carData.map(car => (
-          <div key={car.id} className="mx-auto my-4 flex h-64 w-11/12 gap-2 rounded-xl bg-primary-400">
+          <div
+            key={car.id}
+            className="mx-auto my-4 flex h-64 w-11/12 gap-2 rounded-xl bg-primary-400"
+          >
             <div className="w-96">
               {carType && (
                 <img
