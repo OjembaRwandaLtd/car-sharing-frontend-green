@@ -18,7 +18,7 @@ const Navbar: React.FC = (): React.ReactElement => {
   }
   return (
     <nav className="relative flex h-14 items-center justify-between rounded-b-xl bg-secondary-800 px-5 py-4 text-white">
-      <div className="absolute left-1/2 top-0 z-0 -translate-x-1/2 rounded-full bg-secondary-800 px-4 pb-5 pt-2">
+      <div className="absolute left-1/2 top-0 z-0 -translate-x-1/2 rounded-full bg-secondary-800 px-4 pb-5 pt-1.5">
         <Logo className="size-10 z-10" />
       </div>
 
