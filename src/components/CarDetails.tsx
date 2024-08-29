@@ -27,7 +27,7 @@ const CarDetails: React.FC = () => {
     )
   if (carError) return <ErrorMessage text={"Error! Car Not found"} />
   return (
-    <div className="h-screen bg-primary-800">
+    <div className="h-screen bg-primary-800 overflow-x-hidden">
       <Title text="Details" backButton />
       {carDetails && carDetails.filter(car => car.id === Number(carId)).length > 0 ? (
         carDetails
