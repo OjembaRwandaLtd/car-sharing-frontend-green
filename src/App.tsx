@@ -1,13 +1,13 @@
-import { ReactElement } from 'react'
-import { configure } from 'axios-hooks'
-import { Route, Routes } from 'react-router-dom'
-import AddNewCar from './components/AddNewCar'
-import ManageBookings from './components/ManageBookings'
-import MyBookings from './components/MyBookings'
-import NewBooking from './components/NewBooking'
-import ShowMyCar from './components/ShowMyCar'
-import Home from './components/Home'
-import NotFound from './components/NotFound'
+import { ReactElement } from "react"
+import { configure } from "axios-hooks"
+import { Route, Routes } from "react-router-dom"
+import AddNewCar from "./components/AddNewCar"
+import ManageBookings from "./components/ManageBookings"
+import MyBookings from "./components/MyBookings"
+import NewBooking from "./components/NewBooking"
+import ShowMyCar from "./components/ShowMyCar"
+import Home from "./components/Home"
+import NotFound from "./components/NotFound"
 
 // Configure axios hooks
 // Do not delete this if you want to use the provided API hooks in `src/hooks`

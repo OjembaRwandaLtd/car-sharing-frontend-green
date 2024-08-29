@@ -1,4 +1,4 @@
-import { ReactElement } from 'react'
+import { ReactElement } from "react"
 
 const MyBookings = (): ReactElement => <div>My Bookings!</div>
 

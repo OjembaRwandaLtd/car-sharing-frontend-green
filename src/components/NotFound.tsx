@@ -1,4 +1,4 @@
-import { ReactElement } from 'react'
+import { ReactElement } from "react"
 
 const NotFound: React.FC = (): ReactElement => <div>NotFound</div>
 
