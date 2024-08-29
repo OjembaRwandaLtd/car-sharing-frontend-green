@@ -1,15 +1,15 @@
-import React from 'react'
-import { useState } from 'react'
-import ProfileIcon from '../assets/ProfileIcon'
-import Logo from '../assets/Logo'
-import CarIcon from '../assets/CarIcon'
-import CarsIcon from '../assets/CarsIcon'
-import ListIcon from '../assets/ListIcon'
+import React from "react"
+import { useState } from "react"
+import ProfileIcon from "../assets/ProfileIcon"
+import Logo from "../assets/Logo"
+import CarIcon from "../assets/CarIcon"
+import CarsIcon from "../assets/CarsIcon"
+import ListIcon from "../assets/ListIcon"
 
-import TileIcon from '../assets/TileIcon'
-import DropdownItem from './DropdownItem'
-import CarPlusIcon from '../assets/CarPlusIcon'
-import LogoutIcon from '../assets/LogoutIcon'
+import TileIcon from "../assets/TileIcon"
+import DropdownItem from "./DropdownItem"
+import CarPlusIcon from "../assets/CarPlusIcon"
+import LogoutIcon from "../assets/LogoutIcon"
 
 const Navbar: React.FC = (): React.ReactElement => {
   const [isOpen, setIsOpen] = useState(false)
@@ -22,9 +22,9 @@ const Navbar: React.FC = (): React.ReactElement => {
         <Logo className="size-10 z-10" />
       </div>
 
-      <div className={`dropdown dropdown-bottom ${isOpen ? 'dropdown-open' : ''}`}>
+      <div className={`dropdown-bottom dropdown ${isOpen ? "dropdown-open" : ""}`}>
         <div tabIndex={0} role="button" className="m-1" onClick={toggleDropdown}>
-          {isOpen ? 'Close' : 'Menu'}
+          {isOpen ? "Close" : "Menu"}
         </div>
         {isOpen && (
           <ul

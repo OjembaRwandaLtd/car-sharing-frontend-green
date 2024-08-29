@@ -1,7 +1,7 @@
-import 'vitest-dom/extend-expect'
-import createFetchMock from 'vitest-fetch-mock'
-import { server } from './server'
-import { vitest } from 'vitest'
+import "vitest-dom/extend-expect"
+import createFetchMock from "vitest-fetch-mock"
+import { server } from "./server"
+import { vitest } from "vitest"
 
 const fetchMocker = createFetchMock(vitest)
 fetchMocker.enableMocks()
