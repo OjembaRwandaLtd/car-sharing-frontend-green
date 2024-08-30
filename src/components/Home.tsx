@@ -1,10 +1,8 @@
-import React from "react"
-import Title from "./Title"
-import Navbar from "./Navbar"
+import React, { ReactElement } from "react"
+import Title from "./HomeTitle"
 import Button from "./Button"
-const Home: React.FC = () => (
+const Home: React.FC = (): ReactElement => (
   <div className="h-screen bg-primary-800">
-    <Navbar />
     <section className=" flex  flex-col items-center gap-10">
       <Title />
       <p className="font-lora text-xl text-secondary-200 ">
