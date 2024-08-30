@@ -30,7 +30,7 @@ const Button = ({
     <div className="align-center flex">
       <button
         onClick={() => {
-          if (handleClick) return handleClick
+          if (handleClick) return handleClick()
         }}
         className={`${defaultStyles} ${buttonWidth[width]} ${buttonTypeStyle[type]}`}
       >

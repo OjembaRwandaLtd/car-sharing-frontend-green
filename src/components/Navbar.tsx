@@ -22,7 +22,7 @@ const Navbar: React.FC = (): React.ReactElement => {
         <Logo className="size-10 z-10" />
       </div>
 
-      <div className={`dropdown dropdown-bottom ${isOpen ? "dropdown-open" : ""}`}>
+      <div className={`dropdown-bottom dropdown ${isOpen ? "dropdown-open" : ""}`}>
         <div tabIndex={0} role="button" className="m-1" onClick={toggleDropdown}>
           {isOpen ? "Close" : "Menu"}
         </div>
