@@ -1,13 +1,14 @@
 import { ReactElement } from "react"
 import { configure } from "axios-hooks"
 import { Route, Routes } from "react-router-dom"
-import AddNewCar from "./components/AddNewCar"
-import ManageBookings from "./components/ManageBookings"
-import MyBookings from "./components/MyBookings"
-import NewBooking from "./components/NewBooking"
-import ShowMyCar from "./components/ShowMyCar"
-import Home from "./components/Home"
-import NotFound from "./components/NotFound"
+import AddNewCar from "./pages/cars/new"
+import ManageBookings from "./pages/bookings/manage"
+import MyBookings from "./pages/bookings"
+import NewBooking from "./pages/bookings/new"
+import ShowMyCar from "./pages/cars"
+import Home from "./pages"
+import NotFound from "./pages/404"
+import Layout from "./components/layout"
 
 // Configure axios hooks
 // Do not delete this if you want to use the provided API hooks in `src/hooks`
@@ -20,13 +21,22 @@ configure({
 const App = (): ReactElement => (
   <>
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="add-new-car" element={<AddNewCar />} />
-      <Route path="manage-bookings" element={<ManageBookings />} />
-      <Route path="my-bookings" element={<MyBookings />} />
-      <Route path="new-bookings" element={<NewBooking />} />
-      <Route path="my-car" element={<ShowMyCar />} />
-      <Route path="*" element={<NotFound />} />
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+
+        <Route path="/cars">
+          <Route index element={<ShowMyCar />} />
+          <Route path="new" element={<AddNewCar />} />
+        </Route>
+
+        <Route path="/bookings">
+          <Route index element={<MyBookings />} />
+          <Route path="new" element={<NewBooking />} />
+          <Route path="manage" element={<ManageBookings />} />
+        </Route>
+
+        <Route path="*" element={<NotFound />} />
+      </Route>
     </Routes>
   </>
 )
