@@ -8,7 +8,6 @@ import NewBooking from "./components/NewBooking"
 import ShowMyCar from "./components/ShowMyCar"
 import Home from "./components/Home"
 import NotFound from "./components/NotFound"
-import Navbar from "./components/Navbar"
 
 // Configure axios hooks
 // Do not delete this if you want to use the provided API hooks in `src/hooks`
@@ -19,7 +18,7 @@ configure({
 })
 
 const App = (): ReactElement => (
-  <div >
+  <>
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="add-new-car" element={<AddNewCar />} />
@@ -29,7 +28,7 @@ const App = (): ReactElement => (
       <Route path="my-car" element={<ShowMyCar />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
-  </div>
+  </>
 )
 
 export default App
