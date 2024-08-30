@@ -13,7 +13,10 @@ function useBookingData() {
 
   const [{ data: bookingsData, loading: bookingsLoading, error: bookingsError }] = useAxios<
     BookingDto[]
-  >({ url: `${apiUrl}/bookings`, headers: { Authorization: `Bearer ${token}` } })
+  >({
+    url: `${apiUrl}/bookings`,
+    headers: { Authorization: `Bearer ${token}` },
+  })
 
   useEffect(() => {
     if (bookingsData) {

@@ -5,44 +5,42 @@ import ProfileIcon from "../assets/ProfileIcon"
 import CarIcon from "../assets/CarIcon"
 
 const CarItem = (): ReactElement => {
-  const [{ data: carType, loading, error }] = useCarTypes()
-  const [{ data: carData }] = useCars()
+  const [{ data: carTypes, loading, error }] = useCarTypes()
+  const [{ data: cars }] = useCars()
 
   if (loading) return <p>Loading...</p>
   if (error) return <p>Error!</p>
 
+  const getCarType = (carTypeId: number) => carTypes?.find(item => item.id === carTypeId)
+
   return (
     <section className="h-full bg-primary-800 pt-10">
-      {carData &&
-        carData.map(car => (
+      {cars?.map(car => {
+        const carType = getCarType(car.carTypeId)
+        return (
           <div
             key={car.id}
             className="mx-auto my-4 flex h-64 w-11/12 gap-2 rounded-xl bg-primary-400"
           >
-            <div className="w-96">
+            <div className="w-72">
               {carType && (
                 <img
-                  src={`${carType ? carType.find(item => item.id === car.carTypeId).imageUrl : ""}`}
-                  className="h-full w-full scale-125"
+                  src={carType.imageUrl}
+                  className="h-full w-full rotate-3 scale-105"
+                  alt={carType.name}
                 />
               )}
             </div>
-            <div className="text-secondary-200">
-              {carType && (
-                <h2 className="font-lora text-xl font-medium">{`${
-                  carType ? carType.find(item => item.id === car.carTypeId)?.name : ""
-                }`}</h2>
-              )}
-              <IconWithLabel icon={<ProfileIcon />} text={`${car.name.split("'")[0]}`} />
-              <IconWithLabel
-                icon={<CarIcon />}
-                text={`${
-                  carType ? carType.find(item => item.id === car.carTypeId)?.name.split(" ")[1] : ""
-                }`}
-              />
+            <div className="mr-7 mt-4 border-spacing-y-4 space-y-4 text-secondary-200">
+              <h2 className="font-lora text-xl font-medium">{carType?.name}</h2>
+              <div className="space-y-2">
+                <IconWithLabel icon={<ProfileIcon />} text={car.name.split("'")[0]} />
+                <IconWithLabel icon={<CarIcon />} text={carType?.name.split(" ")[1] || ""} />
+              </div>
             </div>
           </div>
-        ))}
+        )
+      })}
     </section>
   )
 }
