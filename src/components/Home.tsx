@@ -1,7 +1,7 @@
-import React, { ReactElement } from "react"
+import { ReactElement } from "react"
 import HomeTitle from "./HomeTitle"
 import Button from "./Button"
-const Home: React.FC = (): ReactElement => (
+const Home = (): ReactElement => (
   <div className="h-screen bg-primary-800">
     <section className=" flex  flex-col items-center gap-10">
       <HomeTitle />
@@ -10,7 +10,7 @@ const Home: React.FC = (): ReactElement => (
         <span className="block">What are you up to today?</span>
       </p>
       <Button value="Book car" />
-      <p className="font-lora text-xl text-secondary-200">or</p>
+      <span className="font-lora text-xl text-secondary-200">or</span>
     </section>
     <div className="mt-7 flex flex-col gap-4">
       <Button value="See My Cars" type="outline" />
