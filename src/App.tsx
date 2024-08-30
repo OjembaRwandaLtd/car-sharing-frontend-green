@@ -8,6 +8,7 @@ import NewBooking from "./components/NewBooking"
 import ShowMyCar from "./components/ShowMyCar"
 import Home from "./components/Home"
 import NotFound from "./components/NotFound"
+import CarListing from "./components/CarListing"
 
 // Configure axios hooks
 // Do not delete this if you want to use the provided API hooks in `src/hooks`
@@ -26,6 +27,9 @@ const App = (): ReactElement => (
       <Route path="my-bookings" element={<MyBookings />} />
       <Route path="new-bookings" element={<NewBooking />} />
       <Route path="my-car" element={<ShowMyCar />} />
+      <Route path="available-cars" element={<CarListing />} >
+        {/* <Route path=":id" element={} /> */}
+        </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
   </>
