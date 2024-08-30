@@ -1,10 +1,10 @@
 import React, { ReactElement } from "react"
-import Title from "./HomeTitle"
+import HomeTitle from "./HomeTitle"
 import Button from "./Button"
 const Home: React.FC = (): ReactElement => (
   <div className="h-screen bg-primary-800">
     <section className=" flex  flex-col items-center gap-10">
-      <Title />
+      <HomeTitle />
       <p className="font-lora text-xl text-secondary-200 ">
         <span className="block px-10">Hello Manuela!</span>
         <span className="block">What are you up to today?</span>
