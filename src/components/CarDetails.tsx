@@ -30,16 +30,12 @@ const CarDetails: React.FC = () => {
             <div key={car.id} className="flex h-screen flex-col">
               <img
                 className="-mt-20 scale-[1.05]"
-                src={
-                  carTypeData
-                    ? carTypeData.filter(item => item.id === car.carTypeId)[0].imageUrl
-                    : ""
-                }
+                src={carTypeData?.filter(item => item.id === car.carTypeId)[0].imageUrl ?? ""}
                 alt="My car"
               />
               <div className="px-12 text-white">
                 <h2 className="-mt-16 py-8 font-lora text-2xl font-medium">
-                  {carTypeData ? carTypeData.filter(item => item.id === car.carTypeId)[0].name : ""}
+                  {carTypeData?.filter(item => item.id === car.carTypeId)[0].name ?? ""}
                 </h2>
                 <div>
                   <IconWithLabel icon={<ProfileIcon />} text={`${car.name.split("'")[0]}`} />
