@@ -19,8 +19,7 @@ configure({
 })
 
 const App = (): ReactElement => (
-  <div className="bg-primary-800">
-    <Navbar />
+  <div >
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="add-new-car" element={<AddNewCar />} />
