@@ -4,8 +4,8 @@ interface WarningIconProp {
   className?: string
 }
 
-const WarningIcon = ({ className }: WarningIconProp): ReactElement => (
-  <div>
+export default function WarningIcon({ className }: WarningIconProp): ReactElement {
+  return (
     <svg
       width="22"
       height="19"
@@ -21,7 +21,5 @@ const WarningIcon = ({ className }: WarningIconProp): ReactElement => (
         strokeLinejoin="round"
       />
     </svg>
-  </div>
-)
-
-export default WarningIcon
+  )
+}

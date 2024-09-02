@@ -1,3 +1,4 @@
+import classNames from "classnames"
 import { ReactElement } from "react"
 
 interface ButtonProp {
@@ -26,13 +27,14 @@ const Button = ({
     outlineLachs:
       "btn-outline hover:bg-transparent hover:border-Lachs hover:text-Lachs border-2 border-Lachs text-Lachs",
   }
+  const buttonClasses = classNames(defaultStyles, buttonWidth[width], buttonTypeStyle[type])
   return (
     <div className="align-center flex">
       <button
         onClick={() => {
           if (handleClick) return handleClick
         }}
-        className={`${defaultStyles} ${buttonWidth[width]} ${buttonTypeStyle[type]}`}
+        className={buttonClasses}
       >
         {value}
       </button>

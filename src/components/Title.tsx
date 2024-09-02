@@ -10,12 +10,8 @@ const Title = ({ text, backButton, handleClick }: Props): React.ReactElement => 
   <div className="flex items-center px-4 py-8">
     {backButton && (
       <button
-        className="mr-4 h-6 w-6 text-2xl outline-none"
-        onClick={() => {
-          if (handleClick) {
-            return handleClick()
-          }
-        }}
+        className="z-20 mr-4 h-6 w-6 cursor-pointer text-2xl outline-none"
+        onClick={handleClick}
       >
         <ChevronBackIcon className="h-full w-full text-mustard-200" />
       </button>

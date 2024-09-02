@@ -1,4 +1,5 @@
 import React from "react"
+import classNames from "classnames"
 
 interface Prop {
   icon: React.ReactElement
@@ -9,7 +10,7 @@ interface Prop {
 const IconWithLabel = ({ icon, text, bold }: Prop): React.ReactElement => (
   <div className="font-base flex items-center gap-2 pb-2">
     {icon}
-    <p className={`text-lg ${bold ? "font-bold" : ""}`}>{text}</p>
+    <p className={classNames("text-lg", { "font-bold": bold })}>{text}</p>
   </div>
 )
 
