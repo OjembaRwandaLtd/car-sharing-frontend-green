@@ -44,10 +44,6 @@ const router = createBrowserRouter([
   { path: "*", element: <NotFound /> },
 ])
 
-const App = (): ReactElement => (
-  <>
-    <RouterProvider router={router} />
-  </>
-)
+const App = (): ReactElement => <RouterProvider router={router} />
 
 export default App
