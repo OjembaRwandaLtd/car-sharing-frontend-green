@@ -37,7 +37,10 @@ const CarListing = (): ReactElement => {
               <div className="mr-7 mt-4 border-spacing-y-4 space-y-4 text-secondary-200">
                 <h2 className="font-lora text-xl font-medium">{carType?.name}</h2>
                 <div className="space-y-2">
-                  <IconWithLabel icon={<ProfileIcon />} text={car.name.split("'")[0]} />
+                  <IconWithLabel
+                    icon={<ProfileIcon />}
+                    text={car.name.includes("'") ? car.name.split("'")[0] : car.name.split(" ")[0]}
+                  />
                   <IconWithLabel icon={<CarIcon />} text={carType?.name.split(" ")[1] || ""} />
                   <p className="pt-7 font-inter text-sm font-bold text-mustard-200">Show details</p>
                   {/* <Link to={}>Show details</Link> */}

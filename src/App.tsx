@@ -27,9 +27,9 @@ const App = (): ReactElement => (
       <Route path="my-bookings" element={<MyBookings />} />
       <Route path="new-bookings" element={<NewBooking />} />
       <Route path="my-car" element={<ShowMyCar />} />
-      <Route path="available-cars" element={<CarListing />} >
+      <Route path="available-cars" element={<CarListing />}>
         {/* <Route path=":id" element={} /> */}
-        </Route>
+      </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
   </>
