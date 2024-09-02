@@ -1,6 +1,6 @@
-import { Children, ReactElement, ReactNode } from "react"
+import { ReactElement } from "react"
 import { configure } from "axios-hooks"
-import { Route, RouterProvider, Routes, createBrowserRouter } from "react-router-dom"
+import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import AddNewCar from "./pages/cars/new"
 import ManageBookings from "./pages/bookings/manage"
 import MyBookings from "./pages/bookings"
@@ -46,25 +46,7 @@ const router = createBrowserRouter([
 
 const App = (): ReactElement => (
   <>
-  <RouterProvider router={router} />
-    {/* <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-
-        <Route path="/cars">
-          <Route index element={<ShowMyCar />} />
-          <Route path="new" element={<AddNewCar />} />
-        </Route>
-
-        <Route path="/bookings">
-          <Route index element={<MyBookings />} />
-          <Route path="new" element={<NewBooking />} />
-          <Route path="manage" element={<ManageBookings />} />
-        </Route>
-
-        <Route path="*" element={<NotFound />} />
-      </Route>
-    </Routes> */}
+    <RouterProvider router={router} />
   </>
 )
 
