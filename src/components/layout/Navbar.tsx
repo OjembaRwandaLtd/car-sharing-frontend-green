@@ -1,5 +1,5 @@
-import { ReactElement, useEffect } from "react"
-import { useState } from "react"
+import classNames from "classnames"
+import { ReactElement, useEffect, useState } from "react"
 import ProfileIcon from "../../assets/ProfileIcon"
 import Logo from "../../assets/Logo"
 import CarIcon from "../../assets/CarIcon"
@@ -11,17 +11,12 @@ import DropdownItem from "../ui/dropdown/item"
 import CarPlusIcon from "../../assets/CarPlusIcon"
 import LogoutIcon from "../../assets/LogoutIcon"
 import Dropdown from "../ui/dropdown"
-
 import { useLocation } from "react-router-dom"
-import classNames from "classnames"
 
 const Navbar = (): ReactElement => {
   const [isOpen, setIsOpen] = useState(false)
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen)
-  }
+  const toggleDropdown = () => setIsOpen(!isOpen)
   const location = useLocation()
-
   useEffect(() => setIsOpen(false), [location])
 
   return (
@@ -64,7 +59,6 @@ const Navbar = (): ReactElement => {
                     navlink={Routes.CARS.NEW}
                   />
                 </div>
-
                 <DropdownItem icon={<LogoutIcon />} text="Logout" />
               </div>
             </Dropdown>
