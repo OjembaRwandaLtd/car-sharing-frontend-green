@@ -7,9 +7,9 @@ import CarsIcon from "../assets/CarsIcon"
 import ListIcon from "../assets/ListIcon"
 
 import TileIcon from "../assets/TileIcon"
-import DropdownItem from "./DropdownItem"
 import CarPlusIcon from "../assets/CarPlusIcon"
 import LogoutIcon from "../assets/LogoutIcon"
+import DropdownItem from "./ui/dropdown/item"
 
 const Navbar: React.FC = (): React.ReactElement => {
   const [isOpen, setIsOpen] = useState(false)
