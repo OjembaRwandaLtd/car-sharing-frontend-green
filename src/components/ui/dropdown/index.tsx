@@ -1,6 +1,6 @@
-import React from "react"
+import { ReactNode } from "react"
 
-const Dropdown = ({ children }: { children: React.ReactNode }) => (
+const Dropdown = ({ children }: { children: ReactNode }) => (
   <ul
     tabIndex={0}
     className="h-90 menu dropdown-content z-50 mt-10 w-52 rounded-lg bg-primary-200 text-base text-white shadow"
