@@ -1,15 +1,18 @@
 import { ReactElement, useEffect } from "react"
 import { useState } from "react"
-import ProfileIcon from "../../assets/ProfileIcon"
-import Logo from "../../assets/Logo"
-import CarIcon from "../../assets/CarIcon"
-import CarsIcon from "../../assets/CarsIcon"
-import ListIcon from "../../assets/ListIcon"
 import Routes from "../../routes"
-import TileIcon from "../../assets/TileIcon"
+import {
+  ProfileIcon,
+  Logo,
+  CarIcon,
+  CarsIcon,
+  ListIcon,
+  TileIcon,
+  CarPlusIcon,
+  LogoutIcon,
+} from "../../assets/index"
+
 import DropdownItem from "../ui/dropdown/item"
-import CarPlusIcon from "../../assets/CarPlusIcon"
-import LogoutIcon from "../../assets/LogoutIcon"
 import Dropdown from "../ui/dropdown"
 
 import { useLocation } from "react-router-dom"
