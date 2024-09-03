@@ -1,5 +1,5 @@
-import { ReactElement, useEffect } from "react"
-import { useState } from "react"
+import { ReactElement, useEffect, useState } from "react"
+import classNames from "classnames"
 import Routes from "../../routes"
 import {
   ProfileIcon,
@@ -14,17 +14,12 @@ import {
 
 import DropdownItem from "../ui/dropdown/item"
 import Dropdown from "../ui/dropdown"
-
 import { useLocation } from "react-router-dom"
-import classNames from "classnames"
 
 const Navbar = (): ReactElement => {
   const [isOpen, setIsOpen] = useState(false)
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen)
-  }
+  const toggleDropdown = () => setIsOpen(!isOpen)
   const location = useLocation()
-
   useEffect(() => setIsOpen(false), [location])
 
   return (
@@ -67,7 +62,6 @@ const Navbar = (): ReactElement => {
                     navlink={Routes.CARS.NEW}
                   />
                 </div>
-
                 <DropdownItem icon={<LogoutIcon />} text="Logout" />
               </div>
             </Dropdown>
