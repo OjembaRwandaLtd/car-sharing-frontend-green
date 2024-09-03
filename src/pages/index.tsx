@@ -1,6 +1,6 @@
 import { ReactElement } from "react"
-import HomeTitle from "./HomeTitle"
-import Button from "./Button"
+import HomeTitle from "../../src/components/ui/HomeTitle"
+import Button from "../../src/components/ui/Button"
 import { useNavigate } from "react-router-dom"
 
 const Home = (): ReactElement => {
