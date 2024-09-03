@@ -1,14 +1,7 @@
 import { ReactElement } from "react"
 import { configure } from "axios-hooks"
-import { Route, Routes } from "react-router-dom"
-import AddNewCar from "./components/AddNewCar"
-import ManageBookings from "./components/ManageBookings"
-import MyBookings from "./components/MyBookings"
-import NewBooking from "./components/NewBooking"
-import ShowMyCar from "./components/ShowMyCar"
-import Home from "./components/Home"
-import NotFound from "./components/NotFound"
-import CarListing from "./components/CarListing"
+import { RouterProvider } from "react-router-dom"
+import router from "./routes/router"
 
 // Configure axios hooks
 // Do not delete this if you want to use the provided API hooks in `src/hooks`
@@ -18,21 +11,6 @@ configure({
   },
 })
 
-const App = (): ReactElement => (
-  <>
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="add-new-car" element={<AddNewCar />} />
-      <Route path="manage-bookings" element={<ManageBookings />} />
-      <Route path="my-bookings" element={<MyBookings />} />
-      <Route path="new-bookings" element={<NewBooking />} />
-      <Route path="my-car" element={<ShowMyCar />} />
-      <Route path="available-cars" element={<CarListing />}>
-        {/* <Route path=":id" element={} /> */}
-      </Route>
-      <Route path="*" element={<NotFound />} />
-    </Routes>
-  </>
-)
+const App = (): ReactElement => <RouterProvider router={router} />
 
 export default App
