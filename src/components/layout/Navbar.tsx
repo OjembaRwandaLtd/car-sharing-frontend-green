@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import { ReactElement, useEffect } from "react"
 import { useState } from "react"
 import ProfileIcon from "../../assets/ProfileIcon"
 import Logo from "../../assets/Logo"
@@ -15,7 +15,7 @@ import Dropdown from "../ui/dropdown"
 import { useLocation } from "react-router-dom"
 import classNames from "classnames"
 
-const Navbar: React.FC = (): React.ReactElement => {
+const Navbar = (): ReactElement => {
   const [isOpen, setIsOpen] = useState(false)
   const toggleDropdown = () => {
     setIsOpen(!isOpen)
