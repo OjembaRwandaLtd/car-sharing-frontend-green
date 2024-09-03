@@ -1,10 +1,6 @@
 import daisyui from "daisyui"
 
 /** @type {import('tailwindcss').Config} */
-<<<<<<< HEAD
-=======
-
->>>>>>> 71f2a4daec5332fb5e5e1c49c3845761c0717f3f
 module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
