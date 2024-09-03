@@ -7,9 +7,9 @@ import LicensePlateIcon from "../assets/LicensePlateIcon"
 import ProfileIcon from "../assets/ProfileIcon"
 import WarningIcon from "../assets/WarningIcon"
 import { useCarTypes, useCars } from "../hooks"
-import IconWithLabel from "./IconWithLabel"
-import ErrorMessage from "./ErrorMessage"
-import Loading from "./Loading"
+import IconWithLabel from "./ui/IconWithLabel"
+import Loading from "./ui/Loading"
+import NotFound from "../pages/404"
 const CarFeatures = (): ReactElement => {
   const { carId } = useParams()
 
@@ -18,7 +18,7 @@ const CarFeatures = (): ReactElement => {
 
   if (carTypeLoading || carLoading) return <Loading />
 
-  if (carError) return <ErrorMessage text={"Error! Car Not found"} />
+  if (carError) return <NotFound />
   return (
     <div className="h-screen overflow-x-hidden bg-primary-800">
       {carDetails && carDetails.filter(car => car.id === Number(carId)).length > 0 ? (
@@ -51,7 +51,7 @@ const CarFeatures = (): ReactElement => {
             </div>
           ))
       ) : (
-        <ErrorMessage text={"Error! Car Not found"} />
+        <NotFound />
       )}
     </div>
   )

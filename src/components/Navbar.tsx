@@ -7,9 +7,9 @@ import CarsIcon from "../assets/CarsIcon"
 import ListIcon from "../assets/ListIcon"
 
 import TileIcon from "../assets/TileIcon"
+import DropdownItem from "./ui/dropdown/item"
 import CarPlusIcon from "../assets/CarPlusIcon"
 import LogoutIcon from "../assets/LogoutIcon"
-import DropdownItem from "./ui/dropdown/item"
 
 const Navbar: React.FC = (): React.ReactElement => {
   const [isOpen, setIsOpen] = useState(false)
@@ -22,14 +22,14 @@ const Navbar: React.FC = (): React.ReactElement => {
         <Logo className="size-10 z-10" />
       </div>
 
-      <div className={`dropdown dropdown-bottom   ${isOpen ? "dropdown-open" : ""}`}>
+      <div className={`dropdown-bottom dropdown ${isOpen ? "dropdown-open" : ""}`}>
         <div tabIndex={0} role="button" className="m-1" onClick={toggleDropdown}>
           {isOpen ? "Close" : "Menu"}
         </div>
         {isOpen && (
           <ul
             tabIndex={0}
-            className="h-90 menu dropdown-content z-40 mt-10 w-52 rounded-lg bg-primary-200 p-2 text-base text-white shadow"
+            className="h-90 z-1 menu dropdown-content mt-10 w-52 rounded-lg bg-primary-200 p-2 text-base text-white shadow"
           >
             <DropdownItem icon={<CarIcon />} text="Book A Car" />
             <DropdownItem icon={<TileIcon />} text=" My Bookings" />
