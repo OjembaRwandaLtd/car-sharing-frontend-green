@@ -7,18 +7,23 @@ const useCarDetails = () => {
 
   const isLoading = carTypesLoading || carsLoading
   const isError = carTypesError || carsError
+  const getCarType = (carTypeId: number) => carTypes?.find(carType => carType.id === carTypeId)
 
   return {
-    carsData: cars?.map(car => ({
-      id: car.id,
-      carImage: carTypes?.find(carType => carType.id === car.carTypeId)?.imageUrl ?? "",
-      carName: carTypes?.find(carType => carType.id === car.carTypeId)?.name ?? "",
-      carOwner: car.name,
-      licensePlate: car.licensePlate,
-      horsePower: car.horsepower,
-      fuelType: car.fuelType,
-      carInfo: car.info,
-    })),
+    carsData: cars?.map(car => {
+      const carType = getCarType(car.carTypeId)
+
+      return {
+        id: car.id,
+        carImage: carType?.imageUrl ?? "",
+        carName: carType?.name ?? "",
+        carOwner: car.name,
+        licensePlate: car.licensePlate,
+        horsePower: car.horsepower,
+        fuelType: car.fuelType,
+        carInfo: car.info,
+      }
+    }),
     isLoading,
     isError,
   }
