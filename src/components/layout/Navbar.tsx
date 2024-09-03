@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useState } from "react"
+import { ReactElement, useEffect, useRef, useState } from "react"
 import classNames from "classnames"
 import Routes from "../../routes"
 import {
@@ -18,14 +18,32 @@ import { NavLink, useLocation } from "react-router-dom"
 
 const Navbar = (): ReactElement => {
   const [isOpen, setIsOpen] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
   const toggleDropdown = () => setIsOpen(!isOpen)
   const location = useLocation()
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      setIsOpen(false)
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [])
+
   useEffect(() => setIsOpen(false), [location])
 
   return (
     <div>
       <nav className="relative flex h-14 items-center justify-between rounded-b-xl bg-secondary-800 px-5 py-4 text-white">
-        <div className={classNames("dropdown dropdown-bottom", { isOpen: "dropdown-open" })}>
+        <div
+          ref={dropdownRef}
+          className={classNames("dropdown dropdown-bottom", { isOpen: "dropdown-open" })}
+        >
           <div tabIndex={0} role="button" className="m-1" onClick={toggleDropdown}>
             {isOpen ? "Close" : "Menu"}
           </div>
