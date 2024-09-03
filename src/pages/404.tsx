@@ -1,7 +1,7 @@
 import { ReactElement } from "react"
 import BrokenCarIcon from "../assets/BrokenCarIcon"
-import Button from "./Button"
 import { useNavigate } from "react-router-dom"
+import Button from "../components/ui/Button"
 
 const NotFound = (): ReactElement => {
   const navigate = useNavigate()
