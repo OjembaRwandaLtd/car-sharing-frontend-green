@@ -24,6 +24,8 @@ import SearchIcon from "./SearchIcon"
 import TimeIcon from "./TimeIcon"
 import UnlockIcon from "./UnlockIcon"
 import XIcon from "./XIcon"
+import WarningIcon from "./WarningIcon"
+import LicensePlateIcon from "./LicensePlateIcon"
 
 export {
   ProfileIcon,
@@ -44,6 +46,7 @@ export {
   HorseIcon,
   KeyIcon,
   LockIcon,
+  LicensePlateIcon,
   LoginIcon,
   MenuIcon,
   PenIcon,
@@ -51,5 +54,6 @@ export {
   SearchIcon,
   TimeIcon,
   UnlockIcon,
+  WarningIcon,
   XIcon,
 }

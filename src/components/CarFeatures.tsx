@@ -1,13 +1,15 @@
-import { useParams } from "react-router-dom"
-import CarIcon from "../assets/CarIcon"
 import { ReactElement } from "react"
-import FuelIcon from "../assets/FuelIcon"
-import HorseIcon from "../assets/HorseIcon"
-import LicensePlateIcon from "../assets/LicensePlateIcon"
-import ProfileIcon from "../assets/ProfileIcon"
-import WarningIcon from "../assets/WarningIcon"
+import { useParams } from "react-router-dom"
 import { useCarTypes, useCars } from "../hooks"
 import IconWithLabel from "./ui/IconWithLabel"
+import {
+  FuelIcon,
+  HorseIcon,
+  LicensePlateIcon,
+  ProfileIcon,
+  WarningIcon,
+  CarIcon,
+} from "../assets/index"
 import Loading from "./ui/Loading"
 import NotFound from "../pages/404"
 const CarFeatures = (): ReactElement => {
