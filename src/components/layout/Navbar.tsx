@@ -39,19 +39,24 @@ const Navbar: React.FC = (): React.ReactElement => {
           </div>
           {isOpen && (
             <Dropdown>
-              <DropdownItem icon={<CarIcon />} text="Book A Car" navlink="/bookings/new" />
-              <DropdownItem icon={<TileIcon />} text=" My Bookings" navlink="/bookings/" />
-              <hr className="mx-auto w-40" />
-              <h2 className="px-4 pt-3 font-bold">My cars</h2>
-              <DropdownItem icon={<CarsIcon />} text="See My Cars" navlink="/cars" />
-              <DropdownItem
-                icon={<ListIcon />}
-                text="My car's Bookings"
-                navlink="/bookings/manage"
-              />
-              <DropdownItem icon={<CarPlusIcon />} text="Add New car" navlink="cars/new" />
-              <hr className="mx-auto w-40" />
-              <DropdownItem icon={<LogoutIcon />} text="Logout" />
+              <div className="divide-y px-4 ">
+                <div>
+                  <DropdownItem icon={<CarIcon />} text="Book A Car" navlink="/bookings/new" />
+                  <DropdownItem icon={<TileIcon />} text=" My Bookings" navlink="/bookings/" />
+                </div>
+                <div>
+                  <h2 className="px-4 pt-3 font-bold">My cars</h2>
+                  <DropdownItem icon={<CarsIcon />} text="See My Cars" navlink="/cars" />
+                  <DropdownItem
+                    icon={<ListIcon />}
+                    text="My car's Bookings"
+                    navlink="/bookings/manage"
+                  />
+                  <DropdownItem icon={<CarPlusIcon />} text="Add New car" navlink="cars/new" />
+                </div>
+
+                <DropdownItem icon={<LogoutIcon />} text="Logout" />
+              </div>
             </Dropdown>
           )}
         </div>
