@@ -22,9 +22,7 @@ const Navbar: React.FC = (): React.ReactElement => {
   }
   const location = useLocation()
 
-  useEffect(() => {
-    setIsOpen(false)
-  }, [location])
+  useEffect(() => setIsOpen(false), [location])
 
   return (
     <div>
