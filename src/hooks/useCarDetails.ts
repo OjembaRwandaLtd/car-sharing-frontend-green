@@ -2,7 +2,7 @@ import useCarTypes from "./useCarTypes"
 import useCars from "./useCars"
 
 const useCarDetails = () => {
-  const [{ data: carTypes = [], loading: carTypesLoading, error: carTypesError }] = useCarTypes()
+  const [{ data: carTypes, loading: carTypesLoading, error: carTypesError }] = useCarTypes()
   const [{ data: cars, loading: carsLoading, error: carsError }] = useCars()
 
   const isLoading = carTypesLoading || carsLoading
