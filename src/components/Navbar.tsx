@@ -5,7 +5,7 @@ import Logo from "../assets/Logo"
 import CarIcon from "../assets/CarIcon"
 import CarsIcon from "../assets/CarsIcon"
 import ListIcon from "../assets/ListIcon"
-
+import classNames from "classnames"
 import TileIcon from "../assets/TileIcon"
 import DropdownItem from "./DropdownItem"
 import CarPlusIcon from "../assets/CarPlusIcon"
@@ -22,7 +22,7 @@ const Navbar: React.FC = (): React.ReactElement => {
         <Logo className="size-10 z-10" />
       </div>
 
-      <div className={`dropdown-bottom dropdown ${isOpen ? "dropdown-open" : ""}`}>
+      <div className={classNames("dropdown-bottom dropdown", { "dropdown-open": isOpen })}>
         <div tabIndex={0} role="button" className="m-1" onClick={toggleDropdown}>
           {isOpen ? "Close" : "Menu"}
         </div>
