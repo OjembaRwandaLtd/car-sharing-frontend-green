@@ -28,14 +28,10 @@ const Button = ({
       "btn-outline hover:bg-transparent hover:border-Lachs hover:text-Lachs border-2 border-Lachs text-Lachs",
   }
   const buttonClasses = classNames(defaultStyles, buttonWidth[width], buttonTypeStyle[type])
+
   return (
     <div className="align-center flex">
-      <button
-        onClick={() => {
-          if (handleClick) return handleClick()
-        }}
-        className={buttonClasses}
-      >
+      <button onClick={handleClick} className={buttonClasses}>
         {value}
       </button>
     </div>
