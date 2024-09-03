@@ -14,7 +14,7 @@ import {
 
 import DropdownItem from "../ui/dropdown/item"
 import Dropdown from "../ui/dropdown"
-import { useLocation } from "react-router-dom"
+import { NavLink, useLocation } from "react-router-dom"
 
 const Navbar = (): ReactElement => {
   const [isOpen, setIsOpen] = useState(false)
@@ -25,10 +25,6 @@ const Navbar = (): ReactElement => {
   return (
     <div>
       <nav className="relative flex h-14 items-center justify-between rounded-b-xl bg-secondary-800 px-5 py-4 text-white">
-        <div className="absolute left-1/2 top-0 z-0 -translate-x-1/2 rounded-full bg-secondary-800 px-4 pb-5 pt-1.5">
-          <Logo className="size-10 z-10" />
-        </div>
-
         <div className={classNames("dropdown dropdown-bottom", { isOpen: "dropdown-open" })}>
           <div tabIndex={0} role="button" className="m-1" onClick={toggleDropdown}>
             {isOpen ? "Close" : "Menu"}
@@ -66,6 +62,11 @@ const Navbar = (): ReactElement => {
               </div>
             </Dropdown>
           )}
+        </div>
+        <div className="absolute left-1/2 top-0 z-0 -translate-x-1/2 rounded-full bg-secondary-800 px-4 pb-5 pt-1.5">
+          <NavLink to={"/"}>
+            <Logo className="size-10 z-10" />
+          </NavLink>
         </div>
         <ProfileIcon className="w-6" />
       </nav>
