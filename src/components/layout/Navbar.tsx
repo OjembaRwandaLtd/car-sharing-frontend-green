@@ -5,7 +5,7 @@ import Logo from "../../assets/Logo"
 import CarIcon from "../../assets/CarIcon"
 import CarsIcon from "../../assets/CarsIcon"
 import ListIcon from "../../assets/ListIcon"
-
+import Routes from "../../routes"
 import TileIcon from "../../assets/TileIcon"
 import DropdownItem from "../ui/dropdown/item"
 import CarPlusIcon from "../../assets/CarPlusIcon"
@@ -37,17 +37,21 @@ const Navbar = (): ReactElement => {
           </div>
           {isOpen && (
             <Dropdown>
-              <DropdownItem icon={<CarIcon />} text="Book A Car" navlink="/bookings/new" />
-              <DropdownItem icon={<TileIcon />} text=" My Bookings" navlink="/bookings/" />
+              <DropdownItem icon={<CarIcon />} text="Book A Car" navlink={Routes.BOOKINGS.NEW} />
+              <DropdownItem
+                icon={<TileIcon />}
+                text=" My Bookings"
+                navlink={Routes.BOOKINGS.ROOT}
+              />
               <hr className="mx-auto w-40" />
               <h2 className="px-4 pt-3 font-bold">My cars</h2>
-              <DropdownItem icon={<CarsIcon />} text="See My Cars" navlink="/cars" />
+              <DropdownItem icon={<CarsIcon />} text="See My Cars" navlink={Routes.CARS.ROOT} />
               <DropdownItem
                 icon={<ListIcon />}
                 text="My car's Bookings"
                 navlink="/bookings/manage"
               />
-              <DropdownItem icon={<CarPlusIcon />} text="Add New car" navlink="cars/new" />
+              <DropdownItem icon={<CarPlusIcon />} text="Add New car" navlink={Routes.CARS.NEW} />
               <hr className="mx-auto w-40" />
               <DropdownItem icon={<LogoutIcon />} text="Logout" />
             </Dropdown>
