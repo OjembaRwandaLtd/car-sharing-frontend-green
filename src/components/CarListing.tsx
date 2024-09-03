@@ -3,20 +3,15 @@ import { useCars, useCarTypes } from "../hooks"
 import IconWithLabel from "./IconWithLabel"
 import ProfileIcon from "../assets/ProfileIcon"
 import CarIcon from "../assets/CarIcon"
-import Button from "./Button"
-import { useNavigate } from "react-router-dom"
-//import { Link } from "react-router-dom"
 
 const CarListing = (): ReactElement => {
   const [{ data: carTypes, loading, error }] = useCarTypes()
   const [{ data: cars }] = useCars()
-  const navigate = useNavigate()
 
   if (loading) return <p>Loading...</p>
   if (error) return <p>Error!</p>
 
   const getCarType = (carTypeId: number) => carTypes?.find(item => item.id === carTypeId)
-  const handleNavigation = () => navigate("/new-bookings")
 
   return (
     <section className="h-full bg-primary-800 pt-10">
@@ -36,15 +31,13 @@ const CarListing = (): ReactElement => {
               </div>
               <div className="mr-7 mt-4 border-spacing-y-4 space-y-4 text-secondary-200">
                 <h2 className="font-lora text-xl font-medium">{carType?.name}</h2>
-                <div className="space-y-2">
-                  <IconWithLabel icon={<ProfileIcon />} text={car.name.split("'")[0]} />
+                <div className="space-y-2 truncate">
+                  <IconWithLabel icon={<ProfileIcon />} text={car.name} />
                   <IconWithLabel icon={<CarIcon />} text={carType?.name.split(" ")[1] || ""} />
                   <p className="pt-7 font-inter text-sm font-bold text-mustard-200">Show details</p>
-                  {/* <Link to={}>Show details</Link> */}
                 </div>
               </div>
             </div>
-            <Button value="Book Car" handleClick={handleNavigation} />
           </div>
         )
       })}
