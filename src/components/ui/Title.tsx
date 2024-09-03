@@ -1,4 +1,4 @@
-import { ChevronBackIcon } from "../assets/ChevronBackIcon"
+import { ChevronBackIcon } from "../../assets"
 
 interface Props {
   text: string
