@@ -1,13 +1,13 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen } from "@testing-library/react"
 
 // import AllCars from '../src/pages/AllCars/AllCars'
-import App from '../src/App'
+import App from "../src/App"
 // import Home from '../src/pages/Home'
 // import { MemoryRouter } from 'react-router-dom'
 
-test('renders any HTML page', () => {
+test("renders any HTML page", () => {
   render(<App />)
-  expect(screen.getByRole('heading', { level: 1 })).toContainHTML('Hello to MoniShare')
+  expect(screen.getByRole("heading", { level: 1 })).toContainHTML("Hello to MoniShare")
 })
 
 // test('renders login page on start', () => {
