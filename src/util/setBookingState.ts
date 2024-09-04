@@ -1,7 +1,7 @@
-import { BookingState, ChangeBookingStateDto } from './api'
+import { BookingState, ChangeBookingStateDto } from "./api"
 
-import { apiUrl } from './apiUrl'
-import { getAuthToken } from './auth'
+import { apiUrl } from "./apiUrl"
+import { getAuthToken } from "./auth"
 
 export const setBookingState = async (id: number, newState: BookingState): Promise<void> => {
   const changeBookingState: ChangeBookingStateDto = {
@@ -9,15 +9,15 @@ export const setBookingState = async (id: number, newState: BookingState): Promi
   }
 
   const response = await fetch(`${apiUrl}/bookings/${id}`, {
-    method: 'PATCH',
+    method: "PATCH",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
       Authorization: `Bearer ${getAuthToken()}`,
     },
     body: JSON.stringify(changeBookingState),
   })
 
   if (!response.ok) {
-    throw new Error('Could not change booking state.')
+    throw new Error("Could not change booking state.")
   }
 }
