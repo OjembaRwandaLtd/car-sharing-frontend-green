@@ -20,8 +20,8 @@ const router = createBrowserRouter([
         path: Routes.CARS.ROOT,
         children: [
           { index: true, element: <ShowMyCar /> },
-          { path: ":id", element: <CarDetails /> },
           { path: "new", element: <AddNewCar /> },
+          { path: ":carId", element: <CarDetails /> },
         ],
       },
       {
