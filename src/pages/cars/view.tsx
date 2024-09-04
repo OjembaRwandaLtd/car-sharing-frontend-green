@@ -27,10 +27,10 @@ const CarDetails = (): ReactElement => {
   return (
     <>
       {car && car.length > 0 ? (
-        <div className="h-screen overflow-x-hidden bg-primary-800">
+        <div className="overflow-x-hidden bg-primary-800">
           <Title text="Details" backButton />
           {car.map(car => (
-            <div key={car.id} className="flex h-screen flex-col">
+            <div key={car.id} className="flex flex-col">
               <img className="-mt-20 scale-[1.05]" src={car.carImage ?? ""} alt="My car" />
               <div className="px-12 text-white">
                 <h2 className="-mt-16 py-8 font-lora text-2xl font-medium">{car.carName ?? ""}</h2>
