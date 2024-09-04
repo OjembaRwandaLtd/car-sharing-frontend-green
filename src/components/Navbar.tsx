@@ -7,7 +7,7 @@ import CarsIcon from "../assets/CarsIcon"
 import ListIcon from "../assets/ListIcon"
 
 import TileIcon from "../assets/TileIcon"
-import DropdownItem from "./DropdownItem"
+import DropdownItem from "./ui/dropdown/item"
 import CarPlusIcon from "../assets/CarPlusIcon"
 import LogoutIcon from "../assets/LogoutIcon"
 
