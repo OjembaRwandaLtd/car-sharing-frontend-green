@@ -1,5 +1,5 @@
 import { ReactElement } from "react"
-import { useParams } from "react-router"
+import { useParams } from "react-router-dom"
 import Title from "../../components/ui/Title"
 import { useCarDetails } from "../../hooks"
 import {
@@ -15,7 +15,7 @@ import IconWithLabel from "../../components/ui/IconWithLabel"
 import NotFound from "../404"
 
 const CarDetails = (): ReactElement => {
-  const { id: carId } = useParams()
+  const { carId } = useParams()
   const { carsData, isLoading, isError } = useCarDetails()
 
   const car = carsData?.filter(car => car.id === Number(carId))
