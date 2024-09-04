@@ -1,6 +1,5 @@
 import { ReactElement } from "react"
 import { CarIcon, IconWithLabel, ProfileIcon } from "../../assets"
-// import Routes from "../../routes"
 import { Link } from "react-router-dom"
 import { useCarDetails } from "../../hooks"
 import NotFound from "../404"
