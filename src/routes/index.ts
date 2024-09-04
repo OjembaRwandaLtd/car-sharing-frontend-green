@@ -4,7 +4,6 @@ const Routes = {
     ROOT: "/cars",
     VIEW: "/cars/:carId",
     NEW: "/cars/new",
-    LIST: "/cars/available",
   },
   BOOKINGS: {
     ROOT: "/bookings",

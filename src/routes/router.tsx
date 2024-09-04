@@ -4,12 +4,11 @@ import AddNewCar from "../pages/cars/new"
 import ManageBookings from "../pages/bookings/manage"
 import MyBookings from "../pages/bookings"
 import NewBooking from "../pages/bookings/new"
-import ShowMyCar from "../pages/cars"
 import Home from "../pages"
 import NotFound from "../pages/404"
 import Layout from "../components/layout"
 import CarDetails from "../pages/cars/view"
-import CarListing from "../components/CarListing"
+import CarListing from "../pages/cars"
 
 const router = createBrowserRouter([
   {
@@ -20,7 +19,7 @@ const router = createBrowserRouter([
       {
         path: Routes.CARS.ROOT,
         children: [
-          { index: true, element: <ShowMyCar /> },
+          { index: true, element: <CarListing /> },
           { path: "new", element: <AddNewCar /> },
           { path: ":carId", element: <CarDetails /> },
         ],
@@ -32,10 +31,6 @@ const router = createBrowserRouter([
           { path: "new", element: <NewBooking /> },
           { path: "manage", element: <ManageBookings /> },
         ],
-      },
-      {
-        path: Routes.CARS.LIST,
-        element: <CarListing />,
       },
     ],
   },
