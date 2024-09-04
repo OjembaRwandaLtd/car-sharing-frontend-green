@@ -1,17 +1,18 @@
+import { useNavigate } from "react-router-dom"
 import { ChevronBackIcon } from "../../assets"
 
 interface Props {
   text: string
   backButton?: boolean
-  handleBackClick?: () => void
 }
+const navigate = useNavigate()
 
-const Title = ({ text, backButton, handleBackClick }: Props): React.ReactElement => (
+const Title = ({ text, backButton }: Props): React.ReactElement => (
   <div className="flex items-center px-4 py-8">
     {backButton && (
       <button
         className="z-20 mr-4 h-6 w-6 cursor-pointer text-2xl outline-none"
-        onClick={handleBackClick}
+        onClick={() => navigate(-1)}
         aria-label="Go back"
       >
         <ChevronBackIcon className="h-full w-full text-mustard-200" />
