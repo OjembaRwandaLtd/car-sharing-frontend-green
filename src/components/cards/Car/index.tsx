@@ -9,7 +9,7 @@ const Car = (): ReactElement => {
 
   if (isLoading) return <Loading />
   if (isError) return <NotFound />
-  return <div>{carsData?.map(car => <Item key={car.id} car={car} deleteButton />)}</div>
+  return <div>{carsData?.map(car => <Item key={car.id} car={car} />)}</div>
 }
 
 export default Car
