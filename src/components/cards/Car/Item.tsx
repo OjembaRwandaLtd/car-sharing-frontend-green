@@ -1,3 +1,4 @@
+import { ReactElement } from "react"
 import { Link } from "react-router-dom"
 import { CarIcon, IconWithLabel, ProfileIcon } from "../../../assets"
 
@@ -8,11 +9,9 @@ interface Props {
     carName: string
     carOwner: string
   }
-  deleteButton?: boolean
-  bookButton?: boolean
 }
 
-const Item = ({ car }: Props) => (
+const Item = ({ car }: Props): ReactElement => (
   <div key={car.id} className="mx-auto my-4 w-11/12 rounded-xl bg-primary-400 py-4">
     <div className="flex h-64 gap-2">
       <div className="w-72">
