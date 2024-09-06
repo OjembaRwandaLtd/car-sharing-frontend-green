@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom"
 import { CarIcon, IconWithLabel, ProfileIcon } from "../../../assets"
-import Button from "../../ui/Button"
 
 interface Props {
   car: {
@@ -13,7 +12,7 @@ interface Props {
   bookButton?: boolean
 }
 
-const Item = ({ car, deleteButton, bookButton }: Props) => (
+const Item = ({ car }: Props) => (
   <div key={car.id} className="mx-auto my-4 w-11/12 rounded-xl bg-primary-400 py-4">
     <div className="flex h-64 gap-2">
       <div className="w-72">
@@ -34,8 +33,6 @@ const Item = ({ car, deleteButton, bookButton }: Props) => (
         </div>
       </div>
     </div>
-    {deleteButton && <Button value="Delete Car" type="outlineLachs" />}
-    {bookButton && <Button value="Book Car" />}
   </div>
 )
 
