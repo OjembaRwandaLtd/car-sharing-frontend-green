@@ -27,16 +27,21 @@ const CarDetails = (): ReactElement => {
   return (
     <>
       {car && car.length > 0 ? (
-        <div className="overflow-x-hidden bg-primary-800 lg:-mt-32 lg:overflow-y-hidden">
+        <div className="overflow-x-hidden bg-primary-800 lg:-mt-32">
           <Title text="Details" backButton />
           {car.map(car => (
-            <div key={car.id} className="flex flex-col  md:flex-row md:items-center md:text-center">
-              <img
-                className="md:-py-0 -mt-20 scale-[1.05]  md:-mt-56 md:scale-75"
-                src={car.carImage ?? ""}
-                alt="My car"
-              />
-              <div className="px-12 text-white lg:-mt-40 lg:bg-primary-400 lg:p-12">
+            <div
+              key={car.id}
+              className="flex flex-col md:mt-24 md:flex-row md:items-center md:text-center"
+            >
+              <div className=" md:w-2/3">
+                <img
+                  className="md:-py-0 -mt-20 scale-[1.05]  md:-mt-56 md:scale-75"
+                  src={car.carImage ?? ""}
+                  alt="My car"
+                />
+              </div>
+              <div className="px-12 text-white lg:-mt-40 lg:p-12">
                 <h2 className="-mt-16 py-8 font-lora text-2xl font-medium md:text-5xl ">
                   {car.carName ?? ""}
                 </h2>

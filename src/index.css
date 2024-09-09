@@ -10,5 +10,5 @@
 }
 
 body {
-  @apply font-normal text-left text-sm relative text-gray-700 bg-primary-800;
+  @apply font-normal text-left text-sm relative text-gray-700 bg-primary-800 min-h-screen;
 }
