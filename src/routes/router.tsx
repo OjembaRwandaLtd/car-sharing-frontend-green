@@ -9,6 +9,7 @@ import NotFound from "../pages/404"
 import Layout from "../components/layout"
 import CarDetails from "../pages/cars/view"
 import CarListing from "../pages/cars"
+import LogIn from "../pages/login"
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { index: true, element: <Home /> },
+      { path: Routes.LOGIN.ROOT, element: <LogIn /> },
       {
         path: Routes.CARS.ROOT,
         children: [

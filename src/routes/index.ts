@@ -1,5 +1,9 @@
 const Routes = {
   HOME: "/",
+  LOGIN: {
+    ROOT: "/login",
+    LANDING: "/landing",
+  },
   CARS: {
     ROOT: "/cars",
     VIEW: "/cars/:carId",
