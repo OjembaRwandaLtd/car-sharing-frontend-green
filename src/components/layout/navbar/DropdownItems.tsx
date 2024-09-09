@@ -8,10 +8,13 @@ import {
   CarPlusIcon,
   LogoutIcon,
 } from "../../../assets/index"
+import { useNavigate } from "react-router-dom"
 
 const DropdownItems = () => {
+  const navigate = useNavigate()
   const handleLogout = () => {
     localStorage.removeItem("token")
+    navigate(Routes.LOGIN.LANDING)
   }
   return (
     <div className="divide-y px-4">

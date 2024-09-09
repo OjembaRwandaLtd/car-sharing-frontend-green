@@ -2,12 +2,15 @@ import { FormEvent, ReactElement, useState } from "react"
 import HomeTitle from "../../components/ui/HomeTitle"
 import Button from "../../components/ui/Button"
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
+import Routes from "../../routes"
 
 const LogIn = (): ReactElement => {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
   })
+  const navigate = useNavigate()
   const handleChange = <T extends HTMLInputElement>(e: React.ChangeEvent<T>) => {
     const { value, name } = e.target
     setFormData(prevData => ({
@@ -20,6 +23,7 @@ const LogIn = (): ReactElement => {
     e.preventDefault()
     const response = await axios.post("http://3.69.78.92/auth", formData)
     localStorage.setItem("token", response.data.token)
+    navigate(Routes.HOME)
   }
   return (
     <>
