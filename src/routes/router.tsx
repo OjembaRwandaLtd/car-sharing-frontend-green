@@ -9,6 +9,7 @@ import NotFound from "../pages/404"
 import Layout from "../components/layout"
 import CarDetails from "../pages/cars/view"
 import CarListing from "../pages/cars"
+import Landing from "../pages/login/landing"
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { index: true, element: <Home /> },
+      { path: Routes.LANDING, element: <Landing /> },
       {
         path: Routes.CARS.ROOT,
         children: [
@@ -32,9 +34,9 @@ const router = createBrowserRouter([
           { path: "manage", element: <ManageBookings /> },
         ],
       },
+      { path: "*", element: <NotFound /> },
     ],
   },
-  { path: "*", element: <NotFound /> },
 ])
 
 export default router

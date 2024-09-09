@@ -1,4 +1,5 @@
 const Routes = {
+  LANDING: "/landing",
   HOME: "/",
   CARS: {
     ROOT: "/cars",
