@@ -97,7 +97,7 @@ const AddNewCar: React.FC = (): ReactElement => {
           type="outline"
           handleClick={() => setForm(INITIAL_FORM_VALUES)}
         />
-        <Button width="regular" value="Add Car" />
+        <Button width="regular" value="Add Car" handleClick={() => alert("ok")} />
       </div>
     </form>
   )

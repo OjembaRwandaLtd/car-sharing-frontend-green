@@ -45,6 +45,7 @@ const InputField = ({
           type="text"
           name={name}
           placeholder={placeholder}
+          readOnly={dropdownData ? true : false}
         />
 
         {dropdownData && (
