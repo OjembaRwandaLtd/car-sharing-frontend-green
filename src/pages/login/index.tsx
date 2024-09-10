@@ -11,6 +11,8 @@ const LogIn = (): ReactElement => {
     password: "",
   })
   const navigate = useNavigate()
+  const [isError, setIsError] = useState(false)
+
   const handleChange = <T extends HTMLInputElement>(e: React.ChangeEvent<T>) => {
     const { value, name } = e.target
     setFormData(prevData => ({
@@ -21,9 +23,15 @@ const LogIn = (): ReactElement => {
 
   const handleLogin = async (e: FormEvent) => {
     e.preventDefault()
-    const response = await axios.post("http://3.69.78.92/auth", formData)
-    localStorage.setItem("token", response.data.token)
-    navigate(Routes.HOME)
+    try {
+      const response = await axios.post("http://3.69.78.92/auth", formData)
+      localStorage.setItem("token", response.data.token)
+      navigate(Routes.HOME)
+    } catch (error) {
+      if (axios.isAxiosError(error) && error.response?.status === 401) {
+        setIsError(true)
+      }
+    }
   }
   return (
     <>
@@ -49,6 +57,12 @@ const LogIn = (): ReactElement => {
           onChange={handleChange}
           className="input input-bordered w-80 rounded-full"
         />
+        {isError && (
+          <p className="flex flex-col text-center text-lg text-red-400">
+            Your login attempt was not successful.
+            <span>Please make sure your user name and password are correct.</span>
+          </p>
+        )}
         <Button value="Log In" />
       </form>
     </>
