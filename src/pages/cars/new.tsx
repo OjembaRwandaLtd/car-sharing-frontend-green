@@ -1,22 +1,24 @@
-import { ReactElement, useRef } from "react"
+import { ReactElement, useState } from "react"
 import Title from "../../components/ui/Title"
 import InputField from "../../components/ui/InputField"
 import Button from "../../components/ui/Button"
 import { useCarDetails, useCarTypes } from "../../hooks"
-import { ProfileIcon } from "../../assets"
 import Loading from "../../components/ui/Loading"
 import NotFound from "../404"
 
 const AddNewCar: React.FC = (): ReactElement => {
-  // Create form reference
-  const form = useRef<HTMLFormElement>(null)
-
-  // Reset form handler
-  const resetForm = () => {
-    if (form.current) {
-      console.log(form.current)
-    }
+  const INITIAL_FORM_VALUES = {
+    name: "",
+    type: "",
+    license_plate: "",
+    horse_power: "",
+    fuel_type: "",
+    additional_information: "",
   }
+  const [form, setForm] = useState(INITIAL_FORM_VALUES)
+
+  const handleFormDataChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
 
   const cartypes = useCarTypes()
   const carTypeDropdownData = cartypes[0]?.data?.reduce((a: string[], b) => {
@@ -34,44 +36,69 @@ const AddNewCar: React.FC = (): ReactElement => {
     ),
   ]
 
+  const formData = [
+    { title: "Name", placeholder: "e.g. My Nice Moni Car", value: form.name },
+    {
+      title: "Type",
+      placeholder: "e.g. Moni Cooper",
+      value: form.type,
+      dropdownData: carTypeDropdownData,
+    },
+    {
+      title: "License Plate",
+      placeholder: "e.g. M-XY 123",
+      value: form.license_plate,
+      span: true,
+    },
+    {
+      title: "Horse Power",
+      placeholder: "110",
+      value: form.horse_power,
+      span: true,
+    },
+    {
+      title: "Fuel type",
+      placeholder: "e.g. Gasoline",
+      value: form.fuel_type,
+      dropdownData: fueltypeDropdownData,
+    },
+    {
+      title: "Additional information",
+      placeholder: "e.g. No smoking",
+      value: form.additional_information,
+    },
+  ]
+
   if (isLoading) return <Loading />
   if (isError) return <NotFound />
 
   return (
-    <form className="flex flex-col items-center px-3 pb-5" ref={form}>
+    <form className=" px-3 pb-5">
       <Title text="New Car" />
-      <InputField
-        icon={<ProfileIcon className="text-white" />}
-        title={"Name"}
-        name={"name"}
-        placeholder={"e.g. My Nice Moni Car"}
-      />
-      <InputField
-        title={"Type"}
-        placeholder={"Moni Cooper"}
-        dropdownData={carTypeDropdownData}
-        name={"type"}
-      />
-      <div className="flex gap-1">
-        <InputField title={"License Plate"} placeholder={"e.g. M-XY 123"} name={"license_plate"} />
-        <InputField title={"Horse Power"} placeholder={"110"} name={"horse_power"} />
+      <div className="grid grid-cols-2">
+        {formData.map(el => (
+          <InputField
+            key={el.title}
+            {...(el.span ? { span: el.span } : {})}
+            title={el.title}
+            value={el.value}
+            name={el.title.toLowerCase().split(" ").join("_")}
+            onChange={handleFormDataChange}
+            setForm={setForm}
+            placeholder={el.placeholder}
+            {...(el.dropdownData ? { dropdownData: el.dropdownData } : {})}
+          />
+        ))}
       </div>
-      <InputField
-        title={"Fuel type"}
-        placeholder={"e.g. Gasoline"}
-        name={"fuel_type"}
-        dropdownData={fueltypeDropdownData}
-      />
-      <InputField
-        title={"Additional Information"}
-        placeholder={"e.g. No smoking"}
-        name={"additional_data"}
-      />
-      <div className="mt-32 flex gap-1">
-        <Button width="regular" value="Cancel" type="outline" handleClick={resetForm} />
+      <div className="mt-24 flex gap-1">
+        <Button
+          width="regular"
+          value="Cancel"
+          type="outline"
+          handleClick={() => setForm(INITIAL_FORM_VALUES)}
+        />
         <Button width="regular" value="Add Car" />
       </div>
-      <input type="reset" value="Reset" />
     </form>
   )
 }

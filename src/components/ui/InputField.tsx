@@ -1,19 +1,35 @@
 import { ReactElement, useState } from "react"
 import { ChevronDownIcon } from "../../assets"
+import classNames from "classnames"
 
 interface Props {
+  key: string
+  span: boolean
   title?: string
   name: string
   icon?: ReactElement
   placeholder: string
   dropdownData?: string[]
+  value: string
+  setForm: () => void
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
-const InputField = ({ title, name, icon, placeholder, dropdownData }: Props): ReactElement => {
-  const [input, setInput] = useState("")
+const InputField = ({
+  key,
+  span,
+  title,
+  name,
+  icon,
+  placeholder,
+  dropdownData,
+  value,
+  setForm,
+  onChange,
+}: Props): ReactElement => {
   const [showDropdown, setShowDropdown] = useState(true)
 
   return (
-    <div className="w-full">
+    <div className={classNames({ "col-span-1 ml-1": span }, { "col-span-2": !span })} key={key}>
       <div className="label">
         {title && (
           <label className="label-text font-inter text-sm text-white" htmlFor={title}>
@@ -21,15 +37,14 @@ const InputField = ({ title, name, icon, placeholder, dropdownData }: Props): Re
           </label>
         )}
       </div>
-      <div className="input flex items-center gap-2 rounded-full bg-primary-200 px-5 py-6 ">
+      <div className="input">
         {icon}
         <input
-          onChange={e => setInput(e.target.value)}
-          value={input}
+          onChange={onChange}
+          value={value}
           type="text"
           name={name}
           placeholder={placeholder}
-          className="-mt-1 h-14 w-full text-white placeholder:text-white"
         />
 
         {dropdownData && (
@@ -48,7 +63,7 @@ const InputField = ({ title, name, icon, placeholder, dropdownData }: Props): Re
                     <li
                       key={item}
                       onClick={() => {
-                        setInput(item)
+                        setForm(prev => ({ ...prev, [name]: item }))
                         setShowDropdown(!showDropdown)
                       }}
                     >
