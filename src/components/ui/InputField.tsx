@@ -3,11 +3,12 @@ import { ChevronDownIcon } from "../../assets"
 
 interface Props {
   title?: string
+  name: string
   icon?: ReactElement
   placeholder: string
   dropdownData?: string[]
 }
-const InputField = ({ title, icon, placeholder, dropdownData }: Props): ReactElement => {
+const InputField = ({ title, name, icon, placeholder, dropdownData }: Props): ReactElement => {
   const [input, setInput] = useState("")
   const [showDropdown, setShowDropdown] = useState(true)
 
@@ -26,6 +27,7 @@ const InputField = ({ title, icon, placeholder, dropdownData }: Props): ReactEle
           onChange={e => setInput(e.target.value)}
           value={input}
           type="text"
+          name={name}
           placeholder={placeholder}
           className="-mt-1 h-14 w-full text-white placeholder:text-white"
         />
