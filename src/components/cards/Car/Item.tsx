@@ -20,12 +20,13 @@ interface Props {
 const Item = ({ car, deleteButton, bookButton }: Props): ReactElement => {
   const handleDelete = async () => {
     try {
-      const response = await axios.delete(`${apiUrl}/cars/${car.id}`, {
+      // const response =
+      await axios.delete(`${apiUrl}/cars/${car.id}`, {
         headers: {
           Authorization: `Bearer ${getAuthToken()}`,
         },
       })
-      console.log(response.data)
+      // console.log(response.data)
     } catch (error) {
       console.error(error)
     }
