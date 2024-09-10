@@ -1,5 +1,5 @@
 import Routes from "../../../routes"
-import DropdownItem from "../../ui/dropdown/item"
+import DropdownItem from "../../ui/Dropdown/item"
 import {
   CarIcon,
   CarsIcon,
@@ -13,7 +13,9 @@ import { useNavigate } from "react-router-dom"
 const DropdownItems = () => {
   const navigate = useNavigate()
   const handleLogout = () => {
-    localStorage.removeItem("token")
+    const keys = ["token", "userId"]
+    keys.forEach(key => localStorage.removeItem(key))
+
     navigate(Routes.LOGIN.LANDING)
   }
   return (

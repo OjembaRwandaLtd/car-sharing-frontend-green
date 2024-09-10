@@ -4,6 +4,7 @@ import Button from "../../components/ui/Button"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import Routes from "../../routes"
+import { apiUrl } from "../../util/apiUrl"
 
 const LogIn = (): ReactElement => {
   const [formData, setFormData] = useState({
@@ -24,8 +25,11 @@ const LogIn = (): ReactElement => {
   const handleLogin = async (e: FormEvent) => {
     e.preventDefault()
     try {
-      const response = await axios.post("http://3.69.78.92/auth", formData)
-      localStorage.setItem("token", response.data.token)
+      const response = await axios.post(`${apiUrl}/auth`, formData)
+      const { userId, token } = response.data
+      localStorage.setItem("token", token)
+      localStorage.setItem("userId", userId)
+
       navigate(Routes.HOME)
     } catch (error) {
       if (axios.isAxiosError(error) && error.response?.status === 401) {
