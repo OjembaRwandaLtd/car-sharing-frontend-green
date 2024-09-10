@@ -6,6 +6,7 @@ interface Props {
   key: string
   span: boolean
   title?: string
+  error: string
   name: string
   icon?: ReactElement
   placeholder: string
@@ -17,6 +18,7 @@ interface Props {
 const InputField = ({
   key,
   span,
+  error,
   title,
   name,
   icon,
@@ -37,15 +39,17 @@ const InputField = ({
           </label>
         )}
       </div>
-      <div className="input">
+      <div className={classNames("input", { "border border-red-500": error })}>
         {icon}
         <input
+          className=""
           onChange={onChange}
           value={value}
           type="text"
           name={name}
           placeholder={placeholder}
           readOnly={dropdownData ? true : false}
+          required
         />
 
         {dropdownData && (
@@ -64,7 +68,7 @@ const InputField = ({
                     <li
                       key={item}
                       onClick={() => {
-                        setForm(prev => ({ ...prev, [name]: item }))
+                        setForm((prev: typeof form) => ({ ...prev, [name]: item }))
                         setShowDropdown(!showDropdown)
                       }}
                     >
