@@ -1,5 +1,12 @@
 import { ReactElement } from "react"
+import Title from "../../components/ui/Title"
+import Car from "../../components/cards/Car"
 
-const ShowMyCar: React.FC = (): ReactElement => <div>Show my car!</div>
+const CarListing = (): ReactElement => (
+  <section className="py-1">
+    <Title text="All Cars" backButton />
+    <Car />
+  </section>
+)
 
-export default ShowMyCar
+export default CarListing

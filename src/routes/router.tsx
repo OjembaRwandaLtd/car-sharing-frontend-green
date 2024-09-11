@@ -4,11 +4,11 @@ import AddNewCar from "../pages/cars/new"
 import ManageBookings from "../pages/bookings/manage"
 import MyBookings from "../pages/bookings"
 import NewBooking from "../pages/bookings/new"
-import ShowMyCar from "../pages/cars"
 import Home from "../pages"
 import NotFound from "../pages/404"
 import Layout from "../components/layout"
 import CarDetails from "../pages/cars/view"
+import CarListing from "../pages/cars"
 
 const router = createBrowserRouter([
   {
@@ -19,9 +19,9 @@ const router = createBrowserRouter([
       {
         path: Routes.CARS.ROOT,
         children: [
-          { index: true, element: <ShowMyCar /> },
-          { path: ":id", element: <CarDetails /> },
+          { index: true, element: <CarListing /> },
           { path: "new", element: <AddNewCar /> },
+          { path: ":carId", element: <CarDetails /> },
         ],
       },
       {
