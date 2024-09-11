@@ -1,5 +1,4 @@
 import Routes from "../../../routes"
-import DropdownItem from "../../ui/Dropdown/Item"
 import {
   CarIcon,
   CarsIcon,
@@ -8,6 +7,7 @@ import {
   CarPlusIcon,
   LogoutIcon,
 } from "../../../assets/index"
+import DropdownItem from "../../ui/dropdown/item"
 
 const DropdownItems = () => (
   <div className="divide-y px-4">
