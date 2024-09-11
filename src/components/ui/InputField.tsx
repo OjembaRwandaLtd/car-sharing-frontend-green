@@ -1,24 +1,11 @@
 import { ReactElement, useState } from "react"
 import { ChevronDownIcon } from "../../assets"
 import classNames from "classnames"
+import { InputFieldProps } from "../../util/props/inputField"
 
-interface Props {
-  key: string
-  span: boolean
-  title?: string
-  error: string
-  name: string
-  icon?: ReactElement
-  placeholder: string
-  dropdownData?: string[]
-  value: string
-  setForm: () => void
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-}
 const InputField = ({
   key,
   span,
-  error,
   title,
   name,
   icon,
@@ -27,7 +14,7 @@ const InputField = ({
   value,
   setForm,
   onChange,
-}: Props): ReactElement => {
+}: InputFieldProps): ReactElement => {
   const [showDropdown, setShowDropdown] = useState(true)
 
   return (
@@ -39,7 +26,7 @@ const InputField = ({
           </label>
         )}
       </div>
-      <div className={classNames("input", { "border border-red-500": error })}>
+      <div className="input">
         {icon}
         <input
           className=""
@@ -68,7 +55,7 @@ const InputField = ({
                     <li
                       key={item}
                       onClick={() => {
-                        setForm((prev: typeof form) => ({ ...prev, [name]: item }))
+                        setForm(prev => ({ ...prev, [name]: item }))
                         setShowDropdown(!showDropdown)
                       }}
                     >
