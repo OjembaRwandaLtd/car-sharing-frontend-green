@@ -7,7 +7,7 @@ import {
   CarPlusIcon,
   LogoutIcon,
 } from "../../../assets/index"
-import DropdownItem from "../../ui/dropdown/item"
+import DropdownItem from "../../ui/Dropdown/item"
 
 const DropdownItems = () => (
   <div className="divide-y px-4">
