@@ -43,6 +43,8 @@ const OwnCars = (): ReactElement => {
   if (isLoading) return <Loading />
   if (isError) return <NotFound />
 
+  // console.log(cars)
+
   return (
     <div>
       <div>
