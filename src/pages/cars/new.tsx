@@ -32,7 +32,7 @@ const AddNewCar = (): ReactElement => {
   const handleSubmit = async () => {
     setIsSubmitting(true)
     try {
-      if (Object.values(form).some(el => el === "")) {
+      if (Object.entries(form).some(el => el[1] === "" && el[0] !== "additional_information")) {
         setIsSubmitting(false)
         return notify("All fields are required!")
       }
