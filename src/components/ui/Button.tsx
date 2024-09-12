@@ -31,7 +31,7 @@ const Button = ({
 
   return (
     <div className="align-center flex">
-      <button onClick={handleClick} className={buttonClasses}>
+      <button type="button" onClick={handleClick} className={buttonClasses}>
         {value}
       </button>
     </div>

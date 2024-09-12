@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com");
-@import url("https://fonts.gstatic.com" );
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap");
 
 @tailwind base;
@@ -11,4 +9,13 @@
 
 body {
   @apply font-normal text-left text-sm relative text-gray-700 bg-primary-800 min-h-screen;
+<<<<<<< HEAD
+=======
+}
+input {
+  @apply -mt-1 h-14 w-full text-white placeholder:text-gray-300;
+}
+.input {
+  @apply flex items-center gap-2 rounded-full bg-primary-200 px-5 py-6;
+>>>>>>> 1b36fb1cb5f5b043eaf687147e3540e8cdf4f87d
 }
