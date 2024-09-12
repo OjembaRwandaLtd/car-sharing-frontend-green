@@ -2,7 +2,7 @@ import { ReactElement, useEffect, useRef, useState } from "react"
 import classNames from "classnames"
 import { ProfileIcon, Logo } from "../../../assets/index"
 import { NavLink, useLocation } from "react-router-dom"
-import Dropdown from "../../ui/dropdown"
+import Dropdown from "../../ui/Dropdown"
 import DropdownItems from "./DropdownItems"
 
 const Navbar = (): ReactElement => {
