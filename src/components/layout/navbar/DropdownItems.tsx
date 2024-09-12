@@ -26,7 +26,7 @@ const DropdownItems = () => {
       </div>
       <div>
         <h2 className="px-4 pt-3 font-bold">My cars</h2>
-        <DropdownItem icon={<CarsIcon />} text="See My Cars" navlink={Routes.CARS.ROOT} />
+        <DropdownItem icon={<CarsIcon />} text="See My Cars" navlink={Routes.CARS.OWN} />
         <DropdownItem icon={<ListIcon />} text="My car's Bookings" navlink="/bookings/manage" />
         <DropdownItem icon={<CarPlusIcon />} text="Add New car" navlink={Routes.CARS.NEW} />
       </div>
