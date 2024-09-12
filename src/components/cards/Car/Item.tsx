@@ -36,7 +36,7 @@ const Item = ({ car, deleteButton, bookButton, handleDelete }: Props): ReactElem
         </div>
       </div>
     </div>
-    {deleteButton && <Button value="Delete Car" type="outlineLachs" handleClick={handleDelete} />}
+    {deleteButton && <Button value="Delete Car" type="outlineLachs" handleClick={handleDelete} />}{" "}
     {bookButton && <Button value="Book Car" />}
   </div>
 )
