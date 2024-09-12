@@ -8,6 +8,8 @@ import { getAuthToken } from "../../util/auth"
 import { apiUrl } from "../../util/apiUrl"
 import axios from "axios"
 import ConfirmDelete from "../../components/ui/ConfirmDelete"
+import { useNavigate } from "react-router-dom"
+import Routes from "../../routes"
 
 interface Car {
   id: number
@@ -23,6 +25,7 @@ const OwnCars = (): ReactElement => {
   const [selectedCarId, setSelectedCarId] = useState<number | null>(null)
   const [isDialogOpen, setDialogOpen] = useState(false)
   const [loaded, setLoaded] = useState(false)
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (!loaded && carsData) {
@@ -50,6 +53,7 @@ const OwnCars = (): ReactElement => {
     setDialogOpen(true)
     setSelectedCarId(carId)
   }
+  const handleNavigate = () => navigate(Routes.CARS.NEW)
 
   if (isLoading) return <Loading />
   if (isError) return <NotFound />
@@ -61,7 +65,7 @@ const OwnCars = (): ReactElement => {
           <Item key={car.id} car={car} deleteButton handleDelete={() => openDialog(car.id)} />
         ))}
       </div>
-      <Button value="Add Car" />
+      <Button value="Add Car" handleClick={handleNavigate} />
       {isDialogOpen && (
         <ConfirmDelete
           handleDelete={handleDelete}
