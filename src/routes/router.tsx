@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router-dom"
 import Routes from "."
-import AddNewCar from "../pages/cars/new"
 import ManageBookings from "../pages/bookings/manage"
 import MyBookings from "../pages/bookings"
 import NewBooking from "../pages/bookings/new"
@@ -9,6 +8,7 @@ import NotFound from "../pages/404"
 import Layout from "../components/layout"
 import CarDetails from "../pages/cars/view"
 import CarListing from "../pages/cars"
+import AddNewCar from "../pages/cars/new"
 
 const router = createBrowserRouter([
   {

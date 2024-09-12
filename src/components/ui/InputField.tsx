@@ -1,8 +1,8 @@
 import React, { useState, useCallback } from "react"
 import { ChevronDownIcon } from "../../assets"
 import classNames from "classnames"
-import { useErrorContext } from "../../pages/cars/new"
 import { InputFieldProps } from "../../util/props/inputField"
+import { useErrorContext } from "../sections/AddCar"
 
 const InputField: React.FC<InputFieldProps> = ({
   key,
@@ -23,6 +23,7 @@ const InputField: React.FC<InputFieldProps> = ({
 
   const validateInput = useCallback(
     (val: string) => {
+      // check if string contains at least 3 chracters and has alphabet chracters and some allowed characters -"@ and whitespace
       const isValid = type === "number" || /^[a-z\d-'"@\s]{3,}$/i.test(val)
       setInputError(!isValid)
       setInputHasErrors(!isValid)
@@ -74,12 +75,12 @@ const InputField: React.FC<InputFieldProps> = ({
           required
         />
         {dropdownData && (
-          <div className="dropdown-container absolute right-0 top-0">
+          <div className="dropdown-container absolute right-0 top-0 ">
             <button onClick={handleClick} className="dropdown-toggle p-2">
               <ChevronDownIcon className="mr-2 scale-150 text-white" />
             </button>
             {showDropdown && (
-              <ul className="input-dropdown">
+              <ul className="input-dropdown menu dropdown-content">
                 {dropdownData.map(item => (
                   <li
                     key={item}
