@@ -8,6 +8,7 @@ const Routes = {
     ROOT: "/cars",
     VIEW: "/cars/:carId",
     NEW: "/cars/new",
+    OWN: "/cars/own",
   },
   BOOKINGS: {
     ROOT: "/bookings",
