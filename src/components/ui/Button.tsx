@@ -5,9 +5,8 @@ interface ButtonProp {
   value: string
   type?: "default" | "outline" | "disabled" | "outlineLachs"
   width?: "default" | "regular"
-  handleClick?: () => void
+  handleClick?: (e: React.FormEvent) => void
 }
-
 const Button = ({
   value,
   type = "default",

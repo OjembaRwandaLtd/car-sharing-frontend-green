@@ -5,6 +5,8 @@ import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import Routes from "../../routes"
 import { apiUrl } from "../../util/apiUrl"
+import { KeyIcon, ProfileIcon } from "../../assets"
+import { toast, ToastContainer } from "react-toastify"
 
 const LogIn = (): ReactElement => {
   const [formData, setFormData] = useState({
@@ -12,18 +14,26 @@ const LogIn = (): ReactElement => {
     password: "",
   })
   const navigate = useNavigate()
-  const [isError, setIsError] = useState(false)
+  const [isError, setIsError] = useState(true)
+  const notify = (message: string) => toast.info(message)
 
   const handleChange = <T extends HTMLInputElement>(e: React.ChangeEvent<T>) => {
     const { value, name } = e.target
+
     setFormData(prevData => ({
       ...prevData,
       [name]: value,
     }))
+    setIsError(false)
   }
 
   const handleLogin = async (e: FormEvent) => {
     e.preventDefault()
+    if (isError)
+      return notify(
+        "Your login attempt was not successful. Please make sure your user name and password are correct.",
+      )
+
     try {
       const response = await axios.post(`${apiUrl}/auth`, formData)
       const { userId, token } = response.data
@@ -40,34 +50,42 @@ const LogIn = (): ReactElement => {
   return (
     <>
       <HomeTitle />
+      <ToastContainer theme="colored" />
 
-      <h2 className="mb-8 mt-36 text-center font-lora text-xl font-medium text-white">Log In</h2>
-      <form className="spacing-3 mb-8 flex flex-col items-center space-y-3" onSubmit={handleLogin}>
-        <input
-          type="name"
-          id="username"
-          placeholder="username/email"
-          value={formData.username}
-          name="username"
-          className="input input-bordered w-80 rounded-full"
-          onChange={handleChange}
-        />
-        <input
-          type="password"
-          id="password"
-          placeholder="password"
-          value={formData.password}
-          name="password"
-          onChange={handleChange}
-          className="input input-bordered w-80 rounded-full"
-        />
-        {isError && (
-          <p className="flex flex-col text-center text-lg text-red-400">
-            Your login attempt was not successful.
-            <span>Please make sure your user name and password are correct.</span>
-          </p>
-        )}
-        <Button value="Log In" />
+      <h2 className="mb-8 mt-28 text-center font-lora text-xl font-medium text-white">Log In</h2>
+      <form
+        className="spacing-3  flex flex-col items-center space-y-4 pb-10 "
+        onSubmit={handleLogin}
+        autoComplete="off"
+      >
+        <div className="input">
+          <ProfileIcon className="text-white" />
+          <input
+            type="name"
+            id="username"
+            placeholder="Username / e-mail"
+            value={formData.username}
+            className=" w-72 "
+            name="username"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="input">
+          <KeyIcon />
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            value={formData.password}
+            name="password"
+            className=" w-72 "
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className="pt-16">
+          <Button value="Log In" handleClick={handleLogin} />
+        </div>
       </form>
     </>
   )
