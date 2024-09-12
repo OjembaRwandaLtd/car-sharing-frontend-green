@@ -1,6 +1,7 @@
 import { ReactElement } from "react"
 import { Link } from "react-router-dom"
 import { CarIcon, IconWithLabel, ProfileIcon } from "../../../assets"
+import Button from "../../ui/Button"
 
 interface Props {
   car: {
@@ -9,9 +10,12 @@ interface Props {
     carName: string
     carOwner: string
   }
+  deleteButton?: boolean
+  bookButton?: boolean
+  handleDelete?: () => void
 }
 
-const Item = ({ car }: Props): ReactElement => (
+const Item = ({ car, deleteButton, bookButton, handleDelete }: Props): ReactElement => (
   <div key={car.id} className="mx-auto my-4 w-11/12 rounded-xl bg-primary-400 py-4">
     <div className="flex h-64 gap-2">
       <div className="w-72">
@@ -21,10 +25,10 @@ const Item = ({ car }: Props): ReactElement => (
       </div>
       <div className="mr-7 mt-4 border-spacing-y-4 space-y-4 text-secondary-200">
         <h2 className="font-lora text-xl font-medium">{car.carName}</h2>
-        <div className="space-y-2 truncate">
+        <div className="space-y-2">
           <IconWithLabel icon={<ProfileIcon />} text={car.carOwner} />
           <IconWithLabel icon={<CarIcon />} text={car.carName.split(" ")[1] || ""} />
-          <div className="pt-8">
+          <div className="py-8">
             <Link to={`${car.id}`} className="mt-7 font-inter text-base font-bold text-mustard-200">
               Show details
             </Link>
@@ -32,6 +36,8 @@ const Item = ({ car }: Props): ReactElement => (
         </div>
       </div>
     </div>
+    {deleteButton && <Button value="Delete Car" type="outlineLachs" handleClick={handleDelete} />}{" "}
+    {bookButton && <Button value="Book Car" />}
   </div>
 )
 
