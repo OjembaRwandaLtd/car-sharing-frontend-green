@@ -9,6 +9,7 @@ import Layout from "../components/layout"
 import CarDetails from "../pages/cars/view"
 import CarListing from "../pages/cars"
 import AddNewCar from "../pages/cars/new"
+import OwnCars from "../pages/cars/own"
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,13 @@ const router = createBrowserRouter([
           { index: true, element: <CarListing /> },
           { path: "new", element: <AddNewCar /> },
           { path: ":carId", element: <CarDetails /> },
+          {
+            path: Routes.CARS.OWN,
+            children: [
+              { index: true, element: <OwnCars /> },
+              { path: ":carId", element: <CarDetails /> },
+            ],
+          },
         ],
       },
       {

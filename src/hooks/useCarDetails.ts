@@ -22,6 +22,7 @@ const useCarDetails = () => {
         horsePower: car.horsepower,
         fuelType: car.fuelType,
         carInfo: car.info,
+        ownerId: car.ownerId,
       }
     }),
     isLoading,
