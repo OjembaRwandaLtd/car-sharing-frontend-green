@@ -2,6 +2,7 @@ import { ReactElement, useState } from "react"
 import { ChevronDownIcon } from "../../assets"
 import classNames from "classnames"
 import { InputFieldProps } from "../../util/props/inputField"
+import { useErrorContext } from "../../pages/cars/new"
 
 const InputField = ({
   key,
@@ -18,11 +19,14 @@ const InputField = ({
 }: InputFieldProps): ReactElement => {
   const [showDropdown, setShowDropdown] = useState(true)
   const [inputError, setInputError] = useState(false)
+  const { setInputHasErrors } = useErrorContext()
 
   const inputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!/^[a-z\d-]{3,15}$/i.test(e.target.value) && e.target.type !== "number") {
+    if (!/^[a-z\d-'"@\s]{3,}$/i.test(e.target.value) && e.target.type !== "number") {
       setInputError(true)
+      setInputHasErrors(true)
     } else {
+      setInputHasErrors(false)
       setInputError(false)
     }
   }
@@ -38,7 +42,6 @@ const InputField = ({
       <div className={classNames("input", { "border-2 border-red-500": inputError })}>
         {icon}
         <input
-          className=""
           onChange={onChange}
           onInput={inputChange}
           value={value}
@@ -46,7 +49,6 @@ const InputField = ({
           name={name}
           placeholder={placeholder}
           readOnly={dropdownData ? true : false}
-          maxLength={15}
           required
         />
 

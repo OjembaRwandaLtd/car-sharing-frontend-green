@@ -22,3 +22,8 @@ export interface InputFieldProps {
   >
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
+
+export interface ErrorContextType {
+  inputHasErrors: boolean
+  setInputHasErrors: React.Dispatch<React.SetStateAction<boolean>>
+}

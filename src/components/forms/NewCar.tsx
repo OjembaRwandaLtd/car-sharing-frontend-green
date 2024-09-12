@@ -34,10 +34,10 @@ const NewCarForm = ({
   if (isLoading) return <Loading />
   if (isError) return <NotFound />
   return (
-    <form className="px-3 pb-5">
+    <form className="px-3 pb-5 md:mx-32 lg:mx-40 ">
       <ToastContainer theme="colored" />
       <Title text="New Car" />
-      <div className="grid grid-cols-2">
+      <div className="grid grid-cols-2 lg:space-y-3">
         {formData.map((el, i) => {
           const formValues = Object.entries(form)
           return (
@@ -56,7 +56,7 @@ const NewCarForm = ({
           )
         })}
       </div>
-      <div className="mt-24 flex gap-1">
+      <div className="mt-24 flex gap-1 w-fit mx-auto">
         <Button
           width="regular"
           value="Cancel"

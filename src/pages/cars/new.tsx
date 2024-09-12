@@ -1,4 +1,4 @@
-import { ReactElement, useState } from "react"
+import { ReactElement, useState, createContext, useContext } from "react"
 import axios from "axios"
 import { apiUrl } from "../../util/apiUrl"
 import { getAuthToken } from "../../util/auth"
@@ -6,8 +6,20 @@ import { toast } from "react-toastify"
 import { INITIAL_FORM_VALUES } from "../../util/newCarData"
 import NewCarForm from "../../components/forms/NewCar"
 import { useCarTypes } from "../../hooks"
+import { ErrorContextType } from "../../util/props/inputField"
+
+export const useErrorContext = () => {
+  const context = useContext(ErrorContext)
+  if (context === undefined) {
+    throw new Error("useErrorContext must be used within an ErrorProvider")
+  }
+  return context
+}
+const ErrorContext = createContext<ErrorContextType | undefined>(undefined)
 
 const AddNewCar = (): ReactElement => {
+  const [inputHasErrors, setInputHasErrors] = useState(false)
+
   const [form, setForm] = useState(INITIAL_FORM_VALUES)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const notify = (message: string) => toast.info(message)
@@ -24,6 +36,8 @@ const AddNewCar = (): ReactElement => {
         setIsSubmitting(false)
         return notify("All fields are required!")
       }
+      if (inputHasErrors) return notify("Form has errors")
+      setInputHasErrors(false)
       const carTypeId = cartypes[0]?.data?.filter(el => el.name === form.type)[0].id
 
       const requestData = {
@@ -52,13 +66,15 @@ const AddNewCar = (): ReactElement => {
     }
   }
   return (
-    <NewCarForm
-      form={form}
-      setForm={setForm}
-      handleSubmit={handleSubmit}
-      handleFormDataChange={handleFormDataChange}
-      isSubmitting={isSubmitting}
-    />
+    <ErrorContext.Provider value={{ inputHasErrors, setInputHasErrors }}>
+      <NewCarForm
+        form={form}
+        setForm={setForm}
+        handleSubmit={handleSubmit}
+        handleFormDataChange={handleFormDataChange}
+        isSubmitting={isSubmitting}
+      />
+    </ErrorContext.Provider>
   )
 }
 
