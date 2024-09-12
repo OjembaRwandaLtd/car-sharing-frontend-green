@@ -10,6 +10,7 @@ import axios from "axios"
 import ConfirmDelete from "../../components/ui/ConfirmDelete"
 import { useNavigate } from "react-router-dom"
 import Routes from "../../routes"
+import Title from "../../components/ui/Title"
 
 interface Car {
   id: number
@@ -60,6 +61,7 @@ const OwnCars = (): ReactElement => {
 
   return (
     <div>
+      <Title text="My cars" />
       <div>
         {cars?.map(car => (
           <Item key={car.id} car={car} deleteButton handleDelete={() => openDialog(car.id)} />
