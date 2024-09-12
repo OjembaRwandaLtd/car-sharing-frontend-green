@@ -28,7 +28,7 @@ const Item = ({ car, deleteButton, bookButton, handleDelete }: Props): ReactElem
         <div className="space-y-2">
           <IconWithLabel icon={<ProfileIcon />} text={car.carOwner} />
           <IconWithLabel icon={<CarIcon />} text={car.carName.split(" ")[1] || ""} />
-          <div className="pt-8">
+          <div className="py-8">
             <Link to={`${car.id}`} className="mt-7 font-inter text-base font-bold text-mustard-200">
               Show details
             </Link>

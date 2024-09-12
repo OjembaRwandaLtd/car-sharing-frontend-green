@@ -31,9 +31,8 @@ const OwnCars = (): ReactElement => {
   useEffect(() => {
     if (!loaded && carsData) {
       const filteredCars = carsData?.filter(car => car.ownerId === Number(userId))
-      if (JSON.stringify(filteredCars) !== JSON.stringify(cars) && filteredCars) {
+      if (JSON.stringify(filteredCars) !== JSON.stringify(cars) && filteredCars)
         setCars(filteredCars)
-      }
       setLoaded(true)
     }
   }, [carsData])
@@ -55,7 +54,6 @@ const OwnCars = (): ReactElement => {
     setSelectedCarId(carId)
   }
   const handleNavigate = () => navigate(Routes.CARS.NEW)
-
   if (isLoading) return <Loading />
   if (isError) return <NotFound />
 
