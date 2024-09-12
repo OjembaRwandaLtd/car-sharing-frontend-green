@@ -34,10 +34,10 @@ const NewCarForm = ({
   if (isLoading) return <Loading />
   if (isError) return <NotFound />
   return (
-    <form className="px-3 pb-5 md:mx-32 lg:mx-40 " autoComplete="off">
+    <form className="px-3 pb-5 md:mx-32 lg:mx-40" autoComplete="off">
       <ToastContainer theme="colored" />
       <Title text="New Car" />
-      <div className="grid grid-cols-2 lg:space-y-3">
+      <div className="grid grid-cols-2 space-y-3">
         {formData.map((el, i) => {
           const formValues = Object.entries(form)
           return (
