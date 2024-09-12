@@ -8,17 +8,24 @@ import { getAuthToken } from "../../util/auth"
 import { apiUrl } from "../../util/apiUrl"
 import axios from "axios"
 
+interface Car {
+  id: number
+  carImage: string
+  carName: string
+  carOwner: string
+}
+
 const OwnCars = (): ReactElement => {
   const { carsData, isLoading, isError } = useCarDetails()
   const userId = localStorage.getItem("userId")
-
-  const [cars, setCars] = useState([])
+  const [cars, setCars] = useState<Car[]>([])
 
   useEffect(() => {
-    if (carsData) {
-      setCars(carsData.filter(car => car.ownerId === Number(userId)))
+    const filteredCars = carsData?.filter(car => car.ownerId === Number(userId))
+    if (JSON.stringify(filteredCars) !== JSON.stringify(cars) && filteredCars) {
+      setCars(filteredCars)
     }
-  }, [carsData, userId])
+  }, [])
 
   const handleDelete = async (carId: number) => {
     try {
