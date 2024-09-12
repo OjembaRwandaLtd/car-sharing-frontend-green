@@ -56,7 +56,7 @@ const NewCarForm = ({
           )
         })}
       </div>
-      <div className="mt-24 flex gap-1 w-fit mx-auto">
+      <div className="mx-auto mt-24 flex w-fit gap-1">
         <Button
           width="regular"
           value="Cancel"
