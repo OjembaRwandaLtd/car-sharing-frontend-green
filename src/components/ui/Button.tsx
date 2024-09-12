@@ -5,9 +5,8 @@ interface ButtonProp {
   value: string
   type?: "default" | "outline" | "disabled" | "outlineLachs"
   width?: "default" | "regular"
-  handleClick?: () => void
+  handleClick?: (e: React.FormEvent) => void
 }
-
 const Button = ({
   value,
   type = "default",
@@ -31,7 +30,7 @@ const Button = ({
 
   return (
     <div className="align-center flex">
-      <button onClick={handleClick} className={buttonClasses}>
+      <button type="button" onClick={handleClick} className={buttonClasses}>
         {value}
       </button>
     </div>

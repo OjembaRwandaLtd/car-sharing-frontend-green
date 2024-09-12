@@ -1,5 +1,5 @@
-import { ReactElement } from "react"
+import AddNewCarSection from "../../components/sections/AddCar"
 
-const AddNewCar: React.FC = (): ReactElement => <div>Add new a car here!</div>
+const AddNewCar = () => <AddNewCarSection />
 
 export default AddNewCar
