@@ -22,29 +22,30 @@ const OwnCars = (): ReactElement => {
   const [cars, setCars] = useState<Car[]>([])
   const [selectedCarId, setSelectedCarId] = useState<number | null>(null)
   const [isDialogOpen, setDialogOpen] = useState(false)
+  const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
-    const filteredCars = carsData?.filter(car => car.ownerId === Number(userId))
-    if (JSON.stringify(filteredCars) !== JSON.stringify(cars) && filteredCars) {
-      setCars(filteredCars)
+    if (!loaded && carsData) {
+      const filteredCars = carsData?.filter(car => car.ownerId === Number(userId))
+      if (JSON.stringify(filteredCars) !== JSON.stringify(cars) && filteredCars) {
+        setCars(filteredCars)
+      }
+      setLoaded(true)
     }
-  }, [carsData, cars, userId])
-
+  }, [carsData])
   const handleDelete = async () => {
-    if (selectedCarId === null) return
     try {
       await axios.delete(`${apiUrl}/cars/${selectedCarId}`, {
         headers: {
           Authorization: `Bearer ${getAuthToken()}`,
         },
       })
-      setCars(prevCars => prevCars.filter(car => car.id !== selectedCarId))
+      setCars(cars.filter(car => car.id !== selectedCarId))
       setDialogOpen(false)
     } catch (error) {
       console.error(error)
     }
   }
-
   const openDialog = (carId: number) => {
     setDialogOpen(true)
     setSelectedCarId(carId)
@@ -71,5 +72,4 @@ const OwnCars = (): ReactElement => {
     </div>
   )
 }
-
 export default OwnCars
