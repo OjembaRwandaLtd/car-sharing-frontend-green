@@ -23,8 +23,13 @@ const router = createBrowserRouter([
           { index: true, element: <CarListing /> },
           { path: "new", element: <AddNewCar /> },
           { path: ":carId", element: <CarDetails /> },
-          { path: "own", element: <OwnCars /> },
-          { path: "own/:carId", element: <CarDetails /> },
+          {
+            path: Routes.CARS.OWN,
+            children: [
+              { index: true, element: <OwnCars /> },
+              { path: ":carId", element: <CarDetails /> },
+            ],
+          },
         ],
       },
       {

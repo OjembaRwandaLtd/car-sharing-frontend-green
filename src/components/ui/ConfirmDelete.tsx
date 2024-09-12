@@ -9,13 +9,13 @@ interface Prop {
 }
 
 const ConfirmDelete = ({ handleDelete, isDialogOpen, setDialogOpen }: Prop): ReactElement => {
-  const dialogueToggle = () => setDialogOpen(false)
+  const dialogToggle = () => setDialogOpen(false)
   return (
     <Dialog
       open={isDialogOpen}
       as="div"
       className="relative z-10 focus:outline-none"
-      onClose={dialogueToggle}
+      onClose={dialogToggle}
     >
       <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
         <div className="flex min-h-full items-center justify-center p-4">
@@ -30,7 +30,7 @@ const ConfirmDelete = ({ handleDelete, isDialogOpen, setDialogOpen }: Prop): Rea
               Are you sure you want to delete the car?
             </p>
             <div className="mt-4 flex justify-center">
-              <Button value="Cancel" type="outline" width="regular" handleClick={dialogueToggle} />
+              <Button value="Cancel" type="outline" width="regular" handleClick={dialogToggle} />
               <Button value="Delete" width="regular" handleClick={handleDelete} />
             </div>
           </DialogPanel>
