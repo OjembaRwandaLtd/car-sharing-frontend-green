@@ -22,6 +22,7 @@ export const formData = [
     title: "Horse Power",
     placeholder: "110",
     span: true,
+    type: "number",
   },
   {
     title: "Fuel type",

@@ -43,6 +43,7 @@ const NewCarForm = ({
           return (
             <InputField
               key={el.title}
+              {...(el.type ? { type: el.type } : { type: "text" })}
               {...(el.span ? { span: el.span } : { span: false })}
               title={el.title}
               name={el.title.toLowerCase().split(" ").join("_")}

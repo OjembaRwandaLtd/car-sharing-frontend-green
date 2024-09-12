@@ -13,12 +13,17 @@ const AddNewCar = (): ReactElement => {
   const notify = (message: string) => toast.info(message)
   const cartypes = useCarTypes()
 
-  const handleFormDataChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+  const handleFormDataChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
+  }
 
   const handleSubmit = async () => {
     setIsSubmitting(true)
     try {
+      if (Object.values(form).some(el => el === "")) {
+        setIsSubmitting(false)
+        return notify("All fields are required!")
+      }
       const carTypeId = cartypes[0]?.data?.filter(el => el.name === form.type)[0].id
 
       const requestData = {
@@ -40,9 +45,8 @@ const AddNewCar = (): ReactElement => {
         setForm(INITIAL_FORM_VALUES)
       }
     } catch (error) {
-      notify("Couldn't add car, Check if all fields are filled!")
-      // notify(error.message)
-      console.error("Error adding car:", error)
+      if (error instanceof Error) notify(error.message)
+      else notify("An unknown error occurred.")
     } finally {
       setIsSubmitting(false)
     }

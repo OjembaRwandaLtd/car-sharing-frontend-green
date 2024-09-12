@@ -5,6 +5,7 @@ import { InputFieldProps } from "../../util/props/inputField"
 
 const InputField = ({
   key,
+  type,
   span,
   title,
   name,
@@ -16,7 +17,15 @@ const InputField = ({
   onChange,
 }: InputFieldProps): ReactElement => {
   const [showDropdown, setShowDropdown] = useState(true)
+  const [inputError, setInputError] = useState(false)
 
+  const inputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!/^[a-z\d-]{3,15}$/i.test(e.target.value) && e.target.type !== "number") {
+      setInputError(true)
+    } else {
+      setInputError(false)
+    }
+  }
   return (
     <div className={classNames({ "col-span-1 ml-1": span }, { "col-span-2": !span })} key={key}>
       <div className="label">
@@ -26,21 +35,23 @@ const InputField = ({
           </label>
         )}
       </div>
-      <div className="input">
+      <div className={classNames("input", { "border-2 border-red-500": inputError })}>
         {icon}
         <input
           className=""
           onChange={onChange}
+          onInput={inputChange}
           value={value}
-          type="text"
+          type={type}
           name={name}
           placeholder={placeholder}
           readOnly={dropdownData ? true : false}
+          maxLength={15}
           required
         />
 
         {dropdownData && (
-          <div className="dropdown-end dropdown text-white">
+          <div className="dropdown dropdown-end text-white">
             <div tabIndex={0} role="button" className="mr-1">
               <div onClick={() => setShowDropdown(!showDropdown)}>
                 <ChevronDownIcon className="scale-150" />
