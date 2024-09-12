@@ -41,6 +41,7 @@ const AddNewCar = (): ReactElement => {
       }
     } catch (error) {
       notify("Couldn't add car, Check if all fields are filled!")
+      // notify(error.message)
       console.error("Error adding car:", error)
     } finally {
       setIsSubmitting(false)
