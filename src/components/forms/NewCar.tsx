@@ -34,7 +34,7 @@ const NewCarForm = ({
   if (isLoading) return <Loading />
   if (isError) return <NotFound />
   return (
-    <form className="px-3 pb-5 md:mx-32 lg:mx-40 ">
+    <form className="px-3 pb-5 md:mx-32 lg:mx-40 " autoComplete="off">
       <ToastContainer theme="colored" />
       <Title text="New Car" />
       <div className="grid grid-cols-2 lg:space-y-3">
@@ -56,7 +56,7 @@ const NewCarForm = ({
           )
         })}
       </div>
-      <div className="mt-24 flex gap-1 w-fit mx-auto">
+      <div className="mx-auto mt-24 flex w-fit gap-1">
         <Button
           width="regular"
           value="Cancel"
