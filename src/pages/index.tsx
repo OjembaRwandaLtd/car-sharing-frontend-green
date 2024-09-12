@@ -7,7 +7,7 @@ const Home = (): ReactElement => {
   const navigate = useNavigate()
   const navigateToNewBookings = () => navigate(Routes.BOOKINGS.NEW)
   const navigateToMyBookings = () => navigate(Routes.BOOKINGS.ROOT)
-  const navigateToMyCar = () => navigate(Routes.CARS.ROOT)
+  const navigateToMyCar = () => navigate(Routes.CARS.OWN)
 
   return (
     <div className="h-screen bg-primary-800">
