@@ -12,9 +12,9 @@ const Home = (): ReactElement => {
   const navigateToMyCar = () => navigate(Routes.CARS.OWN)
 
   return (
-    <section className="flex h-screen flex-col items-center justify-center gap-5  md:overflow-x-hidden lg:flex-row">
+    <section className="flex h-screen flex-col items-center justify-center gap-5 bg-primary-800 lg:flex-row lg:overflow-x-hidden">
       <div className="flex flex-col items-center gap-10">
-        <div className="md:-mt-56 lg:absolute lg:left-1/2 lg:top-10 lg:-translate-x-1/2">
+        <div className="lg:absolute lg:left-1/2 lg:top-10 lg:-translate-x-1/2">
           <HomeTitle />
         </div>
         <p className="font-lora text-xl text-secondary-200">
