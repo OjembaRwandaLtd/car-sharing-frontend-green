@@ -6,7 +6,7 @@ import Routes from "../../routes"
 
 const Landing = (): ReactElement => {
   const navigate = useNavigate()
-  const handleClick = () => navigate(Routes.LOGIN.ROOT)
+  const navigateToLogin = () => navigate(Routes.LOGIN.ROOT)
 
   return (
     <div className="flex h-full flex-col items-center justify-between space-y-28 text-secondary-200">
@@ -15,7 +15,7 @@ const Landing = (): ReactElement => {
         Start Sharing your car
         <span> with the world</span>
       </p>
-      <Button value="Log In" handleClick={handleClick} />
+      <Button value="Log In" handleClick={navigateToLogin} />
     </div>
   )
 }
