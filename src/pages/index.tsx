@@ -12,9 +12,9 @@ const Home = (): ReactElement => {
   const navigateToMyCar = () => navigate(Routes.CARS.OWN)
 
   return (
-    <section className="flex h-screen flex-col items-center justify-center gap-5 bg-primary-800 md:flex-row md:overflow-x-hidden">
+    <section className="flex h-screen flex-col items-center justify-center gap-5  md:overflow-x-hidden lg:flex-row">
       <div className="flex flex-col items-center gap-10">
-        <div className="md:absolute md:left-1/2 md:top-10 md:-translate-x-1/2">
+        <div className="md:-mt-56 lg:absolute lg:left-1/2 lg:top-10 lg:-translate-x-1/2">
           <HomeTitle />
         </div>
         <p className="font-lora text-xl text-secondary-200">
@@ -22,15 +22,15 @@ const Home = (): ReactElement => {
           <span className="block">What are you up to today?</span>
         </p>
         <Button value="Book car" handleClick={navigateToNewBookings} />
-        <span className="font-lora text-xl text-secondary-200 md:hidden">or</span>
+        <span className="font-lora text-xl text-secondary-200 lg:hidden">or</span>
       </div>
       <div>
         <img
-          className="car hidden scale-90 md:block"
+          className="car hidden scale-90 lg:block"
           src="https://cdn.discordapp.com/attachments/1234935312510095540/1285224926831185940/brabus-removebg.png?ex=66e97e7c&is=66e82cfc&hm=b7faff2d7ac74eca2e424b6ee0476e4a91df3ce60d597eb9b773c3371a94020e&"
           alt=""
         />
-        <div className="mt-7 flex flex-col gap-4 md:-mt-10 md:flex-row">
+        <div className="mt-7 flex flex-col gap-4 lg:-mt-10 lg:flex-row">
           <Button value="See My Cars" type="outline" handleClick={navigateToMyCar} />
           <Button value="See My Bookings" type="outline" handleClick={navigateToMyBookings} />
         </div>

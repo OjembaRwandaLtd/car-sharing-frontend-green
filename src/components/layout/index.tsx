@@ -12,7 +12,7 @@ const Layout: React.FC = () => (
       <aside className="hidden md:block md:w-[20vw]">
         <Sidebar />
       </aside>
-      <main className="mt-10 w-full p-4 md:w-3/4 lg:w-4/5">
+      <main className="mt-10 max-h-full w-full p-4 md:w-3/4 lg:w-full lg:px-10">
         <Outlet />
       </main>
     </div>
