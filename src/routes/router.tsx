@@ -13,14 +13,31 @@ import Landing from "../pages/login/landing"
 import LogIn from "../pages/login"
 import ProtectedRoutes from "./protected"
 import OwnCars from "../pages/cars/own"
+import Navbar from "../components/layout/navbar"
 
 const router = createBrowserRouter([
+  {
+    path: Routes.LOGIN.ROOT,
+    element: (
+      <>
+        <Navbar />
+        <LogIn />
+      </>
+    ),
+  },
+  {
+    path: Routes.LOGIN.LANDING,
+    element: (
+      <>
+        <Navbar />
+        <Landing />
+      </>
+    ),
+  },
   {
     path: Routes.HOME,
     element: <Layout />,
     children: [
-      { path: Routes.LOGIN.ROOT, element: <LogIn /> },
-      { path: Routes.LOGIN.LANDING, element: <Landing /> },
       {
         element: <ProtectedRoutes />,
         children: [
