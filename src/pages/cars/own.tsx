@@ -59,7 +59,7 @@ const OwnCars = (): ReactElement => {
 
   return (
     <div>
-      <Title text="My cars" />
+      <Title text="My cars" backButton />
       <div>
         {cars?.map(car => (
           <Item key={car.id} car={car} deleteButton handleDelete={() => openDialog(car.id)} />
