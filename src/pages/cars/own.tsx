@@ -62,7 +62,7 @@ const OwnCars = (): ReactElement => {
       <Title text="My cars" />
       <div>
         {cars?.map(car => (
-          <Item key={car.id} car={car} deleteButton handleDelete={() => openDialog(car.id)} />
+          <Item key={car.id} car={car} ShowDeleteButton handleDelete={() => openDialog(car.id)} />
         ))}
       </div>
       <Button value="Add Car" handleClick={handleNavigate} />

@@ -10,12 +10,12 @@ interface Props {
     carName: string
     carOwner: string
   }
-  deleteButton?: boolean
-  bookButton?: boolean
+  ShowDeleteButton?: boolean
+  ShowBookButton?: boolean
   handleDelete?: () => void
 }
 
-const Item = ({ car, deleteButton, bookButton, handleDelete }: Props): ReactElement => (
+const Item = ({ car, ShowBookButton, ShowDeleteButton, handleDelete }: Props): ReactElement => (
   <div key={car.id} className="mx-auto my-4 w-11/12 rounded-xl bg-primary-400 py-4">
     <div className="flex h-64 gap-2">
       <div className="w-72">
@@ -36,8 +36,10 @@ const Item = ({ car, deleteButton, bookButton, handleDelete }: Props): ReactElem
         </div>
       </div>
     </div>
-    {deleteButton && <Button value="Delete Car" type="outlineLachs" handleClick={handleDelete} />}{" "}
-    {bookButton && <Button value="Book Car" />}
+    {ShowDeleteButton && (
+      <Button value="Delete Car" type="outlineLachs" handleClick={handleDelete} />
+    )}{" "}
+    {ShowBookButton && <Button value="Book Car" />}
   </div>
 )
 
