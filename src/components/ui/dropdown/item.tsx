@@ -10,7 +10,7 @@ interface Props {
 
 const DropdownItem = ({ icon, text, navlink, handleClick }: Props): React.ReactElement => (
   <li className={"flex justify-start pb-0.5  pt-1 leading-3"} onClick={handleClick}>
-    <Link to={navlink || ""} className="-ml-4 truncate flex gap-2 items-center">
+    <Link to={navlink || ""} className="-ml-4 flex items-center gap-2 truncate">
       {icon}
       {text}
     </Link>

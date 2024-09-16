@@ -3,7 +3,7 @@ import Title from "../../components/ui/Title"
 import Car from "../../components/cards/Car"
 
 const CarListing = (): ReactElement => (
-  <section className="py-1 w-full">
+  <section className="w-full py-1">
     <Title text="All Cars" backButton />
     <Car />
   </section>

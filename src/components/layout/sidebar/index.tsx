@@ -14,8 +14,8 @@ const Sidebar = () => {
   }
 
   return (
-    <aside className="fixed left-0 top-0 w-[18vw] h-screen z-10 bg-secondary-800 pt-20 text-white px-4 flex flex-col text-lg ">
-      <div className="flex-grow px-4  space-y-10 mt-5">
+    <aside className="fixed left-0 top-0 z-10 flex h-screen w-[18vw] flex-col bg-secondary-800 px-4 pt-20 text-lg text-white ">
+      <div className="mt-5 grow  space-y-10 px-4">
         <div className="mb-8 space-y-5">
           <DropdownItem icon={<CarIcon />} text="Book A Car" navlink={Routes.BOOKINGS.NEW} />
           <DropdownItem icon={<TileIcon />} text=" My Bookings" navlink={Routes.BOOKINGS.ROOT} />
