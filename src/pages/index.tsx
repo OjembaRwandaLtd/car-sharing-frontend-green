@@ -3,6 +3,8 @@ import HomeTitle from "../../src/components/ui/HomeTitle"
 import Button from "../../src/components/ui/Button"
 import { useNavigate } from "react-router-dom"
 import Routes from "../routes"
+import "./Styles.css"
+
 const Home = (): ReactElement => {
   const navigate = useNavigate()
   const navigateToNewBookings = () => navigate(Routes.BOOKINGS.NEW)
@@ -10,21 +12,30 @@ const Home = (): ReactElement => {
   const navigateToMyCar = () => navigate(Routes.CARS.OWN)
 
   return (
-    <div className="h-screen bg-primary-800">
-      <section className="flex flex-col items-center gap-10">
-        <HomeTitle />
+    <section className="flex h-screen flex-col items-center justify-center gap-5 bg-primary-800 md:flex-row md:overflow-x-hidden">
+      <div className="flex flex-col items-center gap-10">
+        <div className="md:absolute md:left-1/2 md:top-10 md:-translate-x-1/2">
+          <HomeTitle />
+        </div>
         <p className="font-lora text-xl text-secondary-200">
           <span className="block px-10">Hello Manuela!</span>
           <span className="block">What are you up to today?</span>
         </p>
         <Button value="Book car" handleClick={navigateToNewBookings} />
-        <span className="font-lora text-xl text-secondary-200">or</span>
-      </section>
-      <div className="mt-7 flex flex-col gap-4">
-        <Button value="See My Cars" type="outline" handleClick={navigateToMyCar} />
-        <Button value="See My Bookings" type="outline" handleClick={navigateToMyBookings} />
+        <span className="font-lora text-xl text-secondary-200 md:hidden">or</span>
       </div>
-    </div>
+      <div>
+        <img
+          className="car hidden scale-90 md:block"
+          src="https://cdn.discordapp.com/attachments/1234935312510095540/1285224926831185940/brabus-removebg.png?ex=66e97e7c&is=66e82cfc&hm=b7faff2d7ac74eca2e424b6ee0476e4a91df3ce60d597eb9b773c3371a94020e&"
+          alt=""
+        />
+        <div className="mt-7 flex flex-col gap-4 md:-mt-10 md:flex-row">
+          <Button value="See My Cars" type="outline" handleClick={navigateToMyCar} />
+          <Button value="See My Bookings" type="outline" handleClick={navigateToMyBookings} />
+        </div>
+      </div>
+    </section>
   )
 }
 
