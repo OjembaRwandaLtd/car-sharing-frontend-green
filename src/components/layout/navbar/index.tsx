@@ -2,9 +2,9 @@ import { ReactElement, useEffect, useRef, useState } from "react"
 import classNames from "classnames"
 import { ProfileIcon, Logo } from "../../../assets/index"
 import { NavLink, useLocation } from "react-router-dom"
-import DropdownItems from "./DropdownItems"
 import "../Styles.css"
 import Dropdown from "../../ui/Dropdown"
+import DropdownItems from "./DropdownItems"
 
 const Navbar = (): ReactElement => {
   const [isOpen, setIsOpen] = useState(false)
@@ -48,7 +48,7 @@ const Navbar = (): ReactElement => {
           <Logo className="h-10 w-10" />
         </NavLink>
       </div>
-      <ProfileIcon className="w-6" />
+      {<ProfileIcon className="w-6" />}
     </nav>
   )
 }
