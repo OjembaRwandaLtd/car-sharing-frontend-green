@@ -4,7 +4,7 @@ import { ProfileIcon, Logo } from "../../../assets/index"
 import { NavLink, useLocation } from "react-router-dom"
 import DropdownItems from "./DropdownItems"
 import "../Styles.css"
-import Dropdown from "../../ui/dropdown"
+import Dropdown from "../../ui/Dropdown"
 
 const Navbar = (): ReactElement => {
   const [isOpen, setIsOpen] = useState(false)
