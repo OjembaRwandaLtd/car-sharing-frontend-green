@@ -2,9 +2,9 @@ import { ReactElement, useEffect, useRef, useState } from "react"
 import classNames from "classnames"
 import { ProfileIcon, Logo } from "../../../assets/index"
 import { NavLink, useLocation } from "react-router-dom"
-import DropdownItems from "./DropdownItems"
 import "../Styles.css"
 import Dropdown from "../../ui/dropdown"
+import DropdownItems from "./DropdownItems"
 
 const Navbar = (): ReactElement => {
   const [isOpen, setIsOpen] = useState(false)
