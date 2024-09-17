@@ -3,7 +3,7 @@ import classNames from "classnames"
 import { ProfileIcon, Logo } from "../../../assets/index"
 import { NavLink, useLocation } from "react-router-dom"
 import "../Styles.css"
-import Dropdown from "../../ui/dropdown"
+import Dropdown from "../../ui/Dropdown"
 import DropdownItems from "./DropdownItems"
 
 const Navbar = (): ReactElement => {
@@ -48,7 +48,7 @@ const Navbar = (): ReactElement => {
           <Logo className="h-10 w-10" />
         </NavLink>
       </div>
-      <ProfileIcon className="w-6" />
+      {<ProfileIcon className="w-6" />}
     </nav>
   )
 }

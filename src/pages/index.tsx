@@ -14,11 +14,14 @@ const Home = (): ReactElement => {
   return (
     <section className="flex h-screen flex-col items-center justify-center gap-5  md:overflow-x-hidden lg:flex-row">
       <div className="flex flex-col items-center gap-10">
-        <div className="md:-mt-56 lg:absolute lg:left-1/2 lg:top-10 lg:-translate-x-1/2">
+        <div
+          className=" md:-mt-56 lg:absolute lg:left-1/2 lg:top-72 lg:-translate-x-1/2
+        "
+        >
           <HomeTitle />
         </div>
-        <p className="font-lora text-xl text-secondary-200">
-          <span className="block px-10">Hello Manuela!</span>
+        <p className="text-center font-lora text-xl text-secondary-200">
+          {/* <span className="block px-10">Hello {user?.userData.name}</span> */}
           <span className="block">What are you up to today?</span>
         </p>
         <Button value="Book car" handleClick={navigateToNewBookings} />
