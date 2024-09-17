@@ -26,14 +26,14 @@ const Details = (): ReactElement => {
       {car.map(car => (
         <div
           key={car.id}
-          className=" mt-20 flex flex-col justify-center gap-10 md:flex-row md:items-center md:text-center lg:mt-20"
+          className="flex h-screen flex-col md:mt-40 md:place-items-end md:gap-10 md:text-center lg:mt-2 lg:flex-row lg:items-center"
         >
           <img
-            className="md:-py-0 -mt-20 scale-[1.05] md:-ml-40 md:-mt-64 md:scale-75"
+            className="md:-py-0 -mt-20 scale-[1.05] md:-ml-40 md:-mt-64 md:scale-75 lg:scale-[0.7]"
             src={car.carImage ?? ""}
             alt="My car"
           />
-          <div className="px-12 text-white md:-ml-40 lg:-mt-56 lg:p-12">
+          <div className="px-12 text-white md:-ml-40  lg:-mt-9 lg:p-12">
             <h2 className="-mt-16 py-8 font-lora text-2xl font-medium md:-mt-56 md:text-left md:text-5xl">
               {car.carName ?? ""}
             </h2>
