@@ -9,7 +9,7 @@ const Landing = (): ReactElement => {
   const handleClick = () => navigate(Routes.LOGIN.ROOT)
 
   return (
-    <div className="flex h-full flex-col items-center justify-between space-y-28 text-secondary-200">
+    <div className="large-screen-layout mt-10 flex flex-col items-center justify-between space-y-28 text-secondary-200">
       <HomeTitle />
       <p className="flex flex-col text-center font-lora text-xl font-medium">
         Start Sharing your car <span> with the world</span>

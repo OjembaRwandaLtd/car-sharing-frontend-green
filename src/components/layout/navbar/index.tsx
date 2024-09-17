@@ -1,12 +1,14 @@
-import { ReactElement, useEffect, useRef, useState } from "react"
+import { ReactElement, useContext, useEffect, useRef, useState } from "react"
 import classNames from "classnames"
 import { ProfileIcon, Logo } from "../../../assets/index"
 import { NavLink, useLocation } from "react-router-dom"
 import "../Styles.css"
 import Dropdown from "../../ui/Dropdown"
 import DropdownItems from "./DropdownItems"
+import { LoggedInUserContext } from ".."
 
 const Navbar = (): ReactElement => {
+  const { userIsLoggedIn } = useContext(LoggedInUserContext)
   const [isOpen, setIsOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
   const toggleDropdown = () => setIsOpen(!isOpen)
@@ -29,13 +31,18 @@ const Navbar = (): ReactElement => {
         ref={dropdownRef}
         className={classNames("dropdown dropdown-bottom", { "dropdown-open": isOpen })}
       >
-        <div tabIndex={0} role="button" className="m-1 md:hidden" onClick={toggleDropdown}>
-          {isOpen ? "Close" : "Menu"}
-        </div>
-        <div className="logo hidden w-32 py-2 text-center font-lora text-lg font-bold shadow-Lachs md:block">
+        {userIsLoggedIn && (
+          <div tabIndex={0} role="button" className="m-1 md:hidden" onClick={toggleDropdown}>
+            {isOpen ? "Close" : "Menu"}
+          </div>
+        )}
+        <NavLink
+          to={"/"}
+          className="logo hidden w-32 py-2 text-center font-lora text-lg font-bold shadow-Lachs md:block"
+        >
           Car
           <span className="text-xl font-extrabold">Sharing</span>
-        </div>
+        </NavLink>
 
         {isOpen && (
           <Dropdown>
@@ -48,7 +55,7 @@ const Navbar = (): ReactElement => {
           <Logo className="h-10 w-10" />
         </NavLink>
       </div>
-      {<ProfileIcon className="w-6" />}
+      {userIsLoggedIn && <ProfileIcon className="w-6" />}
     </nav>
   )
 }
