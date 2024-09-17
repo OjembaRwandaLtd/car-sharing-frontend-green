@@ -2,46 +2,25 @@ import React, { createContext, useEffect, useMemo, useState } from "react"
 import { Outlet } from "react-router-dom"
 import Sidebar from "./sidebar"
 import { getAuthToken } from "../../util/auth"
-import Navbar from "./Navbar"
+import Navbar from "./navbar"
 
 interface LoggedInProp {
   userIsLoggedIn: boolean
   setUserIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>
 }
-export const LoggedInUserContext = createContext<LoggedInProp | undefined>(undefined)
-
-// export const useLoggedInUserContext = () => {
-//   const context = useContext(LoggedInUserContext)
-//   if (context === undefined) {
-//     throw new Error("useErrorContext must be used within an ErrorProvider")
-//   }
-//   return context
-// }
+export const LoggedInUserContext = createContext<LoggedInProp | null>(null)
 
 const Layout: React.FC = () => {
   const [userIsLoggedIn, setUserIsLoggedIn] = useState(false)
 
   const token = getAuthToken()
+
   useEffect(() => {
-    if (token) setUserIsLoggedIn(true)
-  },[])
-
-  // const checkLoggedInUser = async () => {
-  //   try {
-  //     if (token) {
-  //       const res = await axios.get(`${apiUrl}/auth`, {
-  //         headers: { Authorization: `Bearer ${token}` },
-  //       })
-  //       if (res.status === 200) setUserIsLoggedIn(true)
-  //     }
-  //   } catch (error) {
-  //     if (error instanceof Error) return setUserIsLoggedIn(false)
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   checkLoggedInUser()
-  // }, [checkLoggedInUser])
+    if (token) {
+      setUserIsLoggedIn(true)
+      console.log(userIsLoggedIn)
+    }
+  }, [])
 
   const contextValue = useMemo(
     () => ({
