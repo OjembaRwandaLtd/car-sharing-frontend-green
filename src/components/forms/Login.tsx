@@ -12,7 +12,7 @@ interface Props {
 }
 
 const LoginForm = ({ formData, handleChange, handleSubmit, isError }: Props): ReactElement => (
-  <>
+  <div className="large-screen-layout">
     <HomeTitle />
     <ToastContainer theme="colored" />
 
@@ -57,7 +57,7 @@ const LoginForm = ({ formData, handleChange, handleSubmit, isError }: Props): Re
         <Button value="Log In" handleClick={handleSubmit} />
       </div>
     </form>
-  </>
+  </div>
 )
 
 export default LoginForm

@@ -19,8 +19,14 @@ const router = createBrowserRouter([
     path: Routes.HOME,
     element: <Layout />,
     children: [
-      { path: Routes.LOGIN.ROOT, element: <LogIn /> },
-      { path: Routes.LOGIN.LANDING, element: <Landing /> },
+      {
+        path: Routes.LOGIN.LANDING,
+        element: <Landing />,
+      },
+      {
+        path: Routes.LOGIN.ROOT,
+        element: <LogIn />,
+      },
       {
         element: <ProtectedRoutes />,
         children: [
