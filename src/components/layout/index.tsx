@@ -18,7 +18,6 @@ const Layout: React.FC = () => {
   useEffect(() => {
     if (token) {
       setUserIsLoggedIn(true)
-      console.log(userIsLoggedIn)
     }
   }, [])
 
