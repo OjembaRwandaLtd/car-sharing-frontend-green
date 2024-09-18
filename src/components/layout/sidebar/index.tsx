@@ -8,8 +8,7 @@ import { LoggedInUserContext } from ".."
 
 const Sidebar = () => {
   const navigate = useNavigate()
-  const { userIsLoggedIn, setUserIsLoggedIn } = useContext(LoggedInUserContext)
-  console.log(userIsLoggedIn)
+  const { setUserIsLoggedIn } = useContext(LoggedInUserContext)
 
   const handleLogout = () => {
     const keys = ["token", "userId"]
