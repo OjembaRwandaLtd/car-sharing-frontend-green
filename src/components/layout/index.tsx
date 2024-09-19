@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useMemo, useState } from "react"
+import React, { createContext, useContext, useEffect, useMemo, useState } from "react"
 import { Outlet } from "react-router-dom"
 import Sidebar from "./sidebar"
 import { getAuthToken } from "../../util/auth"
@@ -14,9 +14,16 @@ interface LoggedInProp {
 
 export const LoggedInUserContext = createContext<LoggedInProp | null>(null)
 
+export const useLoggedInUserContext = () => {
+  const context = useContext(LoggedInUserContext)
+  if (context === null) {
+    throw new Error("Can't access the user logged in user context")
+  }
+  return context
+}
+
 const Layout: React.FC = () => {
   const [userIsLoggedIn, setUserIsLoggedIn] = useState(false)
-
   const token = getAuthToken()
   const loggedInUser = useLoggedInUser()
 

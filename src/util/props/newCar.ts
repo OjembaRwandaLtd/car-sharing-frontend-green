@@ -27,3 +27,10 @@ export interface NewCarProps {
 export interface FormState {
   [key: string]: string
 }
+
+export interface Car {
+  id: number
+  carImage: string
+  carName: string
+  carOwner: string
+}
