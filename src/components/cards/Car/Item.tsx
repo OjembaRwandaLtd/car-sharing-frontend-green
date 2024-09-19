@@ -20,8 +20,8 @@ const Item = ({ car, ShowBookButton, ShowDeleteButton, handleDelete }: Props): R
     <div className="flex h-64 justify-center gap-2 lg:gap-24">
       <div className="h-max-full">
         {car && (
-          <figure className="max-w-sm -mt-6 md:-mt-14">
-            <img className="h-fit  object-cover" src={car.carImage} alt={car.carName} />
+          <figure className="h-5/6 max-w-sm lg:h-full">
+            <img className="h-full object-fill" src={car.carImage} alt={car.carName} />
           </figure>
         )}
       </div>
