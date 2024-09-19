@@ -12,7 +12,6 @@ const Login = (): ReactElement => {
   })
   const navigate = useNavigate()
   const [isError, setIsError] = useState(false)
-
   const handleChange = <T extends HTMLInputElement>(e: React.ChangeEvent<T>) => {
     const { value, name } = e.target
 
@@ -22,19 +21,16 @@ const Login = (): ReactElement => {
     }))
     setIsError(false)
   }
-
   const handleLogin = async (e: FormEvent) => {
     e.preventDefault()
     if (!formData.username || !formData.password) {
       setIsError(true)
     }
-
     try {
       const response = await axios.post(`${apiUrl}/auth`, formData)
       const { userId, token } = response.data
       localStorage.setItem("token", token)
       localStorage.setItem("userId", userId)
-
       navigate(Routes.HOME)
     } catch (error) {
       if (axios.isAxiosError(error) && error.response?.status === 401) {
@@ -52,5 +48,4 @@ const Login = (): ReactElement => {
     />
   )
 }
-
 export default Login
