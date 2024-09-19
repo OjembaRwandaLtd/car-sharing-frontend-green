@@ -1,13 +1,13 @@
-import React, { useState, useCallback } from "react"
+import { ReactElement, useState, useCallback } from "react"
 import { ChevronDownIcon } from "../../assets"
 import classNames from "classnames"
 import { InputFieldProps } from "../../util/props/inputField"
 import { useErrorContext } from "../sections/AddCar"
 
-const InputField: React.FC<InputFieldProps> = ({
+const InputField = ({
   key,
-  type,
-  span,
+  type = "text",
+  span = false,
   title,
   name,
   icon,
@@ -16,7 +16,7 @@ const InputField: React.FC<InputFieldProps> = ({
   value,
   setForm,
   onChange,
-}) => {
+}: InputFieldProps): ReactElement => {
   const [showDropdown, setShowDropdown] = useState(false)
   const [inputError, setInputError] = useState(false)
   const { setInputHasErrors } = useErrorContext()
@@ -57,12 +57,10 @@ const InputField: React.FC<InputFieldProps> = ({
 
   return (
     <div className={classNames({ "col-span-2": !span }, { "col-span-1 ml-1": span })} key={key}>
-      {title && (
-        <label className="label-text font-inter text-sm text-white" htmlFor={name}>
-          {title}
-        </label>
-      )}
-      <div className={classNames("input relative", { "border-2 border-Lachs": inputError })}>
+      <label className="label-text font-inter text-sm text-white" htmlFor={name}>
+        {title}
+      </label>
+      <div className={classNames("input relative", { "border-2 border-red-500": inputError })}>
         {icon}
         <input
           onChange={handleInputChange}

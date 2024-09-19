@@ -6,16 +6,15 @@ import Routes from "../../routes"
 
 const Landing = (): ReactElement => {
   const navigate = useNavigate()
-  const handleClick = () => navigate(Routes.LOGIN.ROOT)
+  const navigateToLogin = () => navigate(Routes.LOGIN.ROOT)
 
   return (
-    <div className="flex h-full flex-col items-center justify-between space-y-28 text-secondary-200">
+    <div className="large-screen-layout mt-10 flex flex-col items-center justify-between space-y-28 text-secondary-200">
       <HomeTitle />
       <p className="flex flex-col text-center font-lora text-xl font-medium">
-        Start Sharing your car
-        <span> with the world</span>
+        Start Sharing your car <span> with the world</span>
       </p>
-      <Button value="Log In" handleClick={handleClick} />
+      <Button value="Log In" handleClick={navigateToLogin} />
     </div>
   )
 }

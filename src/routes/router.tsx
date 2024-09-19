@@ -9,6 +9,9 @@ import Layout from "../components/layout"
 import CarDetails from "../pages/cars/view"
 import CarListing from "../pages/cars"
 import AddNewCar from "../pages/cars/new"
+import Landing from "../pages/login/landing"
+import LogIn from "../pages/login"
+import ProtectedRoutes from "./protected"
 import OwnCars from "../pages/cars/own"
 
 const router = createBrowserRouter([
@@ -16,13 +19,34 @@ const router = createBrowserRouter([
     path: Routes.HOME,
     element: <Layout />,
     children: [
-      { index: true, element: <Home /> },
       {
-        path: Routes.CARS.ROOT,
+        path: Routes.LOGIN.LANDING,
+        element: <Landing />,
+      },
+      {
+        path: Routes.LOGIN.ROOT,
+        element: <LogIn />,
+      },
+      {
+        element: <ProtectedRoutes />,
         children: [
-          { index: true, element: <CarListing /> },
-          { path: "new", element: <AddNewCar /> },
-          { path: ":carId", element: <CarDetails /> },
+          { index: true, element: <Home /> },
+          {
+            path: Routes.CARS.ROOT,
+            children: [
+              { index: true, element: <CarListing /> },
+              { path: "new", element: <AddNewCar /> },
+              { path: ":carId", element: <CarDetails /> },
+            ],
+          },
+          {
+            path: Routes.BOOKINGS.ROOT,
+            children: [
+              { index: true, element: <MyBookings /> },
+              { path: "new", element: <NewBooking /> },
+              { path: "manage", element: <ManageBookings /> },
+            ],
+          },
           {
             path: Routes.CARS.OWN,
             children: [
@@ -32,17 +56,9 @@ const router = createBrowserRouter([
           },
         ],
       },
-      {
-        path: Routes.BOOKINGS.ROOT,
-        children: [
-          { index: true, element: <MyBookings /> },
-          { path: "new", element: <NewBooking /> },
-          { path: "manage", element: <ManageBookings /> },
-        ],
-      },
+      { path: "*", element: <NotFound /> },
     ],
   },
-  { path: "*", element: <NotFound /> },
 ])
 
 export default router
