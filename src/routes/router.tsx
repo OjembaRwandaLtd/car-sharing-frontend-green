@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router-dom"
 import Routes from "."
-import AddNewCar from "../pages/cars/new"
 import ManageBookings from "../pages/bookings/manage"
 import MyBookings from "../pages/bookings"
 import NewBooking from "../pages/bookings/new"
@@ -9,6 +8,7 @@ import NotFound from "../pages/404"
 import Layout from "../components/layout"
 import CarDetails from "../pages/cars/view"
 import CarListing from "../pages/cars"
+import AddNewCar from "../pages/cars/new"
 import Landing from "../pages/login/landing"
 import LogIn from "../pages/login"
 import ProtectedRoutes from "./protected"
@@ -19,8 +19,14 @@ const router = createBrowserRouter([
     path: Routes.HOME,
     element: <Layout />,
     children: [
-      { path: Routes.LOGIN.ROOT, element: <LogIn /> },
-      { path: Routes.LOGIN.LANDING, element: <Landing /> },
+      {
+        path: Routes.LOGIN.LANDING,
+        element: <Landing />,
+      },
+      {
+        path: Routes.LOGIN.ROOT,
+        element: <LogIn />,
+      },
       {
         element: <ProtectedRoutes />,
         children: [
@@ -41,9 +47,6 @@ const router = createBrowserRouter([
               { path: "manage", element: <ManageBookings /> },
             ],
           },
-          { index: true, element: <CarListing /> },
-          { path: "new", element: <AddNewCar /> },
-          { path: ":carId", element: <CarDetails /> },
           {
             path: Routes.CARS.OWN,
             children: [

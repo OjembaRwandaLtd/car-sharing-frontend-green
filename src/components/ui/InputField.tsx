@@ -1,83 +1,95 @@
-import { ReactElement, useState } from "react"
+import { ReactElement, useState, useCallback } from "react"
 import { ChevronDownIcon } from "../../assets"
 import classNames from "classnames"
 import { InputFieldProps } from "../../util/props/inputField"
-import { useErrorContext } from "../../pages/cars/new"
+import { useErrorContext } from "../sections/AddCar"
 
 const InputField = ({
   key,
-  type,
-  span,
+  type = "text",
+  span = false,
   title,
   name,
   icon,
   placeholder,
-  dropdownData,
+  dropdownData = null,
   value,
   setForm,
   onChange,
 }: InputFieldProps): ReactElement => {
-  const [showDropdown, setShowDropdown] = useState(true)
+  const [showDropdown, setShowDropdown] = useState(false)
   const [inputError, setInputError] = useState(false)
   const { setInputHasErrors } = useErrorContext()
 
-  const inputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!/^[a-z\d-'"@\s]{3,}$/i.test(e.target.value) && e.target.type !== "number") {
-      setInputError(true)
-      setInputHasErrors(true)
-    } else {
-      setInputHasErrors(false)
-      setInputError(false)
-    }
-  }
+  const validateInput = useCallback(
+    (val: string) => {
+      // check if string contains at least 3 chracters and has alphabet chracters and some allowed characters -"@ and whitespace
+      const isValid = type === "number" || /^[a-z\d-'"@\s]{3,}$/i.test(val)
+      setInputError(!isValid)
+      setInputHasErrors(!isValid)
+    },
+    [type, setInputHasErrors],
+  )
+
+  const handleInputChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      onChange(e)
+      validateInput(e.target.value)
+    },
+    [onChange, validateInput],
+  )
+
+  const handleClick = useCallback(
+    (e: React.MouseEvent) => {
+      e.stopPropagation()
+      if (dropdownData && dropdownData?.length > 1) setShowDropdown(prev => !prev)
+    },
+    [dropdownData],
+  )
+
+  const handleDropdownItemClick = useCallback(
+    (item: string) => {
+      setForm(prev => ({ ...prev, [name]: item }))
+      setShowDropdown(false)
+    },
+    [setForm, name],
+  )
+
   return (
-    <div className={classNames({ "col-span-1 ml-1": span }, { "col-span-2": !span })} key={key}>
-      <div className="label">
-        {title && (
-          <label className="label-text font-inter text-sm text-white" htmlFor={title}>
-            {title}
-          </label>
-        )}
-      </div>
-      <div className={classNames("input", { "border-2 border-red-500": inputError })}>
+    <div className={classNames({ "col-span-2": !span }, { "col-span-1 ml-1": span })} key={key}>
+      <label className="label-text font-inter text-sm text-white" htmlFor={name}>
+        {title}
+      </label>
+      <div className={classNames("input relative", { "border-2 border-red-500": inputError })}>
         {icon}
         <input
-          onChange={onChange}
-          onInput={inputChange}
+          onChange={handleInputChange}
           value={value}
           type={type}
+          onClick={handleClick}
           name={name}
           placeholder={placeholder}
-          readOnly={dropdownData ? true : false}
+          readOnly={!!dropdownData}
           required
         />
-
         {dropdownData && (
-          <div className="dropdown dropdown-end text-white">
-            <div tabIndex={0} role="button" className="mr-1">
-              <div onClick={() => setShowDropdown(!showDropdown)}>
-                <ChevronDownIcon className="scale-150" />
-              </div>
-              {showDropdown && (
-                <ul
-                  className="menu dropdown-content z-[1] mt-1
-               w-52 gap-1 divide-y-[1px] rounded-box bg-primary-400 p-2"
-                  tabIndex={0}
-                >
-                  {dropdownData.map(item => (
-                    <li
-                      key={item}
-                      onClick={() => {
-                        setForm(prev => ({ ...prev, [name]: item }))
-                        setShowDropdown(!showDropdown)
-                      }}
-                    >
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
+          <div className="dropdown-container absolute right-0 top-0 ">
+            <button onClick={handleClick} className="dropdown-toggle p-2">
+              <ChevronDownIcon className="mr-2 scale-150 text-white" />
+            </button>
+            {showDropdown && (
+              <ul className="input-dropdown menu dropdown-content">
+                {dropdownData.map(item => (
+                  <li
+                    key={item}
+                    onClick={() => handleDropdownItemClick(item)}
+                    className="hover:bg-primary-500 cursor-pointer p-2"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         )}
       </div>
