@@ -12,13 +12,7 @@ import Routes from "../../routes"
 import Title from "../../components/ui/Title"
 import NotFound from "../../pages/404"
 import { useLoggedInUserContext } from "../layout"
-
-interface Car {
-  id: number
-  carImage: string
-  carName: string
-  carOwner: string
-}
+import { Car } from "../../util/props/newCar"
 
 const OwnCarsSection = (): ReactElement => {
   const { loggedInUserId } = useLoggedInUserContext()
