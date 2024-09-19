@@ -12,7 +12,7 @@ const Login = (): ReactElement => {
   })
   const navigate = useNavigate()
   const [isError, setIsError] = useState(false)
-  const handleChange = <T extends HTMLInputElement>(e: React.ChangeEvent<T>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target
 
     setFormData(prevData => ({
