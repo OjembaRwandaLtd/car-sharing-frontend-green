@@ -2,18 +2,23 @@ import React, { createContext, useEffect, useMemo, useState } from "react"
 import { Outlet } from "react-router-dom"
 import Sidebar from "./sidebar"
 import { getAuthToken } from "../../util/auth"
-import Navbar from "./navbar"
+import Navbar from "./Navbar"
+import useLoggedInUser from "../../hooks/useLoggedInUser"
 
 interface LoggedInProp {
   userIsLoggedIn: boolean
   setUserIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>
+  loggedInUserId: number | undefined
+  loggedInUserName: string | undefined
 }
+
 export const LoggedInUserContext = createContext<LoggedInProp | null>(null)
 
 const Layout: React.FC = () => {
   const [userIsLoggedIn, setUserIsLoggedIn] = useState(false)
 
   const token = getAuthToken()
+  const loggedInUser = useLoggedInUser()
 
   useEffect(() => {
     if (token) {
@@ -25,13 +30,15 @@ const Layout: React.FC = () => {
     () => ({
       userIsLoggedIn,
       setUserIsLoggedIn,
+      loggedInUserId: loggedInUser[0].data?.id,
+      loggedInUserName: loggedInUser[0].data?.name,
     }),
-    [userIsLoggedIn, setUserIsLoggedIn],
+    [userIsLoggedIn, setUserIsLoggedIn, loggedInUser],
   )
 
   return (
     <LoggedInUserContext.Provider value={contextValue}>
-      <div className="flex min-h-screen flex-col">
+      <div className="flex min-h-screen flex-col lg:overflow-x-hidden">
         <header>
           <Navbar />
         </header>

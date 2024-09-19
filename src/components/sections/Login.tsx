@@ -14,7 +14,7 @@ const Login = (): ReactElement => {
     password: "",
   })
   const navigate = useNavigate()
-  const [isError, setIsError] = useState(false)
+  const [hasError, setHasError] = useState(false)
 
   const handleChange = <T extends HTMLInputElement>(e: React.ChangeEvent<T>) => {
     const { value, name } = e.target
@@ -23,13 +23,13 @@ const Login = (): ReactElement => {
       ...prevData,
       [name]: value,
     }))
-    setIsError(false)
+    setHasError(false)
   }
 
   const handleLogin = async (e: FormEvent) => {
     e.preventDefault()
     if (!formData.username || !formData.password) {
-      setIsError(true)
+      setHasError(true)
     }
 
     try {
@@ -42,7 +42,7 @@ const Login = (): ReactElement => {
       navigate(Routes.HOME)
     } catch (error) {
       if (axios.isAxiosError(error) && error.response?.status === 401) {
-        setIsError(true)
+        setHasError(true)
       }
     }
   }
@@ -52,7 +52,7 @@ const Login = (): ReactElement => {
       formData={formData}
       handleChange={handleChange}
       handleSubmit={handleLogin}
-      isError={isError}
+      hasError={hasError}
     />
   )
 }

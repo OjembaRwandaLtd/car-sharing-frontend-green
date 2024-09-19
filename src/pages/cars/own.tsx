@@ -1,5 +1,5 @@
-import OwnCars from "../../components/sections/OwnCars"
+import OwnCarsSection from "../../components/sections/OwnCars"
 import { ReactElement } from "react"
-const own = (): ReactElement => <OwnCars />
+const OwnCars = (): ReactElement => <OwnCarsSection />
 
-export default own
+export default OwnCars
