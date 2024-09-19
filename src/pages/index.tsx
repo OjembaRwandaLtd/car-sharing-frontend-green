@@ -1,15 +1,34 @@
-import { ReactElement } from "react"
+import { ReactElement, useEffect, useState } from "react"
 import HomeTitle from "../../src/components/ui/HomeTitle"
 import Button from "../../src/components/ui/Button"
 import { useNavigate } from "react-router-dom"
 import Routes from "../routes"
 import image from "../assets/images/car.png"
+import axios from "axios"
+import { apiUrl } from "../util/apiUrl"
+import { getAuthToken } from "../util/auth"
 
 const Home = (): ReactElement => {
   const navigate = useNavigate()
   const navigateToNewBookings = () => navigate(Routes.BOOKINGS.NEW)
   const navigateToMyBookings = () => navigate(Routes.BOOKINGS.ROOT)
   const navigateToMyCar = () => navigate(Routes.CARS.OWN)
+  const [user, setUser] = useState("")
+  const userDetails = async () => {
+    try {
+      const userInfo = await axios.get(`${apiUrl}/auth`, {
+        headers: {
+          Authorization: `Bearer ${getAuthToken()}`,
+        },
+      })
+      setUser(userInfo.data.name)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+  useEffect(() => {
+    userDetails()
+  }, [])
 
   return (
     <section className="flex h-screen flex-col items-center justify-center gap-5 bg-primary-800 lg:flex-row lg:overflow-x-hidden">
@@ -21,7 +40,7 @@ const Home = (): ReactElement => {
           <HomeTitle />
         </div>
         <p className="text-center font-lora text-xl text-secondary-200">
-          {/* <span className="block px-10">Hello {user?.userData.name}</span> */}
+          <span className="block px-10">Hello {user}</span>
           <span className="block">What are you up to today?</span>
         </p>
         <Button value="Book car" handleClick={navigateToNewBookings} />
