@@ -1,13 +1,13 @@
-import { ReactElement, useContext } from "react"
+import { ReactElement } from "react"
 import HomeTitle from "../../src/components/ui/HomeTitle"
 import Button from "../../src/components/ui/Button"
 import { useNavigate } from "react-router-dom"
 import Routes from "../routes"
 import image from "../assets/images/car.png"
-import { LoggedInUserContext } from "../components/layout"
+import { useLoggedInUserContext } from "../components/layout"
 
 const Home = (): ReactElement => {
-  const { loggedInUserName } = useContext(LoggedInUserContext)
+  const { loggedInUserName } = useLoggedInUserContext()
   const navigate = useNavigate()
   const navigateToNewBookings = () => navigate(Routes.BOOKINGS.NEW)
   const navigateToMyBookings = () => navigate(Routes.BOOKINGS.ROOT)

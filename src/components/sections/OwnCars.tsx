@@ -1,4 +1,4 @@
-import { ReactElement, useContext, useEffect, useState } from "react"
+import { ReactElement, useEffect, useState } from "react"
 import Item from "../../components/cards/Car/Item"
 import Button from "../../components/ui/Button"
 import Loading from "../../components/ui/Loading"
@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom"
 import Routes from "../../routes"
 import Title from "../../components/ui/Title"
 import NotFound from "../../pages/404"
-import { LoggedInUserContext } from "../layout"
+import { useLoggedInUserContext } from "../layout"
 
 interface Car {
   id: number
@@ -21,7 +21,7 @@ interface Car {
 }
 
 const OwnCarsSection = (): ReactElement => {
-  const { loggedInUserId } = useContext(LoggedInUserContext)
+  const { loggedInUserId } = useLoggedInUserContext()
   const { carsData, isLoading, isError } = useCarDetails()
   const [cars, setCars] = useState<Car[]>([])
   const [selectedCarId, setSelectedCarId] = useState<number | null>(null)
