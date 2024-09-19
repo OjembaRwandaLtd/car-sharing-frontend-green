@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useState } from "react"
+import { ReactElement, useContext, useEffect, useState } from "react"
 import Item from "../../components/cards/Car/Item"
 import Button from "../../components/ui/Button"
 import Loading from "../../components/ui/Loading"
@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom"
 import Routes from "../../routes"
 import Title from "../../components/ui/Title"
 import NotFound from "../../pages/404"
+import { LoggedInUserContext } from "../layout"
 
 interface Car {
   id: number
@@ -19,9 +20,9 @@ interface Car {
   carOwner: string
 }
 
-const OwnCars = (): ReactElement => {
+const OwnCarsSection = (): ReactElement => {
+  const { loggedInUserId } = useContext(LoggedInUserContext)
   const { carsData, isLoading, isError } = useCarDetails()
-  const userId = localStorage.getItem("userId")
   const [cars, setCars] = useState<Car[]>([])
   const [selectedCarId, setSelectedCarId] = useState<number | null>(null)
   const [isDialogOpen, setDialogOpen] = useState(false)
@@ -30,7 +31,7 @@ const OwnCars = (): ReactElement => {
 
   useEffect(() => {
     if (!loaded && carsData) {
-      const filteredCars = carsData?.filter(car => car.ownerId === Number(userId))
+      const filteredCars = carsData?.filter(car => car.ownerId === Number(loggedInUserId))
       if (JSON.stringify(filteredCars) !== JSON.stringify(cars) && filteredCars)
         setCars(filteredCars)
       setLoaded(true)
@@ -63,7 +64,7 @@ const OwnCars = (): ReactElement => {
       <div>
         {cars.length ? (
           cars.map(car => (
-            <Item key={car.id} car={car} deleteButton handleDelete={() => openDialog(car.id)} />
+            <Item key={car.id} car={car} ShowDeleteButton handleDelete={() => openDialog(car.id)} />
           ))
         ) : (
           <p className="pb-3 text-center font-lora text-xl text-Lachs"> No car available</p>
@@ -80,4 +81,4 @@ const OwnCars = (): ReactElement => {
     </div>
   )
 }
-export default OwnCars
+export default OwnCarsSection
