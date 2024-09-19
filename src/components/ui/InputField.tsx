@@ -12,7 +12,7 @@ const InputField = ({
   name,
   icon,
   placeholder,
-  dropdownData = null,
+  dropdownData,
   value,
   setForm,
   onChange,

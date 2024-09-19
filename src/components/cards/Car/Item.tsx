@@ -18,9 +18,11 @@ interface Props {
 const Item = ({ car, ShowBookButton, ShowDeleteButton, handleDelete }: Props): ReactElement => (
   <div key={car.id} className="mx-auto my-4 w-11/12 rounded-xl bg-primary-400 py-4 ">
     <div className="flex h-64 justify-center gap-2 lg:gap-24">
-      <div className="h-56">
+      <div className="h-max-full">
         {car && (
-          <img src={car.carImage} className="h-full w-full rotate-3 scale-105" alt={car.carName} />
+          <figure className="max-w-sm -mt-6 md:-mt-14">
+            <img className="h-fit  object-cover" src={car.carImage} alt={car.carName} />
+          </figure>
         )}
       </div>
       <div className="mr-4 mt-4 border-spacing-y-4 space-y-4 text-secondary-200">
