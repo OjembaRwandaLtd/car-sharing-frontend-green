@@ -24,7 +24,7 @@ const Home = (): ReactElement => {
       })
       setUser(userInfo.data.name)
     } catch (err) {
-      console.log(err)
+      return err
     }
   }
   useEffect(() => {
