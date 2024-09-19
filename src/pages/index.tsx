@@ -32,12 +32,9 @@ const Home = (): ReactElement => {
   }, [])
 
   return (
-    <section className="flex h-screen flex-col items-center justify-center gap-5 bg-primary-800 lg:flex-row lg:overflow-x-hidden">
+    <section className="flex flex-col items-center justify-center gap-5 bg-primary-800 lg:flex-row lg:overflow-x-hidden">
       <div className="flex flex-col items-center gap-10">
-        <div
-          className=" md:-mt-56 lg:absolute lg:left-1/2 lg:top-72 lg:-translate-x-1/2
-        "
-        >
+        <div className=" md:-mt-56 lg:absolute lg:left-1/2 lg:top-72 lg:-translate-x-1/2">
           <HomeTitle />
         </div>
         <p className="text-center font-lora text-xl text-secondary-200">

@@ -26,7 +26,7 @@ const Details = (): ReactElement => {
       {car.map(car => (
         <div
           key={car.id}
-          className="flex h-screen flex-col md:mt-40 md:place-items-end md:gap-10 md:text-center lg:mt-2 lg:flex-row lg:items-center"
+          className="flex flex-col md:mt-40 md:place-items-end md:gap-5 md:text-center lg:mt-2 lg:flex-row lg:items-center"
         >
           <img
             className="md:-py-0 -mt-20 scale-[1.05] md:-ml-40 md:-mt-64 md:scale-75 lg:scale-[0.7]"

@@ -20,7 +20,7 @@ const Item = ({ car, deleteButton, bookButton, handleDelete }: Props): ReactElem
     key={car.id}
     className="mx-auto my-4 flex w-11/12 flex-col gap-3 rounded-xl bg-primary-400 p-2 py-4"
   >
-    <div className="flex h-64 gap-2 lg:justify-center lg:gap-32">
+    <div className="flex h-64 gap-1 lg:justify-center lg:gap-32">
       <div className="w-72">
         {car && (
           <img src={car.carImage} className="h-full w-full rotate-3 scale-105" alt={car.carName} />

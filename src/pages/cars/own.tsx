@@ -66,7 +66,7 @@ const OwnCars = (): ReactElement => {
             <Item key={car.id} car={car} deleteButton handleDelete={() => openDialog(car.id)} />
           ))
         ) : (
-          <p className="pb-3 text-center font-lora text-xl text-Lachs"> No car available</p>
+          <p className="pb-3 text-center font-lora text-xl text-Lachs">No car available</p>
         )}
       </div>
       <Button value="Add Car" handleClick={handleNavigate} />
