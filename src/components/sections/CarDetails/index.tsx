@@ -30,12 +30,12 @@ const Details = (): ReactElement => {
         >
           <div className="w-9/12">
             <img
-              className=" md:-py-0 -mt-20 scale-[1.05] md:-ml-20 md:-mt-64 md:scale-75 lg:scale-[0.7]"
+              className=" md:-py-0 -mt-20 ml-14 scale-[1.05] md:-ml-20 md:-mt-64 md:scale-75 lg:scale-[0.7]"
               src={car.carImage ?? ""}
               alt="My car"
             />
           </div>
-          <div className="px-12 text-white md:-ml-40  lg:-mt-9 lg:p-12">
+          <div className="px-12 text-white md:-ml-40 md:mt-16 lg:-mt-9 lg:p-12">
             <h2 className="-mt-16 py-8 font-lora text-2xl font-medium md:-mt-56 md:text-left md:text-5xl">
               {car.carName ?? ""}
             </h2>
