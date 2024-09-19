@@ -16,14 +16,16 @@ interface Props {
 }
 
 const Item = ({ car, ShowBookButton, ShowDeleteButton, handleDelete }: Props): ReactElement => (
-  <div key={car.id} className="mx-auto my-4 w-11/12 rounded-xl bg-primary-400 py-4">
-    <div className="flex h-64 gap-2">
-      <div className="w-72">
+  <div key={car.id} className="car-item mx-auto my-4 w-11/12 rounded-xl bg-primary-400 py-4 ">
+    <div className="flex h-64 justify-center gap-2 lg:gap-24">
+      <div className="h-max-full">
         {car && (
-          <img src={car.carImage} className="h-full w-full rotate-3 scale-105" alt={car.carName} />
+          <figure className="h-5/6 max-w-sm lg:h-full">
+            <img className="h-full object-fill" src={car.carImage} alt={car.carName} />
+          </figure>
         )}
       </div>
-      <div className="mr-7 mt-4 border-spacing-y-4 space-y-4 text-secondary-200">
+      <div className="mr-4 mt-4 border-spacing-y-4 space-y-4 text-secondary-200">
         <h2 className="font-lora text-xl font-medium">
           {car.carName.split(" ").slice(1).join(" ")}
         </h2>

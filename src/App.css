@@ -2,6 +2,92 @@
   from {
     opacity: 0;
     transform: translateY(-1000px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.car-item {
+  animation: appear 2s linear;
+  animation-timeline: view();
+  animation-range: entry cover 10%;
+}
+
+@keyframes moveCar {
+  from {
+    margin-left: 1000px;
+    transform: scale(0.1);
+  }
+  to {
+    margin-left: 0;
+    transform: scale(0.9);
+  }
+}
+.car {
+  animation: moveCar 2s ease-in-out;
+}
+
+/* logo animation */
+
+@keyframes animated {
+  0%,
+  18%,
+  20%,
+  5.1%,
+  60%,
+  65.1%,
+  90.1% {
+    color: #d0e7ee;
+    text-shadow: none;
+  }
+  18.1%,
+  20.1%,
+  30%,
+  50%,
+  60.1%,
+  80.1%,
+  90%,
+  92.1%,
+  100% {
+    color: #fff;
+    text-shadow:
+      0 0 10px #fff,
+      0 0 20px #fff,
+      0 0 40px #03bcf4,
+      0 0 80px #03bcf4,
+      0 0 160px #03bcf4;
+  }
+}
+.logo {
+  outline: none;
+  animation: animation1 5s linear infinite;
+}
+@keyframes animation1 {
+  0% {
+    color: #0e3742;
+    text-shadow: none;
+  }
+  100% {
+    color: #fff;
+    text-shadow:
+      0 0 10px #f48403,
+      0 0 20px #03bcf4,
+      0 0 40px #03bcf4,
+      0 0 80px #f46703,
+      0 0 160px #03bcf4;
+  }
+}
+
+a:hover {
+  transform: scale(0.9);
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(-1000px);
     scale: 0;
   }
 
