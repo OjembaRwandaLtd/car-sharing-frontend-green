@@ -1,11 +1,14 @@
-import { FormEvent, ReactElement, useState } from "react"
+import { FormEvent, ReactElement, useContext, useState } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import Routes from "../../routes"
 import { apiUrl } from "../../util/apiUrl"
 import LoginForm from "../forms/Login"
+import { LoggedInUserContext } from "../layout"
 
 const Login = (): ReactElement => {
+  const { setUserIsLoggedIn } = useContext(LoggedInUserContext)
+
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -35,6 +38,7 @@ const Login = (): ReactElement => {
       localStorage.setItem("token", token)
       localStorage.setItem("userId", userId)
 
+      setUserIsLoggedIn(true)
       navigate(Routes.HOME)
     } catch (error) {
       if (axios.isAxiosError(error) && error.response?.status === 401) {

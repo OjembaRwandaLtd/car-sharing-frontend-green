@@ -1,10 +1,10 @@
-import React, { useState, useCallback } from "react"
+import { ReactElement, useState, useCallback } from "react"
 import { ChevronDownIcon } from "../../assets"
 import classNames from "classnames"
 import { InputFieldProps } from "../../util/props/inputField"
 import { useErrorContext } from "../sections/AddCar"
 
-const InputField: React.FC<InputFieldProps> = ({
+const InputField = ({
   key,
   type = "text",
   span = false,
@@ -16,7 +16,7 @@ const InputField: React.FC<InputFieldProps> = ({
   value,
   setForm,
   onChange,
-}) => {
+}: InputFieldProps): ReactElement => {
   const [showDropdown, setShowDropdown] = useState(false)
   const [inputError, setInputError] = useState(false)
   const { setInputHasErrors } = useErrorContext()

@@ -24,12 +24,14 @@ const Item = ({ car, ShowBookButton, ShowDeleteButton, handleDelete }: Props): R
         )}
       </div>
       <div className="mr-7 mt-4 border-spacing-y-4 space-y-4 text-secondary-200">
-        <h2 className="font-lora text-xl font-medium">{car.carName}</h2>
+        <h2 className="font-lora text-xl font-medium">
+          {car.carName.split(" ").slice(1).join(" ")}
+        </h2>
         <div className="space-y-2">
           <IconWithLabel icon={<ProfileIcon />} text={car.carOwner} />
           <IconWithLabel icon={<CarIcon />} text={car.carName.split(" ")[1] || ""} />
           <div className="py-8">
-            <Link to={`${car.id}`} className="mt-7 font-inter text-base font-bold text-mustard-200">
+            <Link to={`${car.id}`} className="my-7 font-inter text-base font-bold text-mustard-200">
               Show details
             </Link>
           </div>

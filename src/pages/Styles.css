@@ -1,0 +1,13 @@
+@keyframes moveCar {
+  from {
+    margin-left: 1000px;
+    transform: scale(0.1);
+  }
+  to {
+    margin-left: 0;
+    transform: scale(0.9);
+  }
+}
+.car {
+  animation: moveCar 2s ease-in-out;
+}
