@@ -22,18 +22,20 @@ const Details = (): ReactElement => {
   if (isError || !car?.length) return <NotFound />
 
   return (
-    <>
+    <div>
       {car.map(car => (
         <div
           key={car.id}
-          className="flex h-screen flex-col md:mt-40 md:place-items-end md:gap-10 md:text-center lg:mt-2 lg:flex-row lg:items-center"
+          className="flex flex-col md:mt-40 md:place-items-end md:gap-3 md:text-center lg:mt-28 lg:flex-row lg:items-center"
         >
-          <img
-            className="md:-py-0 -mt-20 scale-[1.05] md:-ml-40 md:-mt-64 md:scale-75 lg:scale-[0.7]"
-            src={car.carImage ?? ""}
-            alt="My car"
-          />
-          <div className="px-12 text-white md:-ml-40  lg:-mt-9 lg:p-12">
+          <div className="w-9/12">
+            <img
+              className=" md:-py-0 -mt-20 ml-14 scale-[1.05] md:-ml-20 md:-mt-64 md:scale-75 lg:scale-[0.7]"
+              src={car.carImage ?? ""}
+              alt="My car"
+            />
+          </div>
+          <div className="px-12 text-white md:-ml-40 md:mt-16 lg:-mt-9 lg:p-12">
             <h2 className="-mt-16 py-8 font-lora text-2xl font-medium md:-mt-56 md:text-left md:text-5xl">
               {car.carName ?? ""}
             </h2>
@@ -52,7 +54,7 @@ const Details = (): ReactElement => {
           </div>
         </div>
       ))}
-    </>
+    </div>
   )
 }
 export default Details
