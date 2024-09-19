@@ -1,7 +1,6 @@
 import { CarIcon, CarPlusIcon, CarsIcon, ListIcon, LogoutIcon, TileIcon } from "../../../assets"
 import Routes from "../../../routes"
 import { useNavigate } from "react-router-dom"
-import "../Styles.css"
 import { useContext } from "react"
 import DropdownItem from "../../ui/Dropdown/item"
 import { LoggedInUserContext } from ".."

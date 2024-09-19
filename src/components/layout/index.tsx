@@ -41,7 +41,7 @@ const Layout: React.FC = () => {
               <Sidebar />
             </aside>
           )}
-          <main className="mt-10 w-full p-4 md:w-3/4 lg:w-4/5">
+          <main className="mt-10 h-full w-full p-4 md:w-3/4 lg:w-4/5">
             <Outlet />
           </main>
         </div>
