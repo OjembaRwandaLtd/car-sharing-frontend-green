@@ -46,7 +46,7 @@ const OwnCars = (): ReactElement => {
       setCars(cars.filter(car => car.id !== selectedCarId))
       setDialogOpen(false)
     } catch (error) {
-      console.error(error)
+      return error
     }
   }
   const openDialog = (carId: number) => {
