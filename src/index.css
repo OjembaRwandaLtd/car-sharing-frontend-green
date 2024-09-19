@@ -10,14 +10,14 @@ body {
   @apply font-normal text-left text-sm relative text-gray-700 bg-primary-800 min-h-screen;
 }
 input {
-  @apply -mt-1 h-14 w-full text-white placeholder:text-gray-300;
+  @apply -mt-1 h-14 w-full text-white placeholder:text-gray-300 cursor-pointer;
 }
 .input {
-  @apply flex items-center gap-2 rounded-full bg-primary-200 px-5 py-6;
+  @apply flex items-center gap-2 rounded-full bg-primary-200 px-5 py-6 cursor-pointer;
 }
 .input-dropdown {
   @apply absolute right-0 z-10 mt-1 w-[85vw]  gap-1 divide-y-[1px] rounded-lg bg-primary-200 p-2 text-white lg:w-[45vw] md:w-[35vw] border border-gray-400;
 }
 .large-screen-layout {
-  @apply lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:mt-20;
+  @apply md:absolute md:left-1/2 md:-translate-x-1/2 md:mt-20;
 }

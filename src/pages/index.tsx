@@ -3,7 +3,6 @@ import HomeTitle from "../../src/components/ui/HomeTitle"
 import Button from "../../src/components/ui/Button"
 import { useNavigate } from "react-router-dom"
 import Routes from "../routes"
-import "./Styles.css"
 import image from "../assets/images/car.png"
 
 const Home = (): ReactElement => {

@@ -18,7 +18,7 @@ interface Props {
 const Item = ({ car, deleteButton, bookButton, handleDelete }: Props): ReactElement => (
   <div
     key={car.id}
-    className="mx-auto my-4 flex w-11/12 flex-col gap-3 rounded-xl bg-primary-400 p-2 py-4"
+    className="car-item mx-auto my-4 flex w-11/12 flex-col gap-3 rounded-xl bg-primary-400 p-2 py-4"
   >
     <div className="flex h-64 gap-2 lg:justify-center lg:gap-32">
       <div className="w-72">
