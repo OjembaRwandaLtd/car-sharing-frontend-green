@@ -16,7 +16,7 @@ interface Props {
 }
 
 const Item = ({ car, ShowBookButton, ShowDeleteButton, handleDelete }: Props): ReactElement => (
-  <div key={car.id} className="car-item mx-auto my-4 w-11/12 rounded-xl bg-primary-400 py-4 ">
+  <div key={car.id} className="car-item mx-auto my-4 w-11/12 rounded-xl bg-primary-400 py-4">
     <div className="flex h-64 justify-center gap-2 lg:gap-24">
       <div className="h-max-full">
         {car && (

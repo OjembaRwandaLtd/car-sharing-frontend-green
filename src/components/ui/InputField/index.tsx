@@ -33,7 +33,7 @@ const InputField = ({
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChange(e)
-    // check if string contains at least 3 chracters and has alphabet chracters and some allowed characters -"@ and whitespace
+    // Check if a string contains at least 3 characters and has alphabet characters and some allowed characters -"@ and whitespace
     const isValid = type === "number" || /^[a-z\d-'"@\s]{3,}$/i.test(e.target.value)
     setInputError(!isValid)
     setInputHasErrors(!isValid)
