@@ -3,8 +3,8 @@ import { ReactElement } from "react"
 export interface InputFieldProps {
   key: string
   type?: string
-  span: boolean
-  title?: string
+  span?: boolean
+  title: string
   name: string
   icon?: ReactElement
   placeholder: string

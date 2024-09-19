@@ -22,6 +22,7 @@ const AddNewCarSection = (): ReactElement => {
 
   const [form, setForm] = useState(INITIAL_FORM_VALUES)
   const [isSubmitting, setIsSubmitting] = useState(false)
+
   const notify = (message: string) => toast.info(message)
   const cartypes = useCarTypes()
 
@@ -41,7 +42,7 @@ const AddNewCarSection = (): ReactElement => {
       const carTypeId = cartypes[0]?.data?.filter(el => el.name === form.type)[0].id
 
       const requestData = {
-        carTypeId: carTypeId,
+        carTypeId,
         name: form.name,
         fuelType: form.fuel_type,
         licensePlate: form.license_plate,
@@ -60,7 +61,7 @@ const AddNewCarSection = (): ReactElement => {
       }
     } catch (error) {
       if (error instanceof Error) notify(error.message)
-      else notify("An unknown error occurred.")
+      else notify("Failed to add car.")
     } finally {
       setIsSubmitting(false)
     }
