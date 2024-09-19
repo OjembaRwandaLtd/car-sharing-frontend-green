@@ -6,13 +6,13 @@ import { useErrorContext } from "../sections/AddCar"
 
 const InputField = ({
   key,
-  type,
-  span,
+  type = "text",
+  span = false,
   title,
   name,
   icon,
   placeholder,
-  dropdownData,
+  dropdownData = null,
   value,
   setForm,
   onChange,
@@ -57,12 +57,10 @@ const InputField = ({
 
   return (
     <div className={classNames({ "col-span-2": !span }, { "col-span-1 ml-1": span })} key={key}>
-      {title && (
-        <label className="label-text font-inter text-sm text-white" htmlFor={name}>
-          {title}
-        </label>
-      )}
-      <div className={classNames("input relative", { "border-2 border-Lachs": inputError })}>
+      <label className="label-text font-inter text-sm text-white" htmlFor={name}>
+        {title}
+      </label>
+      <div className={classNames("input relative", { "border-2 border-red-500": inputError })}>
         {icon}
         <input
           onChange={handleInputChange}

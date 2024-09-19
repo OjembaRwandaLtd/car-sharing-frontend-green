@@ -63,7 +63,7 @@ const OwnCars = (): ReactElement => {
       <div>
         {cars.length ? (
           cars.map(car => (
-            <Item key={car.id} car={car} deleteButton handleDelete={() => openDialog(car.id)} />
+            <Item key={car.id} car={car} ShowDeleteButton handleDelete={() => openDialog(car.id)} />
           ))
         ) : (
           <p className="pb-3 text-center font-lora text-xl text-Lachs"> No car available</p>
