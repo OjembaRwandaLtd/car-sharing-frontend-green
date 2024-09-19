@@ -8,10 +8,10 @@ interface Props {
   formData: { username: string; password: string }
   handleChange: <T extends HTMLInputElement>(e: React.ChangeEvent<T>) => void
   handleSubmit: (e: React.FormEvent) => void
-  isError: boolean
+  hasError: boolean
 }
 
-const LoginForm = ({ formData, handleChange, handleSubmit, isError }: Props): ReactElement => (
+const LoginForm = ({ formData, handleChange, handleSubmit, hasError }: Props): ReactElement => (
   <>
     <HomeTitle />
     <ToastContainer theme="colored" />
@@ -47,7 +47,7 @@ const LoginForm = ({ formData, handleChange, handleSubmit, isError }: Props): Re
         />
       </div>
 
-      {isError && (
+      {hasError && (
         <p className="mx-6 text-center text-Lachs">
           Your login attempt was not successful. Please make sure your user name and password are
           correct.
