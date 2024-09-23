@@ -8,12 +8,12 @@ const getHeaders = () => ({
 })
 
 const apiGet = async (path: string) =>
-  axios.get(`${apiUrl}${path}`, {
+  axios.get(`${apiUrl}/${path}`, {
     headers: getHeaders(),
   })
 
 const apiPost = async <T>(url: string, data: T) =>
-  axios.post(`${apiUrl}${url}`, data, {
+  axios.post(`${apiUrl}/${url}`, data, {
     headers: getHeaders(),
   })
 

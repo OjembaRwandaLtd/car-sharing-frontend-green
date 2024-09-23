@@ -2,9 +2,9 @@ import { FormEvent, ReactElement, useContext, useState } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import Routes from "../../routes"
-import { apiUrl } from "../../util/apiUrl"
 import LoginForm from "../forms/Login"
 import { LoggedInUserContext } from "../layout"
+import { apiPost } from "../../api"
 
 const Login = (): ReactElement => {
   const { setUserIsLoggedIn } = useContext(LoggedInUserContext)
@@ -27,7 +27,7 @@ const Login = (): ReactElement => {
       return
     }
     try {
-      const response = await axios.post(`${apiUrl}/auth`, formData)
+      const response = await apiPost("auth", formData)
       const { userId, token } = response.data
       localStorage.setItem("token", token)
       localStorage.setItem("userId", userId)

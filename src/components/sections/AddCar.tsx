@@ -34,9 +34,9 @@ const AddNewCarSection = (): ReactElement => {
     try {
       if (Object.entries(form).some(el => el[1] === "" && el[0] !== "additional_information")) {
         setIsSubmitting(false)
-        return notify("All fields are required!")
+        return notify("All fields are required!", "error")
       }
-      if (inputHasErrors) return notify("Form has errors")
+      if (inputHasErrors) return notify("Form has errors", "error")
       setInputHasErrors(false)
       const carTypeId = cartypes[0]?.data?.filter(el => el.name === form.type)[0].id
 
@@ -48,13 +48,13 @@ const AddNewCarSection = (): ReactElement => {
         info: form.additional_information,
         horsepower: Number(form.horse_power),
       }
-      const response = await apiPost("/cars", requestData)
+      const response = await apiPost("cars", requestData)
       if (response.status === 201) {
         notify("Car added successfully")
         setForm(INITIAL_FORM_VALUES)
       }
     } catch (error) {
-      if (error instanceof Error) notify(error.message)
+      if (error instanceof Error) notify(error.message, "error")
       else notify("Failed to add car.", "error")
     } finally {
       setIsSubmitting(false)
