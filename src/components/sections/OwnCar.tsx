@@ -3,9 +3,6 @@ import Item from "../../components/cards/Car/Item"
 import Button from "../../components/ui/Button"
 import Loading from "../../components/ui/Loading"
 import { useCarDetails } from "../../hooks"
-import { getAuthToken } from "../../util/auth"
-import { apiUrl } from "../../util/apiUrl"
-import axios from "axios"
 import ConfirmDelete from "../../components/ui/ConfirmDelete"
 import { useNavigate } from "react-router-dom"
 import Routes from "../../routes"
@@ -13,6 +10,7 @@ import Title from "../../components/ui/Title"
 import NotFound from "../../pages/404"
 import { useLoggedInUserContext } from "../layout"
 import { Car } from "../../util/props/newCar"
+import { apiDelete } from "../../api"
 
 const OwnCarsSection = (): ReactElement => {
   const { loggedInUserId } = useLoggedInUserContext()
@@ -33,11 +31,7 @@ const OwnCarsSection = (): ReactElement => {
   }, [carsData])
   const handleDelete = async () => {
     try {
-      await axios.delete(`${apiUrl}/cars/${selectedCarId}`, {
-        headers: {
-          Authorization: `Bearer ${getAuthToken()}`,
-        },
-      })
+      await apiDelete("cars", selectedCarId)
       setCars(cars.filter(car => car.id !== selectedCarId))
       setDialogOpen(false)
     } catch (error) {
@@ -58,7 +52,12 @@ const OwnCarsSection = (): ReactElement => {
       <div>
         {cars.length ? (
           cars.map(car => (
-            <Item key={car.id} car={car} ShowDeleteButton handleDelete={() => openDialog(car.id)} />
+            <Item
+              key={car.id}
+              car={car}
+              showDeleteButton={true}
+              handleDelete={() => openDialog(car.id)}
+            />
           ))
         ) : (
           <p className="pb-3 text-center font-lora text-xl text-Lachs"> No car available</p>

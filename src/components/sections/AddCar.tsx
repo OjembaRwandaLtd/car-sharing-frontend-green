@@ -1,12 +1,10 @@
-import axios from "axios"
 import { toast } from "react-toastify"
 import { createContext, ReactElement, useContext, useState } from "react"
 import { ErrorContextType } from "../../util/props/inputField"
 import { INITIAL_FORM_VALUES } from "../../util/newCarData"
 import { useCarTypes } from "../../hooks"
-import { apiUrl } from "../../util/apiUrl"
-import { getAuthToken } from "../../util/auth"
 import NewCarForm from "../forms/NewCar"
+import { apiPost } from "../../api"
 
 export const useErrorContext = () => {
   const context = useContext(ErrorContext)
@@ -23,7 +21,8 @@ const AddNewCarSection = (): ReactElement => {
   const [form, setForm] = useState(INITIAL_FORM_VALUES)
   const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const notify = (message: string) => toast.info(message)
+  const notify = (message: string, type = "info") =>
+    type === "error" ? toast.error(message) : toast.info(message)
   const cartypes = useCarTypes()
 
   const handleFormDataChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -49,19 +48,14 @@ const AddNewCarSection = (): ReactElement => {
         info: form.additional_information,
         horsepower: Number(form.horse_power),
       }
-      const response = await axios.post(`${apiUrl}/cars`, requestData, {
-        headers: {
-          Authorization: `Bearer ${getAuthToken()}`,
-          "Content-Type": "application/json",
-        },
-      })
+      const response = await apiPost("/cars", requestData)
       if (response.status === 201) {
         notify("Car added successfully")
         setForm(INITIAL_FORM_VALUES)
       }
     } catch (error) {
       if (error instanceof Error) notify(error.message)
-      else notify("Failed to add car.")
+      else notify("Failed to add car.", "error")
     } finally {
       setIsSubmitting(false)
     }
