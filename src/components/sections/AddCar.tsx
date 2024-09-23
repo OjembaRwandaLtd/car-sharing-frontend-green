@@ -40,15 +40,14 @@ const AddNewCarSection = (): ReactElement => {
       setInputHasErrors(false)
       const carTypeId = cartypes[0]?.data?.filter(el => el.name === form.type)[0].id
 
-      const requestData = {
+      const response = await apiPost("cars", {
         carTypeId,
         name: form.name,
         fuelType: form.fuel_type,
         licensePlate: form.license_plate,
         info: form.additional_information,
         horsepower: Number(form.horse_power),
-      }
-      const response = await apiPost("cars", requestData)
+      })
       if (response.status === 201) {
         notify("Car added successfully")
         setForm(INITIAL_FORM_VALUES)
