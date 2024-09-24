@@ -6,7 +6,9 @@ const BookCar = () => (
   <section>
     <Title text="BOOK CAR" />
     <form className=" mt-20 flex flex-col justify-center gap-2">
-      <label className="font-inter text-sm text-white"> Start date</label>
+      <label htmlFor="start date" className="font-inter text-sm text-white">
+        Start date
+      </label>
       <div className="input">
         <input
           type="text"
