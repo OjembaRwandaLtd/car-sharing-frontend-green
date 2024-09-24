@@ -16,7 +16,7 @@ const NotFound = (): ReactElement => {
       <h1 className="text-5xl font-bold">OOOOOPS!</h1>
       <BrokenCarIcon />
       <p className="flex flex-col pb-8 text-center text-lg font-medium">
-        Something went wrong.
+        <span>Something went wrong.</span>
         <span>We will solve your issue soon.</span>
       </p>
       {token ? (

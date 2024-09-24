@@ -2,9 +2,9 @@ import { ReactElement, useContext, useEffect, useRef, useState } from "react"
 import classNames from "classnames"
 import { ProfileIcon, Logo } from "../../../assets/index"
 import { NavLink, useLocation } from "react-router-dom"
-import Dropdown from "../../ui/Dropdown"
-import DropdownItems from "./DropdownItems"
 import { LoggedInUserContext } from ".."
+import DropdownItems from "./DropdownItems"
+import Dropdown from "../../ui/dropdown/index"
 
 const Navbar = (): ReactElement => {
   const { userIsLoggedIn } = useContext(LoggedInUserContext)

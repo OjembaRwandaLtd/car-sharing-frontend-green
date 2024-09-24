@@ -2,8 +2,8 @@ import { createContext, useContext, useEffect, useMemo, useState } from "react"
 import { Outlet } from "react-router-dom"
 import Sidebar from "./sidebar"
 import { getAuthToken } from "../../util/auth"
-import Navbar from "./Navbar"
 import useLoggedInUser from "../../hooks/useLoggedInUser"
+import Navbar from "./navbar"
 
 interface LoggedInProp {
   userIsLoggedIn: boolean
