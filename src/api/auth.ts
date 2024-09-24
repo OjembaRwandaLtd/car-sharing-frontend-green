@@ -11,9 +11,8 @@ export const login = async (username: string, password: string) => {
       },
       false,
     )
-    const { userId, token } = response.data
+    const { token } = response.data
     localStorage.setItem("token", token)
-    localStorage.setItem("userId", userId)
     return response.data
   } catch (error) {
     if (axios.isAxiosError(error) && error.response?.status === 401) {
