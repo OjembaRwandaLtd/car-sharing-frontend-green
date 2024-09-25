@@ -2,6 +2,10 @@ import { ReactElement } from "react"
 
 export interface InputFieldProps {
   key: string
+  error: string
+  setError: React.Dispatch<React.SetStateAction<string>>
+  touched: boolean
+  setTouched: React.Dispatch<React.SetStateAction<boolean>>
   type?: string
   span?: boolean
   title: string

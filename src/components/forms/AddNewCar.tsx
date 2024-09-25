@@ -1,0 +1,82 @@
+import { INITIAL_FORM_VALUES, formFieldsData } from "../../util/newCarData"
+import InputField from "../ui/InputField"
+import { useCarDetails, useCarTypes } from "../../hooks"
+import Loading from "../ui/Loading"
+import NotFound from "../../pages/404"
+import { NewCarProps } from "../../util/props/newCar"
+import { useMemo, useState } from "react"
+import Button from "../ui/Button"
+import { ToastContainer } from "react-toastify"
+import Title from "../ui/Title"
+
+type CarFieldNames = "type" | "fuel_type"
+const NewCarForm = ({
+  form,
+  setForm,
+  handleFormDataChange,
+  handleSubmit,
+  isSubmitting,
+}: NewCarProps) => {
+  const carTypes = useCarTypes()
+  const { carsData, isLoading, isError } = useCarDetails()
+  const [touched, setTouched] = useState(false)
+  const [error, setError] = useState("")
+
+  const dropdownData: { type: string[]; fuel_type: string[] } = useMemo(
+    () => ({
+      type: carTypes[0]?.data?.map(type => type.name) || [""],
+      fuel_type: [...new Set(carsData?.map(({ fuelType }) => fuelType))],
+    }),
+    [carsData, carTypes],
+  )
+
+  if (isLoading) return <Loading />
+  if (isError) return <NotFound />
+  return (
+    <form className="px-3 pb-5 md:mx-32 lg:mx-40" autoComplete="off" method="POST">
+      <ToastContainer theme="colored" />
+      <Title text="New Car" />
+      <div className="grid grid-cols-2 space-y-3">
+        {formFieldsData.map(el => (
+          <>
+            <InputField
+              key={el.title}
+              error={error}
+              type={el.type}
+              span={el.span}
+              title={el.title}
+              name={el.name}
+              value={form[el.name]}
+              onChange={handleFormDataChange}
+              touched={touched}
+              setTouched={setTouched}
+              setError={setError}
+              setForm={setForm}
+              placeholder={el.placeholder}
+              dropdownData={dropdownData[el.name as CarFieldNames]}
+            />
+            {touched && error && <p className="mt-1 text-sm text-red-500">{error}</p>}
+          </>
+        ))}
+      </div>
+      <div className="mx-auto mt-24 flex w-fit gap-1">
+        <Button
+          width="regular"
+          value="Cancel"
+          type="outline"
+          handleClick={() => setForm(INITIAL_FORM_VALUES)}
+        />
+        <Button
+          width="regular"
+          value={isSubmitting ? "Adding Car..." : "Add Car"}
+          handleClick={() => {
+            handleSubmit()
+            setError("")
+          }}
+        />
+      </div>
+    </form>
+  )
+}
+
+export default NewCarForm

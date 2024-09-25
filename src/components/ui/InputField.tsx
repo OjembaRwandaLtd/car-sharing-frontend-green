@@ -38,16 +38,17 @@ const InputField: React.FC<InputFieldProps> = ({
   type = "text",
   span = false,
   title,
+  error,
+  setError,
+  touched,
+  setTouched,
   name,
-  icon,
   placeholder,
   dropdownData,
   value,
   setForm,
   onChange,
 }) => {
-  const [touched, setTouched] = useState(false)
-  const [error, setError] = useState("")
   const { setInputHasErrors } = useErrorContext()
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const inputRef = useRef<HTMLDivElement>(null)
@@ -66,7 +67,7 @@ const InputField: React.FC<InputFieldProps> = ({
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (inputRef.current && !inputRef.current.contains(event.target as Node)) {
-        setIsDropdownOpen(false) // Close the dropdown when clicking outside
+        setIsDropdownOpen(false)
       }
     }
     document.addEventListener("mousedown", handleClickOutside)
@@ -79,7 +80,7 @@ const InputField: React.FC<InputFieldProps> = ({
   }
 
   const handleInputClick = (event: React.MouseEvent) => {
-    event.stopPropagation() // Prevent interaction with other click events
+    event.stopPropagation()
     if (dropdownData && dropdownData.length > 1) setIsDropdownOpen(!isDropdownOpen)
   }
 
@@ -99,7 +100,6 @@ const InputField: React.FC<InputFieldProps> = ({
           className={classNames("input relative", { "border-2 border-red-500": touched && error })}
           onClick={handleInputClick}
         >
-          {icon}
           <input
             onChange={handleChange}
             onBlur={() => setTouched(true)}
@@ -123,7 +123,6 @@ const InputField: React.FC<InputFieldProps> = ({
           )}
         </div>
       </label>
-      {touched && error && <p className="mt-1 text-sm text-red-500">{error}</p>}
     </div>
   )
 }
