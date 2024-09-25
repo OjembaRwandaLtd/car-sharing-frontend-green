@@ -11,7 +11,6 @@ const TimeContext = createContext<TimeContextType | undefined>(undefined)
 
 export const TimeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [time, setTime] = useState<Dayjs | null>(dayjs())
-  console.log(time?.format("YYYY-MM-DD HH:mm"))
   return <TimeContext.Provider value={{ time, setTime }}>{children}</TimeContext.Provider>
 }
 
