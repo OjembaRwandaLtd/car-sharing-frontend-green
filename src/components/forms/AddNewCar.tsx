@@ -4,10 +4,9 @@ import { useCarDetails, useCarTypes } from "../../hooks"
 import Loading from "../ui/Loading"
 import NotFound from "../../pages/404"
 import { NewCarProps } from "../../util/props/newCar"
-import { useMemo, useState } from "react"
+import { useMemo } from "react"
 import Button from "../ui/Button"
 import { ToastContainer } from "react-toastify"
-import Title from "../ui/Title"
 
 type CarFieldNames = "type" | "fuel_type"
 const NewCarForm = ({
@@ -19,8 +18,6 @@ const NewCarForm = ({
 }: NewCarProps) => {
   const carTypes = useCarTypes()
   const { carsData, isLoading, isError } = useCarDetails()
-  const [touched, setTouched] = useState(false)
-  const [error, setError] = useState("")
 
   const dropdownData: { type: string[]; fuel_type: string[] } = useMemo(
     () => ({
@@ -33,29 +30,23 @@ const NewCarForm = ({
   if (isLoading) return <Loading />
   if (isError) return <NotFound />
   return (
-    <form className="px-3 pb-5 md:mx-32 lg:mx-40" autoComplete="off" method="POST">
+    <form className="px-3 pb-5 md:mx-32 lg:mx-40" autoComplete="off">
       <ToastContainer theme="colored" />
-      <Title text="New Car" />
       <div className="grid grid-cols-2 space-y-3">
         {formFieldsData.map(el => (
           <>
             <InputField
               key={el.title}
-              error={error}
               type={el.type}
               span={el.span}
               title={el.title}
               name={el.name}
               value={form[el.name]}
               onChange={handleFormDataChange}
-              touched={touched}
-              setTouched={setTouched}
-              setError={setError}
               setForm={setForm}
               placeholder={el.placeholder}
               dropdownData={dropdownData[el.name as CarFieldNames]}
             />
-            {touched && error && <p className="mt-1 text-sm text-red-500">{error}</p>}
           </>
         ))}
       </div>
@@ -69,10 +60,7 @@ const NewCarForm = ({
         <Button
           width="regular"
           value={isSubmitting ? "Adding Car..." : "Add Car"}
-          handleClick={() => {
-            handleSubmit()
-            setError("")
-          }}
+          handleClick={() => handleSubmit()}
         />
       </div>
     </form>

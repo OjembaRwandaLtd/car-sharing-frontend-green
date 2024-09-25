@@ -38,10 +38,6 @@ const InputField: React.FC<InputFieldProps> = ({
   type = "text",
   span = false,
   title,
-  error,
-  setError,
-  touched,
-  setTouched,
   name,
   placeholder,
   dropdownData,
@@ -50,14 +46,17 @@ const InputField: React.FC<InputFieldProps> = ({
   onChange,
 }) => {
   const { setInputHasErrors } = useErrorContext()
+  const [touched, setTouched] = useState(false)
+  const [error, setError] = useState("")
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const inputRef = useRef<HTMLDivElement>(null)
 
   const validateInput = (val: string) => {
     const isValid =
       val.trim() !== "" && (dropdownData || type === "number" || /^[a-z\d-'"@\s]{3,}$/i.test(val))
-    setError(isValid ? "" : "This field is required")
+    setError(isValid ? "" : "This field requires at least 3 characters!")
     setInputHasErrors(!isValid)
+    if (isValid) setTouched(false)
   }
 
   useEffect(() => {
@@ -102,8 +101,12 @@ const InputField: React.FC<InputFieldProps> = ({
         >
           <input
             onChange={handleChange}
-            onBlur={() => setTouched(true)}
-            value={value}
+            onBlur={() =>
+              dropdownData || name === "additional_information" || name === "horse_power"
+                ? null
+                : setTouched(true)
+            }
+            value={dropdownData ? dropdownData[0] : value}
             type={type}
             name={name}
             placeholder={placeholder}
@@ -122,6 +125,7 @@ const InputField: React.FC<InputFieldProps> = ({
             />
           )}
         </div>
+        {touched && error && <p className="mt-1 text-sm text-red-500">{error}</p>}
       </label>
     </div>
   )
