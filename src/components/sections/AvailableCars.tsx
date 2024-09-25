@@ -14,13 +14,13 @@ const AvailableCars = () => {
   if (loading) return <Loading />
   if (hasError) return <NotFound />
 
-  const bookedCarIds = bookingData?.map(book => book.carId)
-  const AvailableCars = carsData?.filter(car => !bookedCarIds?.includes(car.id))
+  const bookedCarIds = bookingData?.map(booked => booked.carId)
+  const availableCars = carsData?.filter(car => !bookedCarIds?.includes(car.id))
 
   return (
     <>
       <Title text="Available Cars" backButton />
-      {AvailableCars?.map(car => <Item key={car.id} car={car} showBookButton={true} />)}
+      {availableCars?.map(car => <Item key={car.id} car={car} showBookButton={true} />)}
     </>
   )
 }
