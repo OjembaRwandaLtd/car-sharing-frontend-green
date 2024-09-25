@@ -4,22 +4,25 @@ import { InputDropdown, InputFieldProps } from "../../util/props/inputField"
 import { useErrorContext } from "../sections/AddCar"
 import { ChevronDownIcon } from "../../assets"
 
-const Dropdown = ({ data, onSelect, isOpen, setIsOpen }: InputDropdown) => (
+const Dropdown = ({ data, onSelect, isDropdownOpen, setIsDropdownOpen }: InputDropdown) => (
   <>
     <button
-      onClick={() => setIsOpen(prev => !prev)}
+      onClick={() => {
+        setIsDropdownOpen(!isDropdownOpen)
+      }}
       className="dropdown-toggle bg-red-40 absolute right-0 top-0 p-2"
     >
       <ChevronDownIcon className="mr-2 scale-150 text-white" />
     </button>
-    {isOpen && (
+    {isDropdownOpen && (
       <ul className="input-dropdown menu">
         {data.map(item => (
           <li
             key={item}
-            onClick={() => {
+            onClick={e => {
+              e.preventDefault()
               onSelect(item)
-              setIsOpen(false)
+              setIsDropdownOpen(!isDropdownOpen)
             }}
             className="cursor-pointer p-2"
           >
@@ -62,8 +65,9 @@ const InputField: React.FC<InputFieldProps> = ({
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (inputRef.current && !inputRef.current.contains(event.target as Node))
-        setIsDropdownOpen(false)
+      if (inputRef.current && !inputRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false) // Close the dropdown when clicking outside
+      }
     }
     document.addEventListener("mousedown", handleClickOutside)
     return () => document.removeEventListener("mousedown", handleClickOutside)
@@ -74,15 +78,16 @@ const InputField: React.FC<InputFieldProps> = ({
     setTouched(true)
   }
 
-  const handleInputClick = () => {
-    if (dropdownData && dropdownData.length > 1) setIsDropdownOpen(true)
+  const handleInputClick = (event: React.MouseEvent) => {
+    event.stopPropagation() // Prevent interaction with other click events
+    if (dropdownData && dropdownData.length > 1) setIsDropdownOpen(!isDropdownOpen)
   }
 
   const handleDropdownSelect = (item: string) => {
     setForm(prev => ({ ...prev, [name]: item }))
     setTouched(true)
     validateInput(item)
-    setIsDropdownOpen(false) // Close the dropdown immediately after selection
+    setIsDropdownOpen(!isDropdownOpen)
   }
 
   return (
@@ -109,14 +114,12 @@ const InputField: React.FC<InputFieldProps> = ({
             className="w-full cursor-pointer bg-transparent outline-none"
           />
           {dropdownData && (
-            <>
-              <Dropdown
-                data={dropdownData}
-                onSelect={handleDropdownSelect}
-                isOpen={isDropdownOpen}
-                setIsOpen={setIsDropdownOpen}
-              />
-            </>
+            <Dropdown
+              data={dropdownData}
+              onSelect={handleDropdownSelect}
+              isDropdownOpen={isDropdownOpen}
+              setIsDropdownOpen={setIsDropdownOpen}
+            />
           )}
         </div>
       </label>
