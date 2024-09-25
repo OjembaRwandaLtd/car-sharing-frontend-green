@@ -15,7 +15,7 @@ const NewCarFormWrapper = ({ children, onSubmit, onCancel, saveButtonText }: New
     <div className="grid grid-cols-2 space-y-3">{children}</div>
     <div className="mx-auto mt-24 flex w-fit gap-1">
       <Button width="regular" value="Cancel" type="outline" handleClick={onCancel} />
-      <Button width="regular" value={saveButtonText} handleClick={onSubmit} />
+      <Button width="regular" buttonType="submit" value={saveButtonText} handleClick={onSubmit} />
     </div>
   </form>
 )

@@ -5,12 +5,14 @@ interface ButtonProp {
   value: string
   type?: "default" | "outline" | "disabled" | "outlineLachs"
   width?: "default" | "regular"
+  buttonType?: "button" | "submit" | "reset"
   handleClick?: (e: React.FormEvent) => void
 }
 const Button = ({
   value,
   type = "default",
   width = "default",
+  buttonType = "button",
   handleClick,
 }: ButtonProp): ReactElement => {
   const defaultStyles = "btn h-11 rounded-full mx-auto font-inter font-bold"
@@ -30,7 +32,7 @@ const Button = ({
 
   return (
     <div className="align-center flex">
-      <button type="button" onClick={handleClick} className={buttonClasses}>
+      <button type={buttonType} onClick={handleClick} className={buttonClasses}>
         {value}
       </button>
     </div>

@@ -27,3 +27,10 @@ export interface ErrorContextType {
   inputHasErrors: boolean
   setInputHasErrors: React.Dispatch<React.SetStateAction<boolean>>
 }
+
+export interface InputDropdown {
+  data: string[]
+  onSelect: (item: string) => void
+  isOpen: boolean
+  setIsOpen: (isOpen: boolean) => void
+}
