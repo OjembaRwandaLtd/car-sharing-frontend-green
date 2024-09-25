@@ -14,7 +14,7 @@ const AvailableCars = () => {
   if (loading) return <Loading />
   if (hasError) return <NotFound />
 
-  const bookedCarIds = bookingData?.map(booked => booked.carId)
+  const bookedCarIds = bookingData?.map(bookedCarId => bookedCarId.carId)
   const availableCars = carsData?.filter(car => !bookedCarIds?.includes(car.id))
 
   return (
