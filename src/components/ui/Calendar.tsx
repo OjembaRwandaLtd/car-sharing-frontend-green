@@ -25,17 +25,17 @@ export const TimeContext = createContext<Dayjs | null>(dayjs())
 
 const Calendar = ({ setShowCalendar }: Props): ReactElement => {
   const [value, setValue] = useState<Dayjs | null>(dayjs())
-  const [tempValue, setTempValue] = useState<Dayjs | null>(dayjs())
+  // const [tempValue, setTempValue] = useState<Dayjs | null>(dayjs())
 
-  // console.log(value.$d.toString())
+  console.log(value?.format("YYYY-MM-DD HH:mm"))
 
   const handleOkClick = () => {
-    setValue(tempValue)
+    // setValue(tempValue)
     setShowCalendar(false)
   }
 
   const handleCancelClick = () => {
-    setTempValue(value)
+    // setTempValue(value)
     setShowCalendar(false)
   }
 
@@ -46,7 +46,7 @@ const Calendar = ({ setShowCalendar }: Props): ReactElement => {
     </div>
   )
   return (
-    <TimeContext.Provider value={tempValue}>
+    <TimeContext.Provider value={value}>
       <div className="relative mt-4">
         <ThemeProvider theme={theme}>
           <LocalizationProvider dateAdapter={AdapterDayjs}>

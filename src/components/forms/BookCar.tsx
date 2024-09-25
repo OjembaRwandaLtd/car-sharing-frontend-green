@@ -1,22 +1,30 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import Button from "../ui/Button"
-import Calendar from "../ui/Calendar"
+import Calendar, { TimeContext } from "../ui/Calendar"
 import Title from "../ui/Title"
+import { Dayjs } from "dayjs"
 
-// const INITIAL_VALUES = {
-//   startTime: dayjs()?.$d,
-//   endTime: dayjs()?.$d,
-// }
+interface Props {
+  startTime: Dayjs | null
+  endTime: Dayjs | null
+}
 
 const BookCar = () => {
+  const time = useContext(TimeContext)
   const [showCalendar, setShowCalendar] = useState(false)
-  // const [inputValue, setInputValue] = useState(INITIAL_VALUES)
+  const [inputValue, setInputValue] = useState<Props>({
+    startTime: time,
+    endTime: time,
+  })
+  console.log(time?.format("YYYY-MM-DD HH:mm"))
 
   const handleClick = () => {
     setShowCalendar(prev => !prev)
   }
-  // const time = useContext(TimeContext)
-  // console.log(dayjs().$d)
+
+  const handleChange = ({ target: { name } }: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(prevData => ({ ...prevData, [name]: time }))
+  }
 
   return (
     <>
@@ -34,10 +42,10 @@ const BookCar = () => {
                 type="text"
                 id="start-date"
                 placeholder="06/07/2023 01:07 PM"
-                // value={inputValue}
+                value={inputValue.startTime ? inputValue.startTime.format("YYYY-MM-DD HH:mm") : ""}
                 className="w-72"
                 name="start-date"
-                //   onChange={handleChange}
+                onChange={handleChange}
                 onClick={handleClick}
               />
             </div>
@@ -47,11 +55,11 @@ const BookCar = () => {
                 type="text"
                 id="end-date"
                 placeholder="06/07/2023 01:07 PM"
-                //   value={formData.username}
+                value={inputValue.endTime ? inputValue.endTime.format("YYYY-MM-DD HH:mm") : ""}
                 className="w-72"
                 name="end-date"
                 onClick={handleClick}
-                //   onChange={handleChange}s
+                onChange={handleChange}
               />
             </div>
             <div className="mt-20">
