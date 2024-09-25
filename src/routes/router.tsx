@@ -36,7 +36,13 @@ const router = createBrowserRouter([
             path: Routes.CARS.ROOT,
             children: [
               { index: true, element: <CarListing /> },
-              { path: "available", element: <AvailableCars /> },
+              {
+                path: Routes.CARS.AVAILABLE,
+                children: [
+                  { index: true, element: <AvailableCars /> },
+                  { path: ":carId", element: <CarDetails /> },
+                ],
+              },
               { path: "new", element: <AddNewCar /> },
               { path: ":carId", element: <CarDetails /> },
             ],

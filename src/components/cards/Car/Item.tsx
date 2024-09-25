@@ -43,7 +43,7 @@ const Item = ({ car, showBookButton, showDeleteButton, handleDelete }: Props): R
     {showDeleteButton && (
       <Button value="Delete Car" type="outlineLachs" handleClick={handleDelete} />
     )}
-    {ShowBookButton && <Button value="Book Car" />}
+    {showBookButton && <Button value="Book Car" />}
   </div>
 )
 

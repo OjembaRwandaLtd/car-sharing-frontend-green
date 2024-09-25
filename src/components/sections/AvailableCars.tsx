@@ -2,6 +2,7 @@ import { useBookings, useCarDetails } from "../../hooks"
 import NotFound from "../../pages/404"
 import Item from "../cards/Car/Item"
 import Loading from "../ui/Loading"
+import Title from "../ui/Title"
 
 const AvailableCars = () => {
   const { data: bookingData, loading: bookingLoading, error: bookingError } = useBookings()
@@ -16,7 +17,12 @@ const AvailableCars = () => {
   const bookedCarIds = bookingData?.map(book => book.carId)
   const AvailableCars = carsData?.filter(car => !bookedCarIds?.includes(car.id))
 
-  return <>{AvailableCars?.map(car => <Item key={car.id} car={car} ShowBookButton={true} />)}</>
+  return (
+    <>
+      <Title text="Available Cars" backButton />
+      {AvailableCars?.map(car => <Item key={car.id} car={car} showBookButton={true} />)}
+    </>
+  )
 }
 
 export default AvailableCars
