@@ -42,7 +42,7 @@ const Item = ({ car, ShowBookButton, ShowDeleteButton, handleDelete }: Props): R
     </div>
     {ShowDeleteButton && (
       <Button value="Delete Car" type="outlineLachs" handleClick={handleDelete} />
-    )}{" "}
+    )}
     {ShowBookButton && <Button value="Book Car" />}
   </div>
 )
