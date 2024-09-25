@@ -5,9 +5,13 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
 import { StaticDateTimePicker } from "@mui/x-date-pickers/StaticDateTimePicker"
 import Button from "@mui/material/Button"
 import { useTime } from "../../hooks/useCalendarContext"
+import { Dayjs } from "dayjs"
 
 interface Props {
   setShowCalendar: (e: boolean) => void
+  onSelectStart: (newTime: Dayjs | null) => void
+  onSelectEnd: (newTime: Dayjs | null) => void
+  isSelectingStart: boolean
 }
 
 const theme = createTheme({
@@ -21,11 +25,16 @@ const theme = createTheme({
   },
 })
 
-const Calendar = ({ setShowCalendar }: Props): React.ReactElement => {
+const Calendar = ({
+  setShowCalendar,
+  onSelectStart,
+  onSelectEnd,
+  isSelectingStart,
+}: Props): React.ReactElement => {
   const { time, setTime } = useTime()
-  console.log(time?.format("YYYY-MM-DD HH:mm"))
 
   const handleOkClick = () => {
+    isSelectingStart ? onSelectStart(time) : onSelectEnd(time)
     setShowCalendar(false)
   }
 

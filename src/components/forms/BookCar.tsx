@@ -3,10 +3,12 @@ import Button from "../ui/Button"
 import Calendar from "../ui/Calendar"
 import Title from "../ui/Title"
 import { useTime } from "../../hooks/useCalendarContext"
+import { Dayjs } from "dayjs"
 
 const BookCar = () => {
   const { time } = useTime()
   const [showCalendar, setShowCalendar] = useState(false)
+  // const [setStart, setSelectStart] = useState(false)
   const [inputValue, setInputValue] = useState({
     startTime: time,
     endTime: time,
@@ -16,15 +18,23 @@ const BookCar = () => {
     setShowCalendar(prev => !prev)
   }
 
-  const handleChange = ({ target: { name } }: React.ChangeEvent<HTMLInputElement>) => {
+  const handleDateChange = (name: string, newTime: Dayjs | null) => {
+    setInputValue(prevData => ({ ...prevData, [name]: newTime }))
+  }
+
+  const handleInputChange = ({ target: { name } }: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(prevData => ({ ...prevData, [name]: time }))
-    console.log(time?.format("YYYY-MM-DD HH:mm"))
   }
 
   return (
     <>
       {showCalendar ? (
-        <Calendar setShowCalendar={setShowCalendar} />
+        <Calendar
+          setShowCalendar={setShowCalendar}
+          onSelectStart={newTime => handleDateChange("startTime", newTime)}
+          onSelectEnd={newTime => handleDateChange("endTime", newTime)}
+          isSelectingStart
+        />
       ) : (
         <section>
           <Title text="BOOK CAR" />
@@ -36,11 +46,11 @@ const BookCar = () => {
               <input
                 type="text"
                 id="start-date"
-                placeholder="06/07/2023 01:07 PM"
+                placeholder="YYYY-MM-DD HH:mm"
                 value={inputValue.startTime ? inputValue.startTime.format("YYYY-MM-DD HH:mm") : ""}
                 className="w-72"
                 name="startTime"
-                onInput={handleChange}
+                onInput={handleInputChange}
                 onClick={handleClick}
               />
             </div>
@@ -51,12 +61,12 @@ const BookCar = () => {
               <input
                 type="text"
                 id="end-date"
-                placeholder="06/07/2023 01:07 PM"
+                placeholder="YYYY-MM-DD HH:mm"
                 value={inputValue.endTime ? inputValue.endTime.format("YYYY-MM-DD HH:mm") : ""}
                 className="w-72"
                 name="endTime"
                 onClick={handleClick}
-                onChange={handleChange}
+                onChange={handleInputChange}
               />
             </div>
             <div className="mt-20">
