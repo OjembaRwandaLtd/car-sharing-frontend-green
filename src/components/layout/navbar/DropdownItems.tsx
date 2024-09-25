@@ -13,9 +13,7 @@ import DropdownItem from "../../ui/Dropdown/item"
 const DropdownItems = () => {
   const navigate = useNavigate()
   const handleLogout = () => {
-    const keys = ["token", "userId"]
-    keys.forEach(key => localStorage.removeItem(key))
-
+    localStorage.removeItem("token")
     navigate(Routes.LOGIN.LANDING)
   }
   return (
