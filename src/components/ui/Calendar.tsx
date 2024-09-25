@@ -43,7 +43,6 @@ const Calendar = ({ setShowCalendar }: Props): ReactElement => {
     <div className=" absolute bottom-0 right-0">
       <Button onClick={handleCancelClick}>Cancel</Button>
       <Button onClick={handleOkClick}>OK</Button>
-      {/* Customize other buttons (Clear, Today) if needed */}
     </div>
   )
   return (
@@ -55,7 +54,7 @@ const Calendar = ({ setShowCalendar }: Props): ReactElement => {
               value={value}
               onChange={(newValue: Dayjs | null) => setValue(newValue)}
               slots={{
-                actionBar: CustomBar, // Use the "slots" prop to inject custom ActionBar
+                actionBar: CustomBar,
               }}
             />
           </LocalizationProvider>

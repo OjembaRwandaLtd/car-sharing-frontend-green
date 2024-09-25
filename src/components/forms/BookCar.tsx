@@ -41,7 +41,6 @@ const BookCar = () => {
                 onClick={handleClick}
               />
             </div>
-            {/* {showCalendar && <Calendar />} */}
             <label className="font-inter text-sm text-white"> End date</label>
             <div className="input">
               <input
