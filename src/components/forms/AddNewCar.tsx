@@ -1,5 +1,5 @@
 import { INITIAL_FORM_VALUES, formFieldsData } from "../../util/newCarData"
-import InputField from "../ui/InputField"
+import InputField from "../ui/inputField"
 import { useCarDetails, useCarTypes } from "../../hooks"
 import Loading from "../ui/Loading"
 import NotFound from "../../pages/404"

@@ -1,38 +1,8 @@
 import React, { useState, useEffect, useRef } from "react"
 import classNames from "classnames"
-import { InputDropdown, InputFieldProps } from "../../util/props/inputField"
-import { useErrorContext } from "../sections/AddCar"
-import { ChevronDownIcon } from "../../assets"
-
-const Dropdown = ({ data, onSelect, isDropdownOpen, setIsDropdownOpen }: InputDropdown) => (
-  <>
-    <button
-      onClick={() => {
-        setIsDropdownOpen(!isDropdownOpen)
-      }}
-      className="dropdown-toggle bg-red-40 absolute right-0 top-0 p-2"
-    >
-      <ChevronDownIcon className="mr-2 scale-150 text-white" />
-    </button>
-    {isDropdownOpen && (
-      <ul className="input-dropdown menu">
-        {data.map(item => (
-          <li
-            key={item}
-            onClick={e => {
-              e.preventDefault()
-              onSelect(item)
-              setIsDropdownOpen(!isDropdownOpen)
-            }}
-            className="cursor-pointer p-2"
-          >
-            {item}
-          </li>
-        ))}
-      </ul>
-    )}
-  </>
-)
+import { InputFieldProps } from "../../../util/props/inputField"
+import { useErrorContext } from "../../sections/AddCar"
+import Dropdown from "./Dropdown"
 
 const InputField: React.FC<InputFieldProps> = ({
   type = "text",
@@ -106,7 +76,7 @@ const InputField: React.FC<InputFieldProps> = ({
                 ? null
                 : setTouched(true)
             }
-            value={dropdownData ? dropdownData[0] : value}
+            value={value}
             type={type}
             name={name}
             placeholder={placeholder}
