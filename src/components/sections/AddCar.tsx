@@ -3,8 +3,9 @@ import { createContext, ReactElement, useContext, useState } from "react"
 import { ErrorContextType } from "../../util/props/inputField"
 import { INITIAL_FORM_VALUES } from "../../util/newCarData"
 import { useCarTypes } from "../../hooks"
-import NewCarForm from "../forms/NewCar"
+import NewCarForm from "../forms/AddNewCar"
 import { apiPost } from "../../api"
+import { NewCarData } from "../../util/props/newCar"
 
 export const useErrorContext = () => {
   const context = useContext(ErrorContext)
@@ -28,33 +29,38 @@ const AddNewCarSection = (): ReactElement => {
   const handleFormDataChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
   }
-
-  const handleSubmit = async () => {
+  const validateForm = () => {
     setIsSubmitting(true)
-    try {
-      if (Object.entries(form).some(el => el[1] === "" && el[0] !== "additional_information")) {
-        setIsSubmitting(false)
-        return notify("All fields are required!", "error")
-      }
-      if (inputHasErrors) return notify("Form has errors", "error")
-      setInputHasErrors(false)
-      const carTypeId = cartypes[0]?.data?.filter(el => el.name === form.type)[0].id
+    if (Object.entries(form).some(el => el[1] === "" && el[0] !== "additional_information")) {
+      setIsSubmitting(false)
+      return notify("All fields are required!", "error")
+    }
+    if (inputHasErrors) {
+      setIsSubmitting(false)
+      return notify("Form has errors", "error")
+    }
+    setInputHasErrors(false)
+    const carTypeId = cartypes[0]?.data?.filter(el => el.name === form.type)[0].id
+    const data = {
+      carTypeId,
+      name: form.name,
+      fuelType: form.fuel_type,
+      licensePlate: form.license_plate,
+      info: form.additional_information,
+      horsepower: Number(form.horse_power),
+    }
+    submitForm(data)
+  }
 
-      const response = await apiPost("cars", {
-        carTypeId,
-        name: form.name,
-        fuelType: form.fuel_type,
-        licensePlate: form.license_plate,
-        info: form.additional_information,
-        horsepower: Number(form.horse_power),
-      })
+  const submitForm = async (data: NewCarData) => {
+    try {
+      const response = await apiPost("cars", data)
       if (response.status === 201) {
         notify("Car added successfully")
         setForm(INITIAL_FORM_VALUES)
       }
     } catch (error) {
-      if (error instanceof Error) notify(error.message, "error")
-      else notify("Failed to add car.", "error")
+      if (error instanceof Error) notify(`Car with given plate exists!`, "error")
     } finally {
       setIsSubmitting(false)
     }
@@ -64,7 +70,7 @@ const AddNewCarSection = (): ReactElement => {
       <NewCarForm
         form={form}
         setForm={setForm}
-        handleSubmit={handleSubmit}
+        handleSubmit={validateForm}
         handleFormDataChange={handleFormDataChange}
         isSubmitting={isSubmitting}
       />
