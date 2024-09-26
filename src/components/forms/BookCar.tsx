@@ -6,7 +6,7 @@ import { useState } from "react"
 
 const BookCar = () => {
   const [startDate, setStartDate] = useState<Dayjs | null>(dayjs())
-  const [endDate, setEndDate] = useState<Dayjs | null>(dayjs())
+  const [endDate, setEndDate] = useState<Dayjs | null>(dayjs().add(1, "day"))
 
   return (
     <>

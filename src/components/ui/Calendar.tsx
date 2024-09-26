@@ -1,4 +1,4 @@
-import dayjs, { Dayjs } from "dayjs"
+import { Dayjs } from "dayjs"
 import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo"
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider"
@@ -16,6 +16,7 @@ export default function Calendar({ label, startDate, endDate, setEndDate, setSta
   const pickerStyles = {
     "& .MuiInputBase-root": {
       color: "white",
+      paddingLeft: "10px",
     },
     "& .MuiOutlinedInput-notchedOutline": {
       border: "none",
@@ -38,9 +39,10 @@ export default function Calendar({ label, startDate, endDate, setEndDate, setSta
         >
           <DemoItem label={label}>
             <MobileDateTimePicker
-              defaultValue={dayjs()}
+              defaultValue={startDate || endDate}
               sx={pickerStyles}
               onChange={e => handleInputChange(e)}
+              minDate={startDate || endDate || undefined}
               className={"rounded-full bg-primary-200"}
             />
           </DemoItem>
