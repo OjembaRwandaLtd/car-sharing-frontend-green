@@ -1,10 +1,18 @@
-import dayjs from "dayjs"
+import dayjs, { Dayjs } from "dayjs"
 import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo"
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider"
 import { MobileDateTimePicker } from "@mui/x-date-pickers/MobileDateTimePicker"
 
-export default function Calendar({ label }: { label: string }) {
+interface Props {
+  label: string
+  startDate?: Dayjs | null
+  setStartDate?: React.Dispatch<React.SetStateAction<Dayjs | null>>
+  endDate?: Dayjs | null
+  setEndDate?: React.Dispatch<React.SetStateAction<Dayjs | null>>
+}
+
+export default function Calendar({ label, startDate, endDate, setEndDate, setStartDate }: Props) {
   const pickerStyles = {
     "& .MuiInputBase-root": {
       color: "white",
@@ -12,6 +20,10 @@ export default function Calendar({ label }: { label: string }) {
     "& .MuiOutlinedInput-notchedOutline": {
       border: "none",
     },
+  }
+  const handleInputChange = (date: Dayjs | null) => {
+    if (startDate && setStartDate) setStartDate(date)
+    else if (endDate && setEndDate) setEndDate(date)
   }
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -26,8 +38,9 @@ export default function Calendar({ label }: { label: string }) {
         >
           <DemoItem label={label}>
             <MobileDateTimePicker
-              defaultValue={dayjs("2022-04-17T15:30")}
+              defaultValue={dayjs()}
               sx={pickerStyles}
+              onChange={e => handleInputChange(e)}
               className={"rounded-full bg-primary-200"}
             />
           </DemoItem>
