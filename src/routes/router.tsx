@@ -13,7 +13,6 @@ import Landing from "../pages/login/landing"
 import LogIn from "../pages/login"
 import ProtectedRoutes from "./protected"
 import OwnCars from "../pages/cars/own"
-import AvailableCars from "../components/sections/AvailableCars"
 
 const router = createBrowserRouter([
   {
@@ -36,13 +35,6 @@ const router = createBrowserRouter([
             path: Routes.CARS.ROOT,
             children: [
               { index: true, element: <CarListing /> },
-              {
-                path: Routes.CARS.AVAILABLE,
-                children: [
-                  { index: true, element: <AvailableCars /> },
-                  { path: ":carId", element: <CarDetails /> },
-                ],
-              },
               { path: "new", element: <AddNewCar /> },
               { path: ":carId", element: <CarDetails /> },
             ],
