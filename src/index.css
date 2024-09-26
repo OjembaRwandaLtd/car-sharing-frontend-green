@@ -21,6 +21,3 @@ input {
 .large-screen-layout {
   @apply md:absolute md:left-1/2 md:-translate-x-1/2 md:mt-20;
 }
-.calendar-input {
-  @apply text-white font-bold rounded-full border border-red-700;
-}
