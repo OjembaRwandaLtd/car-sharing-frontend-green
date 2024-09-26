@@ -34,3 +34,11 @@ export interface Car {
   carName: string
   carOwner: string
 }
+
+export type NewCarData = {
+  carTypeId: number | undefined
+  name: string
+  licensePlate: string
+  info: string
+  horsepower: number
+}
