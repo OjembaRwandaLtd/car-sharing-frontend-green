@@ -1,5 +1,5 @@
 import { ReactElement } from "react"
-import { CalendarIcon, TimeIcon } from "../../../assets"
+import { CalendarIcon, IconWithLabel, TimeIcon } from "../../../assets"
 import useFormatDate from "../../../hooks/useFormatDate"
 
 interface bookingProps {
@@ -21,38 +21,24 @@ const Bookings = ({ car, booking }: bookingProps): ReactElement => {
 
   return (
     <div>
-      <div>
-        <div className="">
-          <img src={car.carImage} alt={car.carName} />
-        </div>
-        <div className="text-white">
-          <h2>{car.carName}</h2>
-          <p>
-            Requested by <span>{booking.renter}</span>
-          </p>
-          <div className="flex justify-between">
-            <div>
-              <span>from</span>
-              <p>
-                <CalendarIcon />
-                <span>{startDate}</span>
-              </p>
-              <p>
-                <TimeIcon />
-                <span>{startTime}</span>
-              </p>
-            </div>
-            <div>
-              <span>to</span>
-              <p>
-                <CalendarIcon />
-                <span>{endDate}</span>
-              </p>
-              <p>
-                <TimeIcon />
-                <span>{endTime}</span>
-              </p>
-            </div>
+      <div className="mx-auto w-72 scale-105">
+        <img src={car.carImage} alt={car.carName} />
+      </div>
+      <div className="text-white">
+        <h2 className="text-2xl">{car.carName}</h2>
+        <p className="py-2 text-lg">
+          Requested by <span>{booking.renter}</span>
+        </p>
+        <div className="flex justify-between">
+          <div>
+            <span className="text-lg">from</span>
+            <IconWithLabel icon={<CalendarIcon />} text={startDate} />
+            <IconWithLabel icon={<TimeIcon />} text={startTime} />
+          </div>
+          <div className="text-lg">
+            <span>to</span>
+            <IconWithLabel icon={<CalendarIcon />} text={endDate} />
+            <IconWithLabel icon={<TimeIcon />} text={endTime} />
           </div>
         </div>
       </div>
