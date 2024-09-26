@@ -16,7 +16,7 @@ input {
   @apply flex items-center gap-2 rounded-full bg-primary-200 px-5 py-6 cursor-pointer;
 }
 .input-dropdown {
-  @apply absolute right-0 z-10 mt-40 w-[80vw]  gap-1 divide-y-[1px] rounded-lg bg-primary-200 p-2 text-white lg:w-[40vw] md:w-[30vw] border border-white;
+  @apply absolute left-0 z-10 ml-2 mt-40 w-[80vw]  gap-1 divide-y-[1px] rounded-lg bg-primary-200 p-2 text-white lg:w-[40vw] md:w-[30vw] border border-white;
 }
 .large-screen-layout {
   @apply md:absolute md:left-1/2 md:-translate-x-1/2 md:mt-20;
