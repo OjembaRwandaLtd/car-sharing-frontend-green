@@ -1,4 +1,4 @@
-import { Dayjs } from "dayjs"
+import dayjs, { Dayjs } from "dayjs"
 import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo"
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider"
@@ -42,7 +42,7 @@ export default function Calendar({ label, startDate, endDate, setEndDate, setSta
               defaultValue={startDate || endDate}
               sx={pickerStyles}
               onChange={e => handleInputChange(e)}
-              minDate={startDate || endDate || undefined}
+              minDate={dayjs() || undefined}
               className={"rounded-full bg-primary-200"}
             />
           </DemoItem>

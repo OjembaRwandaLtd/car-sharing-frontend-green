@@ -9,6 +9,7 @@ const Routes = {
     VIEW: "/cars/:carId",
     NEW: "/cars/new",
     OWN: "/cars/own",
+    AVAILABLE: "/cars/available",
   },
   BOOKINGS: {
     ROOT: "/bookings",
