@@ -25,28 +25,28 @@ type FormField = {
 }
 
 export const formFieldsData: FormField[] = [
-  { title: "Name", placeholder: "e.g. My Nice Moni Car", name: "name" },
+  { title: "Name *", placeholder: "e.g. My Nice Moni Car", name: "name" },
   {
-    title: "Type",
+    title: "Type *",
     placeholder: "e.g. Moni Cooper",
     dropdownData: true,
     name: "type",
   },
   {
-    title: "License Plate",
+    title: "License Plate *",
     placeholder: "e.g. M-XY 123",
     span: true,
     name: "license_plate",
   },
   {
-    title: "Horse Power",
+    title: "Horse Power *",
     placeholder: "110",
     span: true,
     type: "number",
     name: "horse_power",
   },
   {
-    title: "Fuel type",
+    title: "Fuel type *",
     placeholder: "e.g. Gasoline",
     dropdownData: true,
     name: "fuel_type",
