@@ -1,5 +1,11 @@
-import { ReactElement } from "react"
+import AddNewCarSection from "../../components/sections/AddCar"
+import Title from "../../components/ui/Title"
 
-const AddNewCar: React.FC = (): ReactElement => <div>Add new a car here!</div>
+const AddNewCar = () => (
+  <>
+    <Title text="New Car" />
+    <AddNewCarSection />
+  </>
+)
 
 export default AddNewCar
