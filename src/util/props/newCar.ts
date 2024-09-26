@@ -1,4 +1,11 @@
 import { Dispatch, SetStateAction } from "react"
+export type NewCarData = {
+  carTypeId: number | undefined
+  name: string
+  licensePlate: string
+  info: string
+  horsepower: number
+}
 
 export interface NewCarProps {
   form: {
@@ -33,12 +40,4 @@ export interface Car {
   carImage: string
   carName: string
   carOwner: string
-}
-
-export type NewCarData = {
-  carTypeId: number | undefined
-  name: string
-  licensePlate: string
-  info: string
-  horsepower: number
 }
