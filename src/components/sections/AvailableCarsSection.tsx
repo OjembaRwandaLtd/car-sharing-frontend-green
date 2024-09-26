@@ -4,7 +4,7 @@ import Item from "../cards/Car/Item"
 import Loading from "../ui/Loading"
 import Title from "../ui/Title"
 
-const AvailableCars = () => {
+const AvailableCarsSection = () => {
   const { data: bookingData, loading: bookingLoading, error: bookingError } = useBookings()
   const { carsData, isLoading, isError } = useCarDetails()
 
@@ -25,4 +25,4 @@ const AvailableCars = () => {
   )
 }
 
-export default AvailableCars
+export default AvailableCarsSection

@@ -13,7 +13,7 @@ import Landing from "../pages/login/landing"
 import LogIn from "../pages/login"
 import ProtectedRoutes from "./protected"
 import OwnCars from "../pages/cars/own"
-import AvailableCars from "../components/sections/AvailableCars"
+import AvailableCars from "../pages/cars/available"
 
 const router = createBrowserRouter([
   {
