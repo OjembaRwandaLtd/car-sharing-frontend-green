@@ -1,7 +1,6 @@
 import { ReactElement } from "react"
 import { CalendarIcon, IconWithLabel, TimeIcon } from "../../../assets"
 import useFormatDate from "../../../hooks/useFormatDate"
-import Button from "../../ui/Button"
 
 interface bookingProps {
   car: {
@@ -31,7 +30,7 @@ const Bookings = ({ car, booking }: bookingProps): ReactElement => {
           Requested by <span>{booking.renter}</span>
         </p>
         <div className="mt-7 flex gap-9 font-light text-secondary-200">
-          <div className="">
+          <div>
             <span className="mb- text-lg">from</span>
             <IconWithLabel icon={<CalendarIcon />} text={startDate} light />
             <IconWithLabel icon={<TimeIcon />} text={startTime} light />
@@ -43,11 +42,6 @@ const Bookings = ({ car, booking }: bookingProps): ReactElement => {
           </div>
         </div>
       </div>
-      <div className="mb-10 mt-7 space-y-3">
-        <Button value="Accept" />
-        <Button type="outline" value="Decline" />
-      </div>
-      <hr />
     </div>
   )
 }

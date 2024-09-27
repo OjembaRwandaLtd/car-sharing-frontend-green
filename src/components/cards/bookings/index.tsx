@@ -4,8 +4,13 @@ import { useLoggedInUserContext } from "../../layout"
 import Loading from "../../ui/Loading"
 import NotFound from "../../../pages/404"
 import Bookings from "./item"
+import Button from "../../ui/Button"
 
-const ManageBookings = (): ReactElement => {
+interface buttonProp {
+  button?: boolean
+}
+
+const ManageBookings = ({ button }: buttonProp): ReactElement => {
   const { data, error, loading } = useBookings()
   const { carsData, isLoading, isError } = useCarDetails()
   const { loggedInUserId } = useLoggedInUserContext()
@@ -19,15 +24,26 @@ const ManageBookings = (): ReactElement => {
   return (
     <>
       {bookings?.map(booking => (
-        <Bookings
-          key={booking.id}
-          car={cars?.find(car => car.id === booking.carId) ?? { id: 0, carImage: "", carName: "" }}
-          booking={{
-            renter: booking.renter.name,
-            startDate: booking.startDate.toString(),
-            endDate: booking.endDate.toString(),
-          }}
-        />
+        <>
+          <Bookings
+            key={booking.id}
+            car={
+              cars?.find(car => car.id === booking.carId) ?? { id: 0, carImage: "", carName: "" }
+            }
+            booking={{
+              renter: booking.renter.name,
+              startDate: booking.startDate.toString(),
+              endDate: booking.endDate.toString(),
+            }}
+          />
+          {button && (
+            <div className="mb-10 mt-7 space-y-3">
+              <Button value="Accept" />
+              <Button type="outline" value="Decline" />
+            </div>
+          )}
+          <hr />
+        </>
       ))}
     </>
   )
