@@ -1,6 +1,7 @@
 import { ReactElement } from "react"
 import { CalendarIcon, IconWithLabel, TimeIcon } from "../../../assets"
 import useFormatDate from "../../../hooks/useFormatDate"
+import Button from "../../ui/Button"
 
 interface bookingProps {
   car: {
@@ -20,28 +21,33 @@ const Bookings = ({ car, booking }: bookingProps): ReactElement => {
   const { date: endDate, time: endTime } = useFormatDate(booking.endDate)
 
   return (
-    <div>
-      <div className="mx-auto w-72 scale-105">
+    <div className="mb-">
+      <div className="mx-auto w-52 scale-105">
         <img src={car.carImage} alt={car.carName} />
       </div>
-      <div className="text-white">
+      <div className="ml-5 text-white">
         <h2 className="text-2xl">{car.carName}</h2>
-        <p className="py-2 text-lg">
+        <p className="text-lg">
           Requested by <span>{booking.renter}</span>
         </p>
-        <div className="flex justify-between">
-          <div>
-            <span className="text-lg">from</span>
-            <IconWithLabel icon={<CalendarIcon />} text={startDate} />
-            <IconWithLabel icon={<TimeIcon />} text={startTime} />
+        <div className="mt-7 flex gap-9 font-light text-secondary-200">
+          <div className="">
+            <span className="mb- text-lg">from</span>
+            <IconWithLabel icon={<CalendarIcon />} text={startDate} light />
+            <IconWithLabel icon={<TimeIcon />} text={startTime} light />
           </div>
           <div className="text-lg">
             <span>to</span>
-            <IconWithLabel icon={<CalendarIcon />} text={endDate} />
-            <IconWithLabel icon={<TimeIcon />} text={endTime} />
+            <IconWithLabel icon={<CalendarIcon />} text={endDate} light />
+            <IconWithLabel icon={<TimeIcon />} text={endTime} light />
           </div>
         </div>
       </div>
+      <div className="mb-10 mt-7 space-y-3">
+        <Button value="Accept" />
+        <Button type="outline" value="Decline" />
+      </div>
+      <hr />
     </div>
   )
 }

@@ -1,36 +1,24 @@
-import { ReactElement } from "react"
-import Bookings from "../../components/cards/bookings/item"
-import { useBookings, useCarDetails } from "../../hooks"
-import { useLoggedInUserContext } from "../../components/layout"
-import Loading from "../../components/ui/Loading"
-import NotFound from "../404"
+// import { useState } from "react"
+import ManageBookings from "../../components/cards/bookings"
+import Title from "../../components/ui/Title"
 
-const ManageBookings = (): ReactElement => {
-  const { data, error, loading } = useBookings()
-  const { carsData, isLoading, isError } = useCarDetails()
-  const { loggedInUserId } = useLoggedInUserContext()
+const manage = () => (
+  // const [isAccepted, setIsAccepted] = useState(true)
 
-  if (loading || isLoading) return <Loading />
-  if (error || isError) return <NotFound />
+  // const handleAccept = () => {
+  //   setIsAccepted(prev => !prev)
+  // }
+  <>
+    <div className="truncate">
+      <Title text="MANAGE BOOKINGS" backButton />
+    </div>
+    <ManageBookings />
+    {/* {isAccepted ? (
+        <span>Booking Accepted</span>
+      ) : (
+        <Button value="Accept" handleClick={handleAccept} />
+      )} */}
+  </>
+)
 
-  const bookings = data?.filter(booking => booking.car.ownerId === Number(loggedInUserId))
-  const cars = carsData?.filter(car => car.ownerId === Number(loggedInUserId))
-
-  return (
-    <>
-      {bookings?.map(booking => (
-        <Bookings
-          key={booking.id}
-          car={cars?.find(car => car.id === booking.carId) ?? { id: 0, carImage: "", carName: "" }}
-          booking={{
-            renter: booking.renter.name,
-            startDate: booking.startDate.toString(),
-            endDate: booking.endDate.toString(),
-          }}
-        />
-      ))}
-    </>
-  )
-}
-
-export default ManageBookings
+export default manage
