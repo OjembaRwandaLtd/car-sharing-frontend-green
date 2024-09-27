@@ -28,7 +28,7 @@ export default function Calendar({ label, startDate, endDate, setEndDate, setSta
   }
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <div className={""}>
+      <div>
         <DemoContainer
           components={[
             "DateTimePicker",
