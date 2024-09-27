@@ -20,7 +20,7 @@ const Bookings = ({ car, booking }: bookingProps): ReactElement => {
   const { date: endDate, time: endTime } = useFormatDate(booking.endDate)
 
   return (
-    <div className="mb-">
+    <>
       <div className="mx-auto w-52 scale-105">
         <img src={car.carImage} alt={car.carName} />
       </div>
@@ -31,7 +31,7 @@ const Bookings = ({ car, booking }: bookingProps): ReactElement => {
         </p>
         <div className="mt-7 flex gap-9 font-light text-secondary-200">
           <div>
-            <span className="mb- text-lg">from</span>
+            <span className="text-lg">from</span>
             <IconWithLabel icon={<CalendarIcon />} text={startDate} light />
             <IconWithLabel icon={<TimeIcon />} text={startTime} light />
           </div>
@@ -42,7 +42,7 @@ const Bookings = ({ car, booking }: bookingProps): ReactElement => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 export default Bookings

@@ -1,7 +1,8 @@
+import { ReactElement } from "react"
 import ManageBookings from "../../components/cards/bookings"
 import Title from "../../components/ui/Title"
 
-const manage = () => (
+const Manage = (): ReactElement => (
   <>
     <div className="truncate">
       <Title text="MANAGE BOOKINGS" backButton />
@@ -10,4 +11,4 @@ const manage = () => (
   </>
 )
 
-export default manage
+export default Manage
