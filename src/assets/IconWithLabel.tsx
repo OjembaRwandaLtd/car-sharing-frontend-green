@@ -7,9 +7,11 @@ interface Prop {
   bold?: boolean
 }
 const IconWithLabel = ({ icon, text, bold }: Prop): React.ReactElement => (
-  <div className="flex items-center gap-2 pb-2 font-inter text-sm font-normal">
+  <div className="flex w-full items-center gap-2 pb-2 font-inter text-sm font-normal">
     {icon}
-    <p className={classNames("text-lg text line-clamp-1", { "font-bold": bold })}>{text}</p>
+    <p className={classNames("text-lg text line-clamp-1 text-ellipsis ", { "font-bold": bold })}>
+      {text}
+    </p>
   </div>
 )
 
