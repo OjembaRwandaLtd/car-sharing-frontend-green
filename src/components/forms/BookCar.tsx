@@ -1,10 +1,10 @@
 import dayjs, { Dayjs } from "dayjs"
 import Button from "../ui/Button"
-import Calendar from "../ui/Calendar"
 import Title from "../ui/Title"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import Routes from "../../routes"
+import Calendar from "../ui/Calendar"
 
 const BookCar = () => {
   const navigate = useNavigate()

@@ -1,6 +1,7 @@
 import { ReactElement } from "react"
 import { CalendarIcon, IconWithLabel, TimeIcon } from "../../../assets"
 import useFormatDate from "../../../hooks/useFormatDate"
+import { BookingState } from "../../../util/api"
 
 interface bookingProps {
   car: {
@@ -9,26 +10,45 @@ interface bookingProps {
     carName: string
   }
   booking: {
-    renter: string
+    renter?: string
+    owner?: string
     startDate: string
     endDate: string
+    state?: BookingState
   }
+  isOwnerView: boolean
 }
 
-const Bookings = ({ car, booking }: bookingProps): ReactElement => {
+const BookingsItem = ({ car, booking, isOwnerView }: bookingProps): ReactElement => {
   const { date: startDate, time: startTime } = useFormatDate(booking.startDate)
   const { date: endDate, time: endTime } = useFormatDate(booking.endDate)
+
+  const displayText = isOwnerView ? `Requested by ${booking.renter}` : `Owned by ${booking.owner}`
+  const displayMessage =
+    booking.state === "PENDING" ? (
+      <p className="text-Lachs  ">Booking request pending.</p>
+    ) : booking.state === "ACCEPTED" ? (
+      <div className="flex flex-col gap-2">
+        <p className="text-mustard-800">Booking accepted</p>
+        <span className="flex flex-col text-Lachs">
+          You can not pick up the car
+          <span>before the agreed time.</span>
+        </span>
+      </div>
+    ) : booking.state === "DECLINED" ? (
+      <p className="text-mustard-800">Booking was declined.</p>
+    ) : (
+      <p className="text-mustard-800">Car was returned.</p>
+    )
 
   return (
     <>
       <div className="mx-auto w-52 scale-105">
         <img src={car.carImage} alt={car.carName} />
       </div>
-      <div className="ml-5 text-white">
+      <div className="mx-5 text-white">
         <h2 className="text-2xl">{car.carName}</h2>
-        <p className="text-lg">
-          Requested by <span>{booking.renter}</span>
-        </p>
+        <p className="text-lg">{displayText}</p>
         <div className="mt-7 flex gap-9 font-light text-secondary-200">
           <div>
             <span className="text-lg">from</span>
@@ -41,8 +61,9 @@ const Bookings = ({ car, booking }: bookingProps): ReactElement => {
             <IconWithLabel icon={<TimeIcon />} text={endTime} light />
           </div>
         </div>
+        <div className="mb-8 font-inter text-sm">{booking.state && displayMessage}</div>
       </div>
     </>
   )
 }
-export default Bookings
+export default BookingsItem

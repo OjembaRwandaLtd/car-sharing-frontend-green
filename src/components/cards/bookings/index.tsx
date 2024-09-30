@@ -1,52 +1,65 @@
-import { ReactElement } from "react"
-import { useBookings, useCarDetails } from "../../../hooks"
+import { ReactElement, useEffect, useState } from "react"
 import { useLoggedInUserContext } from "../../layout"
+import { BookingDto } from "../../../util/api"
+import { apiGet } from "../../../api"
+import Title from "../../ui/Title"
+import BookingsItem from "./item"
+import { useCarDetails } from "../../../hooks"
 import Loading from "../../ui/Loading"
 import NotFound from "../../../pages/404"
-import Bookings from "./item"
-import Button from "../../ui/Button"
 
-interface buttonProp {
-  button?: boolean
-}
-
-const ManageBookings = ({ button }: buttonProp): ReactElement => {
-  const { data, error, loading } = useBookings()
-  const { carsData, isLoading, isError } = useCarDetails()
+const Bookings = (): ReactElement => {
   const { loggedInUserId } = useLoggedInUserContext()
+  const [myBookings, setMyBookings] = useState<BookingDto[]>([])
+  const { carsData, isLoading, isError } = useCarDetails()
 
-  if (loading || isLoading) return <Loading />
-  if (error || isError) return <NotFound />
+  useEffect(() => {
+    const fetchMyBookings = async () => {
+      try {
+        const data = await apiGet("bookings")
+        const myBookings = data.data.filter(
+          (booking: BookingDto) =>
+            booking.renterId === loggedInUserId && booking.state !== "PICKED_UP",
+        )
+        setMyBookings(myBookings)
+      } catch (error) {
+        console.error("Error fetching bookings:", error)
+      }
+    }
+    fetchMyBookings()
+  }, [loggedInUserId])
 
-  const bookings = data?.filter(booking => booking.car.ownerId === Number(loggedInUserId))
-  const cars = carsData?.filter(car => car.ownerId === Number(loggedInUserId))
+  if (isLoading) return <Loading />
+  if (isError) return <NotFound />
 
   return (
     <>
-      {bookings?.map(booking => (
-        <>
-          <Bookings
-            key={booking.id}
-            car={
-              cars?.find(car => car.id === booking.carId) ?? { id: 0, carImage: "", carName: "" }
-            }
-            booking={{
-              renter: booking.renter.name,
-              startDate: booking.startDate.toString(),
-              endDate: booking.endDate.toString(),
-            }}
-          />
-          {button && (
-            <div className="mb-10 mt-7 space-y-3">
-              <Button value="Accept" />
-              <Button type="outline" value="Decline" />
-            </div>
-          )}
-          <hr />
-        </>
-      ))}
+      <Title text="My Bookings" />
+      {myBookings.length &&
+        myBookings.map(booking => (
+          <>
+            <BookingsItem
+              key={booking.id}
+              isOwnerView={false}
+              car={
+                carsData?.find(car => car.id === booking.carId) ?? {
+                  id: 0,
+                  carImage: "",
+                  carName: "",
+                }
+              }
+              booking={{
+                owner: carsData?.find(car => car.id === booking.carId)?.carOwner,
+                startDate: booking.startDate.toString(),
+                endDate: booking.endDate.toString(),
+                state: booking.state,
+              }}
+            />
+            <hr />
+          </>
+        ))}
     </>
   )
 }
 
-export default ManageBookings
+export default Bookings
