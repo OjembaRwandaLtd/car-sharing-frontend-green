@@ -35,29 +35,29 @@ const Bookings = (): ReactElement => {
   return (
     <>
       <Title text="My Bookings" />
-      {myBookings.length &&
-        myBookings.map(booking => (
-          <>
-            <BookingsItem
-              key={booking.id}
-              isOwnerView={false}
-              car={
-                carsData?.find(car => car.id === booking.carId) ?? {
-                  id: 0,
-                  carImage: "",
-                  carName: "",
+      <div className="divide-y">
+        {myBookings.length > 0 &&
+          myBookings.map(booking => (
+            <div key={booking.id}>
+              <BookingsItem
+                isOwnerView={false}
+                car={
+                  carsData?.find(car => car.id === booking.carId) ?? {
+                    id: 0,
+                    carImage: "",
+                    carName: "",
+                  }
                 }
-              }
-              booking={{
-                owner: carsData?.find(car => car.id === booking.carId)?.carOwner,
-                startDate: booking.startDate.toString(),
-                endDate: booking.endDate.toString(),
-                state: booking.state,
-              }}
-            />
-            <hr />
-          </>
-        ))}
+                booking={{
+                  owner: carsData?.find(car => car.id === booking.carId)?.carOwner,
+                  startDate: booking.startDate.toString(),
+                  endDate: booking.endDate.toString(),
+                  state: booking.state,
+                }}
+              />
+            </div>
+          ))}
+      </div>
     </>
   )
 }

@@ -12,6 +12,7 @@ export interface BookingProps {
     startDate: string
     endDate: string
     state?: BookingState
+    id?: number
   }
   isOwnerView: boolean
   button?: boolean
