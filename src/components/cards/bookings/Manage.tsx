@@ -10,12 +10,28 @@ interface buttonProp {
   button?: boolean
 }
 
+interface Booking {
+  id: number
+  carId: number
+  car: {
+    ownerId: number
+  }
+  renter: {
+    name: string
+  }
+  startDate: Date
+  endDate: Date
+  state?: string
+}
+
 const ManageBookings = ({ button }: buttonProp): ReactElement => {
   const { data, error, loading } = useBookings()
   const { carsData, isLoading, isError } = useCarDetails()
   const { loggedInUserId } = useLoggedInUserContext()
 
-  const bookings = data?.filter(booking => booking.car.ownerId === Number(loggedInUserId))
+  const bookings = data?.filter(
+    (booking: Booking) => booking.car.ownerId === Number(loggedInUserId),
+  )
   const cars = carsData?.filter(car => car.ownerId === Number(loggedInUserId))
 
   if (loading || isLoading) return <Loading />
@@ -23,7 +39,7 @@ const ManageBookings = ({ button }: buttonProp): ReactElement => {
 
   return (
     <>
-      {bookings?.map(booking => (
+      {bookings?.map((booking: Booking) => (
         <>
           <BookingsItem
             key={booking.id}
@@ -36,7 +52,7 @@ const ManageBookings = ({ button }: buttonProp): ReactElement => {
               endDate: booking.endDate.toString(),
             }}
           />
-          {button && <Status bookingId={booking.id} state={booking?.state} />}
+          {button && <Status bookingId={booking.id} state={booking.state} />}
           <hr />
         </>
       ))}
