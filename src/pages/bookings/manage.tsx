@@ -1,5 +1,14 @@
 import { ReactElement } from "react"
+import ManageBookings from "../../components/cards/bookings"
+import Title from "../../components/ui/Title"
 
-const ManageBookings = (): ReactElement => <div>Manage Bookings here!</div>
+const Manage = (): ReactElement => (
+  <>
+    <div className="truncate">
+      <Title text="MANAGE BOOKINGS" backButton />
+    </div>
+    <ManageBookings button />
+  </>
+)
 
-export default ManageBookings
+export default Manage
