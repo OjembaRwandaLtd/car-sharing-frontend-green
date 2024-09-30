@@ -5,6 +5,7 @@ import Loading from "../ui/Loading"
 
 const AvailableCarsSection = () => {
   const { data: bookingData, loading: bookingLoading, error: bookingError } = useBookings()
+
   const { carsData, isLoading, isError } = useCarDetails()
 
   const loading = bookingLoading || isLoading

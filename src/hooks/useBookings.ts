@@ -1,9 +1,10 @@
-import axios from "axios"
 import useAxios from "axios-hooks"
 import { useEffect, useState } from "react"
 import { BookingDto, BookingWithReferences, CarDto, UserDto } from "../util/api"
 import { apiUrl } from "../util/apiUrl"
 import { getAuthToken } from "../util/auth"
+import { getAllUsers } from "../api/user"
+import { getAllCars } from "../api/car"
 
 function useBookingData() {
   const [data, setData] = useState<BookingWithReferences[] | null>(null)
@@ -23,24 +24,15 @@ function useBookingData() {
       setLoading(true)
       setError(null)
 
-      const fetchCarAndUser = async (booking: BookingDto) => {
-        const renterResponse = await axios<UserDto>({
-          url: `${apiUrl}/users/${booking.renterId}`,
-          headers: { Authorization: `Bearer ${token}` },
-        })
-        const renterData = renterResponse.data
+      const filterCarAndUser = async (booking: BookingDto, users: UserDto[], cars: CarDto[]) => {
+        const renterData = users.find(user => user.id === booking.renterId)
+        console.log(cars)
 
-        const carResponse = await axios<CarDto>({
-          url: `${apiUrl}/cars/${booking.carId}`,
-          headers: { Authorization: `Bearer ${token}` },
-        })
-        const carData = carResponse.data
+        const carData = cars.find(car => car.id === booking.carId)
 
-        const userResponse = await axios<UserDto>({
-          url: `${apiUrl}/users/${carData.ownerId}`,
-          headers: { Authorization: `Bearer ${token}` },
-        })
-        const userData = userResponse.data
+        const userData = users.find(user => user.id === carData?.ownerId)
+        // console.log(userData)
+        // console.log(users)
 
         const bookingWithDetails = {
           ...booking,
@@ -56,7 +48,13 @@ function useBookingData() {
 
       const fetchAllData = async () => {
         try {
-          const bookingPromises = bookingsData.map(fetchCarAndUser)
+          const users = await getAllUsers()
+          const cars = await getAllCars()
+
+          const bookingPromises = bookingsData.map(booking =>
+            filterCarAndUser(booking, users, cars),
+          )
+
           const bookingDetails = await Promise.all(bookingPromises)
           setData(bookingDetails)
           setLoading(false)
@@ -65,7 +63,6 @@ function useBookingData() {
           setLoading(false)
         }
       }
-
       fetchAllData()
     } else if (bookingsError) {
       setError(bookingsError)
