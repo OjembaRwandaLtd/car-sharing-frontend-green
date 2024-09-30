@@ -5,11 +5,12 @@ import Item from "../cards/Car/Item"
 import Loading from "../ui/Loading"
 import { apiPost } from "../../api"
 import dayjs from "dayjs"
+import { useState } from "react"
 
 const AvailableCarsSection = () => {
   const location = useLocation()
   const searchParams = new URLSearchParams(location.search)
-
+  const [postingError, setPostingError] = useState(false)
   const { data: bookingData, loading: bookingLoading, error: bookingError } = useBookings()
   const { carsData, isLoading, isError } = useCarDetails()
 
@@ -20,16 +21,14 @@ const AvailableCarsSection = () => {
         startDate: dayjs(searchParams.get("startdate")).toISOString(),
         endDate: dayjs(searchParams.get("enddate")).toISOString(),
       }
-      console.log(data)
-      const response = await apiPost("bookings", JSON.stringify(data))
-      console.log(response)
+      await apiPost("bookings", JSON.stringify(data))
     } catch (error) {
-      console.log(error)
+      setPostingError(true)
     }
   }
 
   const loading = bookingLoading || isLoading
-  const hasError = bookingError || isError
+  const hasError = bookingError || isError || postingError
 
   if (loading) return <Loading />
   if (hasError) return <NotFound />
