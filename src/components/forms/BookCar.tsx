@@ -1,12 +1,12 @@
+import { ReactElement, useState } from "react"
 import dayjs, { Dayjs } from "dayjs"
 import Button from "../ui/Button"
 import Title from "../ui/Title"
-import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import Routes from "../../routes"
 import Calendar from "../ui/Calendar"
 
-const BookCar = () => {
+const BookCar = (): ReactElement => {
   const navigate = useNavigate()
   const [startDate, setStartDate] = useState<Dayjs | null>(dayjs())
   const [endDate, setEndDate] = useState<Dayjs | null>(dayjs().add(1, "day"))
