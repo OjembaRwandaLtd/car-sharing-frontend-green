@@ -1,5 +1,5 @@
 import { ReactElement } from "react"
-import ManageBookings from "../../components/cards/bookings"
+import ManageBookings from "../../components/cards/Bookings/Manage"
 import Title from "../../components/ui/Title"
 
 const Manage = (): ReactElement => (

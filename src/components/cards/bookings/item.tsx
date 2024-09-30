@@ -15,7 +15,7 @@ interface bookingProps {
   }
 }
 
-const Bookings = ({ car, booking }: bookingProps): ReactElement => {
+const BookingsItem = ({ car, booking }: bookingProps): ReactElement => {
   const { date: startDate, time: startTime } = useFormatDate(booking.startDate)
   const { date: endDate, time: endTime } = useFormatDate(booking.endDate)
 
@@ -45,4 +45,4 @@ const Bookings = ({ car, booking }: bookingProps): ReactElement => {
     </>
   )
 }
-export default Bookings
+export default BookingsItem
