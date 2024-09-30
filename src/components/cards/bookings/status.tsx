@@ -2,7 +2,12 @@ import { useState } from "react"
 import Button from "../../ui/Button"
 import { apiPatch } from "../../../api"
 
-const Status = ({ bookingId, state }: { bookingId: number; state: string }) => {
+interface StatusProps {
+  bookingId: number
+  state: string
+}
+
+const Status = ({ bookingId, state }: StatusProps) => {
   const [bookingStatus, setBookingStatus] = useState(state)
 
   const handleBookingStatus = async (status: string) => {
