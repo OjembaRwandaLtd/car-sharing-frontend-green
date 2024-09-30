@@ -2,6 +2,7 @@ import { ReactElement } from "react"
 import { CalendarIcon, IconWithLabel, TimeIcon } from "../../../assets"
 import useFormatDate from "../../../hooks/useFormatDate"
 import { BookingState } from "../../../util/api"
+import Button from "../../ui/Button"
 
 interface bookingProps {
   car: {
@@ -17,9 +18,19 @@ interface bookingProps {
     state?: BookingState
   }
   isOwnerView: boolean
+  button?: boolean
+  buttonText?: string
+  handleClick?: () => void
 }
 
-const BookingsItem = ({ car, booking, isOwnerView }: bookingProps): ReactElement => {
+const BookingsItem = ({
+  car,
+  booking,
+  isOwnerView,
+  button,
+  buttonText,
+  handleClick,
+}: bookingProps): ReactElement => {
   const { date: startDate, time: startTime } = useFormatDate(booking.startDate)
   const { date: endDate, time: endTime } = useFormatDate(booking.endDate)
 
@@ -62,6 +73,7 @@ const BookingsItem = ({ car, booking, isOwnerView }: bookingProps): ReactElement
           </div>
         </div>
         <div className="mb-8 font-inter text-sm">{booking.state && displayMessage}</div>
+        <div>{button && <Button value={buttonText ?? "Pick Up"} handleClick={handleClick} />}</div>
       </div>
     </>
   )
