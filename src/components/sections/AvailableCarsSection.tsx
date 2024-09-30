@@ -1,3 +1,4 @@
+import { ReactElement, useState } from "react"
 import { useLocation } from "react-router-dom"
 import { useBookings, useCarDetails } from "../../hooks"
 import NotFound from "../../pages/404"
@@ -5,9 +6,8 @@ import Item from "../cards/Car/Item"
 import Loading from "../ui/Loading"
 import { apiPost } from "../../api"
 import dayjs from "dayjs"
-import { useState } from "react"
 
-const AvailableCarsSection = () => {
+const AvailableCarsSection = (): ReactElement => {
   const location = useLocation()
   const searchParams = new URLSearchParams(location.search)
   const [postingError, setPostingError] = useState(false)

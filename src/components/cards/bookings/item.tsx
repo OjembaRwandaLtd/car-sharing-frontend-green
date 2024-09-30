@@ -1,27 +1,8 @@
 import { ReactElement } from "react"
 import { CalendarIcon, IconWithLabel, TimeIcon } from "../../../assets"
 import useFormatDate from "../../../hooks/useFormatDate"
-import { BookingState } from "../../../util/api"
 import Button from "../../ui/Button"
-
-interface bookingProps {
-  car: {
-    id: number
-    carImage: string
-    carName: string
-  }
-  booking: {
-    renter?: string
-    owner?: string
-    startDate: string
-    endDate: string
-    state?: BookingState
-  }
-  isOwnerView: boolean
-  button?: boolean
-  buttonText?: string
-  handleClick?: () => void
-}
+import { BookingProps } from "../../../util/props/bookings"
 
 const BookingsItem = ({
   car,
@@ -30,10 +11,9 @@ const BookingsItem = ({
   button,
   buttonText,
   handleClick,
-}: bookingProps): ReactElement => {
+}: BookingProps): ReactElement => {
   const { date: startDate, time: startTime } = useFormatDate(booking.startDate)
   const { date: endDate, time: endTime } = useFormatDate(booking.endDate)
-
   const displayText = isOwnerView ? `Requested by ${booking.renter}` : `Owned by ${booking.owner}`
   const displayMessage =
     booking.state === "PENDING" ? (
