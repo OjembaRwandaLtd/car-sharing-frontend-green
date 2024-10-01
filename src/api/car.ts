@@ -5,6 +5,5 @@ export const getCar = async (id: number) => {
 }
 export const getAllCars = async () => {
   const { data } = await apiGet(`cars`)
-
   return data
 }

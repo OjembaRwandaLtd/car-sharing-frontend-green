@@ -5,6 +5,5 @@ export const getUser = async (id: number) => {
 }
 export const getAllUsers = async () => {
   const { data } = await apiGet(`users/`)
-
   return data
 }
