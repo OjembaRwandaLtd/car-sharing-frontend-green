@@ -17,7 +17,6 @@ const BookingStatus = ({
   endDate,
   bookingId,
 }: BookingStatusProps): ReactElement => {
-  // const [showPickUpButton, setShowPickUpButton] = useState(true)
   dayjs.extend(isBetween)
   const handlePickUp = async () => await apiPatch("bookings", bookingId, { state: "PICKED_UP" })
   const showPickUp = dayjs().isBetween(startDate, endDate) ? (
