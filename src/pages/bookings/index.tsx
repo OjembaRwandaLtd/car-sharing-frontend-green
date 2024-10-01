@@ -1,5 +1,6 @@
 import { ReactElement } from "react"
+import Bookings from "../../components/cards/bookings"
 
-const MyBookings = (): ReactElement => <div>My Bookings!</div>
+const MyBookings = (): ReactElement => <Bookings />
 
 export default MyBookings
