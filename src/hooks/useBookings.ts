@@ -26,13 +26,10 @@ function useBookingData() {
 
       const filterCarAndUser = async (booking: BookingDto, users: UserDto[], cars: CarDto[]) => {
         const renterData = users.find(user => user.id === booking.renterId)
-        console.log(cars)
 
         const carData = cars.find(car => car.id === booking.carId)
 
         const userData = users.find(user => user.id === carData?.ownerId)
-        // console.log(userData)
-        // console.log(users)
 
         const bookingWithDetails = {
           ...booking,
@@ -48,15 +45,13 @@ function useBookingData() {
 
       const fetchAllData = async () => {
         try {
-          const users = await getAllUsers()
-          const cars = await getAllCars()
+          const [users, cars] = await Promise.all([getAllUsers(), getAllCars()])
 
-          const bookingPromises = bookingsData.map(booking =>
+          const bookingPromises = bookingsData.map((booking: BookingDto) =>
             filterCarAndUser(booking, users, cars),
           )
-
           const bookingDetails = await Promise.all(bookingPromises)
-          setData(bookingDetails)
+          setData(bookingDetails as BookingWithReferences[])
           setLoading(false)
         } catch (err) {
           setError(err)
