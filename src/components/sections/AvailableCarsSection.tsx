@@ -12,6 +12,7 @@ const AvailableCarsSection = (): ReactElement => {
   const searchParams = new URLSearchParams(location.search)
   const [postingError, setPostingError] = useState(false)
   const { data: bookingData, loading: bookingLoading, error: bookingError } = useBookings()
+
   const { carsData, isLoading, isError } = useCarDetails()
 
   const handleBooking = async (carId: number) => {
