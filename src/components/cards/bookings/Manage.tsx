@@ -38,11 +38,10 @@ const ManageBookings = ({ button }: buttonProp): ReactElement => {
   if (error || isError) return <NotFound />
 
   return (
-    <>
+    <div className="divide-y">
       {bookings?.map((booking: Booking) => (
-        <>
+        <div key={booking.id}>
           <BookingsItem
-            key={booking.id}
             car={
               cars?.find(car => car.id === booking.carId) ?? { id: 0, carImage: "", carName: "" }
             }
@@ -52,11 +51,10 @@ const ManageBookings = ({ button }: buttonProp): ReactElement => {
               endDate: booking.endDate.toString(),
             }}
           />
-          {button && <Status bookingId={booking.id} state={booking.state} />}
-          <hr />
-        </>
+          {button && <Status bookingId={booking.id} state={booking.state || "PENDING"} />}
+        </div>
       ))}
-    </>
+    </div>
   )
 }
 
