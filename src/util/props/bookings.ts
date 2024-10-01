@@ -15,7 +15,4 @@ export interface BookingProps {
     id?: number
   }
   isOwnerView: boolean
-  button?: boolean
-  buttonText?: string
-  handleClick?: () => void
 }

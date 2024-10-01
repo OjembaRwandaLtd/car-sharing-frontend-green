@@ -1,30 +1,31 @@
 import { ReactElement } from "react"
 import { CalendarIcon, IconWithLabel, TimeIcon } from "../../../assets"
 import useFormatDate from "../../../hooks/useFormatDate"
-import Button from "../../ui/Button"
 import { BookingProps } from "../../../util/props/bookings"
+import dayjs from "dayjs"
+import isBetween from "dayjs/plugin/isBetween"
+import Button from "../../ui/Button"
 
-const BookingsItem = ({
-  car,
-  booking,
-  isOwnerView,
-  button,
-  buttonText,
-  handleClick,
-}: BookingProps): ReactElement => {
+const BookingsItem = ({ car, booking, isOwnerView }: BookingProps): ReactElement => {
+  dayjs.extend(isBetween)
   const { date: startDate, time: startTime } = useFormatDate(booking.startDate)
   const { date: endDate, time: endTime } = useFormatDate(booking.endDate)
   const displayText = isOwnerView ? `Requested by ${booking.renter}` : `Owned by ${booking.owner}`
+  const showPickUp = dayjs().isBetween(dayjs(startDate), dayjs(endDate)) ? (
+    <Button value="Pick up car" />
+  ) : (
+    <span className="flex flex-col text-Lachs">
+      You can not pick up the car
+      <span>before the agreed time.</span>
+    </span>
+  )
   const displayMessage =
     booking.state === "PENDING" ? (
       <p className="text-Lachs  ">Booking request pending.</p>
     ) : booking.state === "ACCEPTED" ? (
       <div className="flex flex-col gap-2">
         <p className="text-mustard-800">Booking accepted</p>
-        <span className="flex flex-col text-Lachs">
-          You can not pick up the car
-          <span>before the agreed time.</span>
-        </span>
+        {showPickUp}
       </div>
     ) : booking.state === "DECLINED" ? (
       <p className="text-mustard-800">Booking was declined.</p>
@@ -53,7 +54,6 @@ const BookingsItem = ({
           </div>
         </div>
         <div className="mb-8 font-inter text-sm">{booking.state && displayMessage}</div>
-        <div>{button && <Button value={buttonText ?? "Pick Up"} handleClick={handleClick} />}</div>
       </div>
     </>
   )
