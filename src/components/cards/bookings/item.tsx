@@ -3,35 +3,12 @@ import { CalendarIcon, IconWithLabel, TimeIcon } from "../../../assets"
 import useFormatDate from "../../../hooks/useFormatDate"
 import { BookingProps } from "../../../util/props/bookings"
 import dayjs from "dayjs"
-import isBetween from "dayjs/plugin/isBetween"
-import Button from "../../ui/Button"
+import BookingStatus from "./BookingStatus"
 
 const BookingsItem = ({ car, booking, isOwnerView }: BookingProps): ReactElement => {
-  dayjs.extend(isBetween)
   const { date: startDate, time: startTime } = useFormatDate(booking.startDate)
   const { date: endDate, time: endTime } = useFormatDate(booking.endDate)
   const displayText = isOwnerView ? `Requested by ${booking.renter}` : `Owned by ${booking.owner}`
-  const showPickUp = dayjs().isBetween(dayjs(startDate), dayjs(endDate)) ? (
-    <Button value="Pick up car" />
-  ) : (
-    <span className="flex flex-col text-Lachs">
-      You can not pick up the car
-      <span>before the agreed time.</span>
-    </span>
-  )
-  const displayMessage =
-    booking.state === "PENDING" ? (
-      <p className="text-Lachs  ">Booking request pending.</p>
-    ) : booking.state === "ACCEPTED" ? (
-      <div className="flex flex-col gap-2">
-        <p className="text-mustard-800">Booking accepted</p>
-        {showPickUp}
-      </div>
-    ) : booking.state === "DECLINED" ? (
-      <p className="text-mustard-800">Booking was declined.</p>
-    ) : (
-      <p className="text-mustard-800">Car was returned.</p>
-    )
 
   return (
     <>
@@ -53,7 +30,16 @@ const BookingsItem = ({ car, booking, isOwnerView }: BookingProps): ReactElement
             <IconWithLabel icon={<TimeIcon />} text={endTime} light />
           </div>
         </div>
-        <div className="mb-8 font-inter text-sm">{booking.state && displayMessage}</div>
+        <div>
+          {booking.state && (
+            <BookingStatus
+              state={booking.state}
+              startDate={dayjs(startDate)}
+              endDate={dayjs(endDate)}
+              bookingId={booking.id ?? 0}
+            />
+          )}
+        </div>
       </div>
     </>
   )

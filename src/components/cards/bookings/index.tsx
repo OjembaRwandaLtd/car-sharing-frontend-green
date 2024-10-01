@@ -3,7 +3,7 @@ import { useLoggedInUserContext } from "../../layout"
 import { BookingDto } from "../../../util/api"
 import { apiGet } from "../../../api"
 import Title from "../../ui/Title"
-import BookingsItem from "./item"
+import BookingsItem from "./Item"
 import { useCarDetails } from "../../../hooks"
 import Loading from "../../ui/Loading"
 import NotFound from "../../../pages/404"
@@ -12,7 +12,6 @@ const Bookings = (): ReactElement => {
   const { loggedInUserId } = useLoggedInUserContext()
   const [myBookings, setMyBookings] = useState<BookingDto[]>([])
   const { carsData, isLoading, isError } = useCarDetails()
-
   useEffect(() => {
     const fetchMyBookings = async () => {
       try {
@@ -53,6 +52,7 @@ const Bookings = (): ReactElement => {
                   startDate: booking.startDate.toString(),
                   endDate: booking.endDate.toString(),
                   state: booking.state,
+                  id: booking.id,
                 }}
               />
             </div>

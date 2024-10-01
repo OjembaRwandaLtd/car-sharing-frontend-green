@@ -22,4 +22,9 @@ const apiDelete = async (url: string, id: number | null, addAuth = true) =>
     headers: getHeaders(addAuth),
   })
 
-export { apiGet, apiPost, apiDelete }
+const apiPatch = async <T>(url: string, id: number, data: T, addAuth = true) =>
+  axios.patch(`${apiUrl}/${url}/${id}`, data, {
+    headers: getHeaders(addAuth),
+  })
+
+export { apiGet, apiPost, apiDelete, apiPatch }
