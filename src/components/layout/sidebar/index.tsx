@@ -2,12 +2,12 @@ import { CarIcon, CarPlusIcon, CarsIcon, ListIcon, LogoutIcon, TileIcon } from "
 import Routes from "../../../routes"
 import { useNavigate } from "react-router-dom"
 import { useContext } from "react"
-import DropdownItem from "../../ui/Dropdown/item"
-import { LoggedInUserContext } from ".."
+import DropdownItem from "../../ui/dropdown/item"
+import { LoggedInProp, LoggedInUserContext } from ".."
 
 const Sidebar = () => {
   const navigate = useNavigate()
-  const { setUserIsLoggedIn } = useContext(LoggedInUserContext)
+  const { setUserIsLoggedIn } = useContext(LoggedInUserContext) as LoggedInProp
 
   const handleLogout = () => {
     const keys = ["token", "userId"]
