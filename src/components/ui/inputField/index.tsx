@@ -22,9 +22,8 @@ const InputField: React.FC<InputFieldProps> = ({
   const inputRef = useRef<HTMLDivElement>(null)
 
   const validateInput = (val: string) => {
-    const isValid =
-      val.trim() !== "" && (dropdownData || type === "number" || /^[a-z\d-'"@\s]{3,}$/i.test(val))
-    setError(isValid ? "" : "This field requires at least 3 characters!")
+    const isValid = val.trim() !== ""
+    setError(isValid ? "" : "This field is required!")
     setInputHasErrors(!isValid)
     if (isValid) setTouched(false)
   }
@@ -71,19 +70,12 @@ const InputField: React.FC<InputFieldProps> = ({
         >
           <input
             onChange={handleChange}
-            onBlur={() =>
-              dropdownData || name === "additional_information" || name === "horse_power"
-                ? null
-                : setTouched(true)
-            }
+            onBlur={() => (name === "additional_information" ? null : setTouched(true))}
             value={value}
             type={type}
             name={name}
             placeholder={placeholder}
             readOnly={!!dropdownData}
-            max={type === "number" ? "900" : undefined}
-            min={type === "number" ? "1" : undefined}
-            required
             className="w-full cursor-pointer bg-transparent outline-none"
           />
           {dropdownData && (
