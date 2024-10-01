@@ -6,10 +6,6 @@ import NotFound from "../../../pages/404"
 import BookingsItem from "./Item"
 import Status from "./status"
 
-interface buttonProp {
-  button?: boolean
-}
-
 interface Booking {
   id: number
   carId: number
@@ -24,7 +20,7 @@ interface Booking {
   state?: string
 }
 
-const ManageBookings = ({ button }: buttonProp): ReactElement => {
+const ManageBookings = (): ReactElement => {
   const { data, error, loading } = useBookings()
   const { carsData, isLoading, isError } = useCarDetails()
   const { loggedInUserId } = useLoggedInUserContext()
@@ -52,7 +48,7 @@ const ManageBookings = ({ button }: buttonProp): ReactElement => {
               endDate: booking.endDate.toString(),
             }}
           />
-          {button && <Status bookingId={booking.id} state={booking.state || "PENDING"} />}
+          <Status bookingId={booking.id} state={booking.state || "PENDING"} />
         </div>
       ))}
     </div>

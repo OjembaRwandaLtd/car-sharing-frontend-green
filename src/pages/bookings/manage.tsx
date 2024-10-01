@@ -7,7 +7,7 @@ const Manage = (): ReactElement => (
     <div className="truncate">
       <Title text="MANAGE BOOKINGS" backButton />
     </div>
-    <ManageBookings button />
+    <ManageBookings />
   </>
 )
 
