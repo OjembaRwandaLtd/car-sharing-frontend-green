@@ -3,10 +3,10 @@ import { useLoggedInUserContext } from "../../layout"
 import { BookingDto } from "../../../util/api"
 import { apiGet } from "../../../api"
 import Title from "../../ui/Title"
-import BookingsItem from "./item"
 import { useCarDetails } from "../../../hooks"
 import Loading from "../../ui/Loading"
 import NotFound from "../../../pages/404"
+import BookingsItem from "./Item"
 
 const Bookings = (): ReactElement => {
   const { loggedInUserId } = useLoggedInUserContext()

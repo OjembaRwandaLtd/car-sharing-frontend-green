@@ -1,13 +1,13 @@
 import { ReactElement } from "react"
-import ManageBookings from "../../components/cards/bookings/manage"
 import Title from "../../components/ui/Title"
+import ManageBookings from "../../components/cards/Bookings/Manage"
 
 const Manage = (): ReactElement => (
   <>
     <div className="truncate">
       <Title text="MANAGE BOOKINGS" backButton />
     </div>
-    <ManageBookings button />
+    <ManageBookings />
   </>
 )
 
