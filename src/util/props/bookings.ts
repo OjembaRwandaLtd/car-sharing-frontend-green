@@ -1,3 +1,4 @@
+import { Dayjs } from "dayjs"
 import { BookingState } from "../api"
 
 export interface BookingProps {
@@ -15,4 +16,11 @@ export interface BookingProps {
     id?: number
   }
   isOwnerView: boolean
+}
+
+export interface BookingStatusProps {
+  state: BookingState
+  startDate: Dayjs
+  endDate: Dayjs
+  bookingId: number
 }

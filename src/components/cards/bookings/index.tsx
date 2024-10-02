@@ -17,8 +17,7 @@ const Bookings = (): ReactElement => {
       try {
         const data = await apiGet("bookings")
         const myBookings = data.data.filter(
-          (booking: BookingDto) =>
-            booking.renterId === loggedInUserId && booking.state !== "PICKED_UP",
+          (booking: BookingDto) => booking.renterId === loggedInUserId,
         )
         setMyBookings(myBookings)
       } catch (error) {
