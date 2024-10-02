@@ -48,7 +48,7 @@ const ManageBookings = (): ReactElement => {
               endDate: booking.endDate.toString(),
             }}
           />
-          <Status bookingId={booking.id} state={booking.state || "PENDING"} />
+          <Status bookingId={booking.id} state={booking.state ?? "PENDING"} />
         </div>
       ))}
     </div>

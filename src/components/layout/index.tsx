@@ -5,7 +5,7 @@ import { getAuthToken } from "../../util/auth"
 import useLoggedInUser from "../../hooks/useLoggedInUser"
 import Navbar from "./navbar"
 
-interface LoggedInProp {
+export interface LoggedInProp {
   userIsLoggedIn: boolean
   setUserIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>
   loggedInUserId: number | undefined
