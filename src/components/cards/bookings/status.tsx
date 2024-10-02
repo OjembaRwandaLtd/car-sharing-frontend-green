@@ -24,8 +24,6 @@ const Status = ({ bookingId, state }: StatusProps) => {
         <span>Booking Accepted</span>
       ) : bookingStatus === "DECLINED" ? (
         <span>Booking Declined</span>
-      ) : bookingStatus === "RETURNED" ? (
-        <span>Car Returned</span>
       ) : (
         <div className="flex flex-col gap-3">
           <Button value="Accept" handleClick={() => handleBookingStatus("ACCEPTED")} />

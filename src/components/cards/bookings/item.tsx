@@ -17,7 +17,7 @@ const BookingsItem = ({
   const displayText = isOwnerView ? `Requested by ${booking.renter}` : `Owned by ${booking.owner}`
   const displayMessage =
     booking.state === "PENDING" ? (
-      <p className="text-Lachs  ">Booking request pending.</p>
+      <p className="text-Lachs">Booking request pending.</p>
     ) : booking.state === "ACCEPTED" ? (
       <div className="flex flex-col gap-2">
         <p className="text-mustard-800">Booking accepted</p>

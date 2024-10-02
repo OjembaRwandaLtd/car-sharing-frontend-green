@@ -41,12 +41,12 @@ const AvailableCarsSection = (): ReactElement => {
   if (loading) return <Loading />
   if (hasError) return <NotFound />
 
-  const bookedCarIds = bookingData?.map(bookedCarId => bookedCarId.carId)
+  const bookedCarIds = bookingData?.map(bookings => bookings.carId)
   const availableCars = carsData?.filter(car => !bookedCarIds?.includes(car.id))
 
   return (
     <>
-      <ToastContainer />
+      <ToastContainer theme="colored" toastStyle={{ backgroundColor: "#3498DB" }} />
       {availableCars?.map(car => (
         <Item
           key={car.id}
