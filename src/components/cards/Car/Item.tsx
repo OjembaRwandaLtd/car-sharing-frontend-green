@@ -14,6 +14,7 @@ interface Props {
   showBookButton?: boolean
   handleDelete?: () => void
   handleBooking?: (carId: number) => void
+  isBookingInProgress?: boolean
 }
 
 const Item = ({

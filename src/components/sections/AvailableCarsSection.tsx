@@ -6,16 +6,19 @@ import Item from "../cards/Car/Item"
 import Loading from "../ui/Loading"
 import { apiPost } from "../../api"
 import dayjs from "dayjs"
+import { toast, ToastContainer } from "react-toastify"
 
 const AvailableCarsSection = (): ReactElement => {
   const location = useLocation()
   const searchParams = new URLSearchParams(location.search)
   const [postingError, setPostingError] = useState(false)
+  const [bookingInProgress, setBookingInProgress] = useState<number | null>(null)
   const { data: bookingData, loading: bookingLoading, error: bookingError } = useBookings()
 
   const { carsData, isLoading, isError } = useCarDetails()
 
   const handleBooking = async (carId: number) => {
+    setBookingInProgress(carId)
     try {
       const data = {
         carId,
@@ -23,8 +26,12 @@ const AvailableCarsSection = (): ReactElement => {
         endDate: dayjs(searchParams.get("enddate")).toISOString(),
       }
       await apiPost("bookings", JSON.stringify(data))
+      toast.success("Car booked successfully!")
     } catch (error) {
       setPostingError(true)
+      toast.error("Failed to book the car.")
+    } finally {
+      setBookingInProgress(null)
     }
   }
 
@@ -39,8 +46,15 @@ const AvailableCarsSection = (): ReactElement => {
 
   return (
     <>
+      <ToastContainer />
       {availableCars?.map(car => (
-        <Item key={car.id} car={car} showBookButton={true} handleBooking={handleBooking} />
+        <Item
+          key={car.id}
+          car={car}
+          showBookButton={true}
+          handleBooking={handleBooking}
+          isBookingInProgress={bookingInProgress === car.id}
+        />
       ))}
     </>
   )
