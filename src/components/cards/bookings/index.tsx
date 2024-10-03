@@ -36,7 +36,9 @@ const Bookings = (): ReactElement => {
     <>
       <Title text="My Bookings" />
       <div className="divide-y">
-        {myBookings.length > 0 &&
+        {myBookings.length === 0 ? (
+          <p className="text-center text-lg text-Lachs">No bookings found.</p>
+        ) : (
           myBookings.map(booking => (
             <div key={booking.id}>
               <BookingsItem
@@ -56,7 +58,8 @@ const Bookings = (): ReactElement => {
                 }}
               />
             </div>
-          ))}
+          ))
+        )}
       </div>
     </>
   )
