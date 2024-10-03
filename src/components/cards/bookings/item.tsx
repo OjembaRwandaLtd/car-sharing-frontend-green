@@ -15,15 +15,14 @@ const BookingsItem = ({
   const { date: startDate, time: startTime } = useFormatDate(booking.startDate)
   const { date: endDate, time: endTime } = useFormatDate(booking.endDate)
   const displayText = isOwnerView ? `Requested by ${booking.renter}` : `Owned by ${booking.owner}`
-  const displayMessage =
+  const displayMessage = () =>
     booking.state === "PENDING" ? (
-      <p className="text-Lachs  ">Booking request pending.</p>
+      <p className="text-Lachs">Booking request pending.</p>
     ) : booking.state === "ACCEPTED" ? (
       <div className="flex flex-col gap-2">
         <p className="text-mustard-800">Booking accepted</p>
         <span className="flex flex-col text-Lachs">
-          You can not pick up the car
-          <span>before the agreed time.</span>
+          You can not pick up the car <span>before the agreed time.</span>
         </span>
       </div>
     ) : booking.state === "DECLINED" ? (
@@ -33,11 +32,11 @@ const BookingsItem = ({
     )
 
   return (
-    <>
-      <div className="mx-auto w-52 scale-105">
+    <div className="md:mx-auto md:my-4 md:grid md:w-11/12 md:grid-cols-3 md:gap-5 md:rounded-xl md:py-2">
+      <div className="mx-auto w-52 scale-105 md:col-span-1">
         <img src={car.carImage} alt={car.carName} />
       </div>
-      <div className="mx-5 text-white">
+      <div className="mx-5 text-white md:col-span-2 ">
         <h2 className="text-2xl">{car.carName}</h2>
         <p className="text-lg">{displayText}</p>
         <div className="mt-7 flex gap-9 font-light text-secondary-200">
@@ -52,10 +51,10 @@ const BookingsItem = ({
             <IconWithLabel icon={<TimeIcon />} text={endTime} light />
           </div>
         </div>
-        <div className="mb-8 font-inter text-sm">{booking.state && displayMessage}</div>
+        <div className="mb-8 font-inter text-sm">{booking.state && displayMessage()}</div>
         <div>{button && <Button value={buttonText ?? "Pick Up"} handleClick={handleClick} />}</div>
       </div>
-    </>
+    </div>
   )
 }
 export default BookingsItem
