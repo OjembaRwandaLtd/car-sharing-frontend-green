@@ -1,6 +1,6 @@
 import { ReactElement } from "react"
-import ManageBookings from "../../components/cards/bookings/Manage"
 import Title from "../../components/ui/Title"
+import ManageBookings from "../../components/cards/Bookings/manage"
 
 const Manage = (): ReactElement => (
   <>
