@@ -22,7 +22,7 @@ const Status = ({ bookingId, state }: StatusProps) => {
     if (status === "ACCEPTED" || status === "PICKED_UP") return "Booking Accepted"
     if (status === "DECLINED") return "Booking Declined"
     return (
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-3 lg:flex-row ">
         <Button value="Accept" handleClick={() => handleBookingStatus("ACCEPTED")} />
         <Button
           type="outline"
