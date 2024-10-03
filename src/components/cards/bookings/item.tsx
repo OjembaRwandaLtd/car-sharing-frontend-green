@@ -32,7 +32,7 @@ const BookingsItem = ({
     )
 
   return (
-    <div className="md:mx-auto md:my-4 md:grid md:w-11/12 md:grid-cols-3 md:gap-5 md:rounded-xl md:bg-primary-400 md:py-2">
+    <div className="md:mx-auto md:my-4 md:grid md:w-11/12 md:grid-cols-3 md:gap-5 md:rounded-xl md:py-2">
       <div className="mx-auto w-52 scale-105 md:col-span-1">
         <img src={car.carImage} alt={car.carName} />
       </div>
