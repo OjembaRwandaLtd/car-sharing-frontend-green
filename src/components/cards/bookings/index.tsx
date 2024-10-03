@@ -31,7 +31,6 @@ const Bookings = (): ReactElement => {
 
   if (isLoading) return <Loading />
   if (isError) return <NotFound />
-
   return (
     <>
       <Title text="My Bookings" />
