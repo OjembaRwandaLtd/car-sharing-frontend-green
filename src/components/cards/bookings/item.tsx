@@ -37,7 +37,7 @@ const BookingsItem = ({
       <div className="mx-auto w-52 scale-105 md:col-span-1">
         <img src={car.carImage} alt={car.carName} />
       </div>
-      <div className="mx-5 text-white">
+      <div className="mx-5 text-white md:col-span-2">
         <h2 className="text-2xl">{car.carName}</h2>
         <p className="text-lg">{displayText}</p>
         <div className="mt-7 flex gap-9 font-light text-secondary-200">
