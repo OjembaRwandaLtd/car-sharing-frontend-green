@@ -13,11 +13,19 @@ interface Props {
   showDeleteButton?: boolean
   showBookButton?: boolean
   handleDelete?: () => void
+  handleBooking?: (carId: number) => void
+  isBookingInProgress?: boolean
 }
 
-const Item = ({ car, showBookButton, showDeleteButton, handleDelete }: Props): ReactElement => (
-  <div key={car.id} className="car-item mx-auto my-4 w-11/12 rounded-xl bg-primary-400 py-4">
-    <div className="flex h-64 justify-center gap-2 lg:gap-24">
+const Item = ({
+  car,
+  showBookButton,
+  showDeleteButton,
+  handleDelete,
+  handleBooking,
+}: Props): ReactElement => (
+  <div key={car.id} className="car-item mx-auto my-4 w-11/12 rounded-xl bg-primary-400 py-5">
+    <div className="flex h-64 items-center justify-center gap-2 lg:gap-24 lg:px-56">
       <div className="h-max-full">
         {car && (
           <figure className="h-5/6 max-w-sm lg:h-full">
@@ -25,7 +33,7 @@ const Item = ({ car, showBookButton, showDeleteButton, handleDelete }: Props): R
           </figure>
         )}
       </div>
-      <div className="mr-4 mt-4 border-spacing-y-4 space-y-4 text-secondary-200">
+      <div className="mr-4 mt-4 w-1/2 border-spacing-y-4 space-y-4 text-secondary-200">
         <h2 className="font-lora text-xl font-medium">
           {car.carName.split(" ").slice(1).join(" ")}
         </h2>
@@ -43,7 +51,9 @@ const Item = ({ car, showBookButton, showDeleteButton, handleDelete }: Props): R
     {showDeleteButton && (
       <Button value="Delete Car" type="outlineLachs" handleClick={handleDelete} />
     )}
-    {showBookButton && <Button value="Book Car" />}
+    {showBookButton && (
+      <Button value="Book Car" handleClick={() => handleBooking && handleBooking(car.id)} />
+    )}
   </div>
 )
 
