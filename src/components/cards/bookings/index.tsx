@@ -3,10 +3,10 @@ import { useLoggedInUserContext } from "../../layout"
 import { BookingDto } from "../../../util/api"
 import { apiGet } from "../../../api"
 import Title from "../../ui/Title"
-import BookingsItem from "./Item"
 import { useCarDetails } from "../../../hooks"
 import Loading from "../../ui/Loading"
 import NotFound from "../../../pages/404"
+import BookingsItem from "./Item"
 
 const Bookings = (): ReactElement => {
   const { loggedInUserId } = useLoggedInUserContext()
@@ -29,12 +29,13 @@ const Bookings = (): ReactElement => {
 
   if (isLoading) return <Loading />
   if (isError) return <NotFound />
-
   return (
     <>
       <Title text="My Bookings" />
       <div className="divide-y">
-        {myBookings.length > 0 &&
+        {myBookings.length === 0 ? (
+          <p className="text-center text-lg text-Lachs">No bookings found.</p>
+        ) : (
           myBookings.map(booking => (
             <div key={booking.id}>
               <BookingsItem
@@ -55,7 +56,8 @@ const Bookings = (): ReactElement => {
                 }}
               />
             </div>
-          ))}
+          ))
+        )}
       </div>
     </>
   )

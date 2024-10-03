@@ -11,11 +11,11 @@ const BookingsItem = ({ car, booking, isOwnerView }: BookingProps): ReactElement
   const displayText = isOwnerView ? `Requested by ${booking.renter}` : `Owned by ${booking.owner}`
 
   return (
-    <>
-      <div className="mx-auto w-52 scale-105">
+    <div className="md:mx-auto md:my-4 md:grid md:w-11/12 md:grid-cols-3 md:gap-5 md:rounded-xl md:py-2">
+      <div className="mx-auto w-52 scale-105 md:col-span-1">
         <img src={car.carImage} alt={car.carName} />
       </div>
-      <div className="mx-5 text-white">
+      <div className="mx-5 text-white md:col-span-2 ">
         <h2 className="text-2xl">{car.carName}</h2>
         <p className="text-lg">{displayText}</p>
         <div className="mt-7 flex gap-9 font-light text-secondary-200">
@@ -41,7 +41,7 @@ const BookingsItem = ({ car, booking, isOwnerView }: BookingProps): ReactElement
           )}
         </div>
       </div>
-    </>
+    </div>
   )
 }
 export default BookingsItem

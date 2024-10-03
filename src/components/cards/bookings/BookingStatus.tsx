@@ -1,3 +1,4 @@
+/* eslint-disable max-lines-per-function */
 import { ReactElement, useEffect, useState, useMemo, useCallback } from "react"
 import Button from "../../ui/Button"
 import dayjs from "dayjs"
@@ -27,15 +28,25 @@ const BookingStatus = ({
     setBookingState(BookingState.RETURNED)
   }, [bookingId])
 
+  const handleLock = useCallback(() => {
+    setLockCar(true)
+    setDisplayMessage(
+      <div className="flex flex-col gap-2">
+        <Button value="Unlock" type="outline" handleClick={handleUnlock} />
+        <Button value="Lock" type="disabled" handleClick={handleUnlock} />
+        <Button value="Return" type="outline" handleClick={handleReturn} />
+      </div>,
+    )
+  }, [])
   const handleUnlock = useCallback(() => {
     setLockCar(false)
-    // setDisplayMessage(
-    //   <div className="flex flex-col gap-2">
-    //     <Button value="Unlock" type="disabled" />
-    //     <Button value="Lock" type="outline" />
-    //     <Button value="Return" type="outline" handleClick={handleReturn} />
-    //   </div>,
-    // )
+    setDisplayMessage(
+      <div className="flex flex-col gap-2">
+        <Button value="Unlock" type="disabled" handleClick={handleLock} />
+        <Button value="Lock" type="outline" handleClick={handleLock} />
+        <Button value="Return" type="outline" handleClick={handleReturn} />
+      </div>,
+    )
   }, [])
 
   const handleUseCar = useCallback(() => {
@@ -49,7 +60,7 @@ const BookingStatus = ({
         ) : (
           <>
             <Button value="Unlock" type="disabled" />
-            <Button value="Lock" type="outline" />
+            <Button value="Lock" type="outline" handleClick={handleLock} />
           </>
         )}
         <Button value="Return" type="outline" handleClick={handleReturn} />

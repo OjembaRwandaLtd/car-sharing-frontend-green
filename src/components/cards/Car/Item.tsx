@@ -14,6 +14,7 @@ interface Props {
   showBookButton?: boolean
   handleDelete?: () => void
   handleBooking?: (carId: number) => void
+  isBookingInProgress?: boolean
 }
 
 const Item = ({
@@ -23,7 +24,7 @@ const Item = ({
   handleDelete,
   handleBooking,
 }: Props): ReactElement => (
-  <div key={car.id} className="car-item mx-auto my-4 w-11/12 rounded-xl bg-primary-400 py-4">
+  <div key={car.id} className="car-item mx-auto my-4 w-11/12 rounded-xl bg-primary-400 py-5">
     <div className="flex h-64 items-center justify-center gap-2 lg:gap-24 lg:px-56">
       <div className="h-max-full">
         {car && (

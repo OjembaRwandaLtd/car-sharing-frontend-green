@@ -2,11 +2,11 @@ import { FormEvent, ReactElement, useContext, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import Routes from "../../routes"
 import LoginForm from "../forms/Login"
-import { LoggedInUserContext } from "../layout"
+import { LoggedInProp, LoggedInUserContext } from "../layout"
 import { login } from "../../api/auth"
 
 const Login = (): ReactElement => {
-  const { setUserIsLoggedIn } = useContext(LoggedInUserContext)
+  const { setUserIsLoggedIn } = useContext(LoggedInUserContext) as LoggedInProp
   const [formData, setFormData] = useState({
     username: "",
     password: "",
