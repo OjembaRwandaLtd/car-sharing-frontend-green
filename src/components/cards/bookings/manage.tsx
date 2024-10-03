@@ -4,7 +4,7 @@ import { useLoggedInUserContext } from "../../layout"
 import Loading from "../../ui/Loading"
 import NotFound from "../../../pages/404"
 import Button from "../../ui/Button"
-import BookingsItem from "./Item"
+import BookingsItem from "./item"
 
 interface buttonProp {
   button?: boolean
