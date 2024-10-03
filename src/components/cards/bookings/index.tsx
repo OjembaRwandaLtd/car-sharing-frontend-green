@@ -12,14 +12,12 @@ const Bookings = (): ReactElement => {
   const { loggedInUserId } = useLoggedInUserContext()
   const [myBookings, setMyBookings] = useState<BookingDto[]>([])
   const { carsData, isLoading, isError } = useCarDetails()
-
   useEffect(() => {
     const fetchMyBookings = async () => {
       try {
         const data = await apiGet("bookings")
         const myBookings = data.data.filter(
-          (booking: BookingDto) =>
-            booking.renterId === loggedInUserId && booking.state !== "PICKED_UP",
+          (booking: BookingDto) => booking.renterId === loggedInUserId,
         )
         setMyBookings(myBookings)
       } catch (error) {
@@ -34,7 +32,7 @@ const Bookings = (): ReactElement => {
   return (
     <>
       <Title text="My Bookings" />
-      <div className="divide-y md:divide-y-0">
+      <div className="divide-y">
         {myBookings.length === 0 ? (
           <p className="text-center text-lg text-Lachs">No bookings found.</p>
         ) : (
@@ -54,6 +52,7 @@ const Bookings = (): ReactElement => {
                   startDate: booking.startDate.toString(),
                   endDate: booking.endDate.toString(),
                   state: booking.state,
+                  id: booking.id,
                 }}
               />
             </div>
