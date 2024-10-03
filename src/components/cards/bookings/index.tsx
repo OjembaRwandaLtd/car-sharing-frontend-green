@@ -34,7 +34,7 @@ const Bookings = (): ReactElement => {
   return (
     <>
       <Title text="My Bookings" />
-      <div className="divide-y">
+      <div className="divide-y md:divide-y-0">
         {myBookings.length === 0 ? (
           <p className="text-center text-lg text-Lachs">No bookings found.</p>
         ) : (

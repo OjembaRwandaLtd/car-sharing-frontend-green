@@ -15,15 +15,14 @@ const BookingsItem = ({
   const { date: startDate, time: startTime } = useFormatDate(booking.startDate)
   const { date: endDate, time: endTime } = useFormatDate(booking.endDate)
   const displayText = isOwnerView ? `Requested by ${booking.renter}` : `Owned by ${booking.owner}`
-  const displayMessage =
+  const displayMessage = () =>
     booking.state === "PENDING" ? (
       <p className="text-Lachs">Booking request pending.</p>
     ) : booking.state === "ACCEPTED" ? (
       <div className="flex flex-col gap-2">
         <p className="text-mustard-800">Booking accepted</p>
         <span className="flex flex-col text-Lachs">
-          You can not pick up the car
-          <span>before the agreed time.</span>
+          You can not pick up the car <span>before the agreed time.</span>
         </span>
       </div>
     ) : booking.state === "DECLINED" ? (
@@ -33,7 +32,7 @@ const BookingsItem = ({
     )
 
   return (
-    <div className="md:my-4 md:grid md:grid-cols-3 md:gap-5 md:rounded-xl md:bg-primary-200 md:py-2">
+    <div className="md:mx-auto md:my-4 md:grid md:w-11/12 md:grid-cols-3 md:gap-5 md:rounded-xl md:bg-primary-400 md:py-2">
       <div className="mx-auto w-52 scale-105 md:col-span-1">
         <img src={car.carImage} alt={car.carName} />
       </div>
@@ -52,7 +51,7 @@ const BookingsItem = ({
             <IconWithLabel icon={<TimeIcon />} text={endTime} light />
           </div>
         </div>
-        <div className="mb-8 font-inter text-sm">{booking.state && displayMessage}</div>
+        <div className="mb-8 font-inter text-sm">{booking.state && displayMessage()}</div>
         <div>{button && <Button value={buttonText ?? "Pick Up"} handleClick={handleClick} />}</div>
       </div>
     </div>
