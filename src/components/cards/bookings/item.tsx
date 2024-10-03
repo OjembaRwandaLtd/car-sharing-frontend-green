@@ -33,11 +33,11 @@ const BookingsItem = ({
     )
 
   return (
-    <>
-      <div className="mx-auto w-52 scale-105">
+    <div className="md:my-4 md:grid md:grid-cols-3 md:gap-5 md:rounded-xl md:bg-primary-200 md:py-2">
+      <div className="mx-auto w-52 scale-105 md:col-span-1">
         <img src={car.carImage} alt={car.carName} />
       </div>
-      <div className="mx-5 text-white">
+      <div className="mx-5 text-white md:col-span-2">
         <h2 className="text-2xl">{car.carName}</h2>
         <p className="text-lg">{displayText}</p>
         <div className="mt-7 flex gap-9 font-light text-secondary-200">
@@ -55,7 +55,7 @@ const BookingsItem = ({
         <div className="mb-8 font-inter text-sm">{booking.state && displayMessage}</div>
         <div>{button && <Button value={buttonText ?? "Pick Up"} handleClick={handleClick} />}</div>
       </div>
-    </>
+    </div>
   )
 }
 export default BookingsItem
