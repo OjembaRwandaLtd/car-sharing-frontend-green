@@ -7,7 +7,8 @@ import DropdownItems from "./DropdownItems"
 import Dropdown from "../../ui/dropdown/index"
 
 const Navbar = (): ReactElement => {
-  const { userIsLoggedIn } = useContext(LoggedInUserContext)
+  const loggedInUserContext = useContext(LoggedInUserContext)
+  const userIsLoggedIn = loggedInUserContext?.userIsLoggedIn ?? false
   const [isOpen, setIsOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
   const toggleDropdown = () => setIsOpen(!isOpen)

@@ -8,7 +8,7 @@ import {
   LogoutIcon,
 } from "../../../assets/index"
 import { useNavigate } from "react-router-dom"
-import DropdownItem from "../../ui/Dropdown/item"
+import DropdownItem from "../../ui/dropdown/item"
 
 const DropdownItems = () => {
   const navigate = useNavigate()
