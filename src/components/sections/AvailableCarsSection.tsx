@@ -30,7 +30,7 @@ const AvailableCarsSection = (): ReactElement => {
       toast.success("Booking request sent successfully!")
     } catch (error) {
       setPostingError(true)
-      toast.error("Failed to book the car.")
+      toast.error("You have already requested to book this car.")
     } finally {
       setBookingInProgress(null)
     }
@@ -47,7 +47,7 @@ const AvailableCarsSection = (): ReactElement => {
 
   return (
     <>
-      <ToastContainer theme="colored" toastStyle={{ backgroundColor: "#3498DB" }} />
+      <ToastContainer theme="colored" />
       {availableCars?.map(car => (
         <Item
           key={car.id}
