@@ -3,7 +3,7 @@ import { CalendarIcon, IconWithLabel, TimeIcon } from "../../../assets"
 import useFormatDate from "../../../hooks/useFormatDate"
 import { BookingProps } from "../../../util/props/bookings"
 import dayjs from "dayjs"
-import BookingStatus from "./BookingStatus"
+import BookingStatus from "./status/index"
 
 const BookingsItem = ({ car, booking, isOwnerView }: BookingProps): ReactElement => {
   const { date: startDate, time: startTime } = useFormatDate(booking.startDate)

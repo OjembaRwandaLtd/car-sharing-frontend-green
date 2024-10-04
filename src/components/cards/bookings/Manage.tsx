@@ -4,7 +4,7 @@ import { useLoggedInUserContext } from "../../layout"
 import Loading from "../../ui/Loading"
 import NotFound from "../../../pages/404"
 import BookingsItem from "./Item"
-import Status from "./status"
+import Status from "./Status"
 
 interface Booking {
   id: number
