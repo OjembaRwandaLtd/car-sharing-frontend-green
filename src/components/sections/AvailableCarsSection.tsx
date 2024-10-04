@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { ReactElement, useState } from "react"
 import { useLocation } from "react-router-dom"
 import { useBookings, useCarDetails } from "../../hooks"
@@ -26,7 +27,7 @@ const AvailableCarsSection = (): ReactElement => {
         endDate: dayjs(searchParams.get("enddate")).toISOString(),
       }
       await apiPost("bookings", JSON.stringify(data))
-      toast.success("Car booked successfully!")
+      toast.success("Booking request sent successfully!")
     } catch (error) {
       setPostingError(true)
       toast.error("Failed to book the car.")
@@ -36,7 +37,7 @@ const AvailableCarsSection = (): ReactElement => {
   }
 
   const loading = bookingLoading || isLoading
-  const hasError = bookingError || isError || postingError
+  const hasError = bookingError || isError
 
   if (loading) return <Loading />
   if (hasError) return <NotFound />
