@@ -14,7 +14,7 @@ const Landing = (): ReactElement => {
       <p className="flex flex-col text-center font-lora text-xl font-medium">
         Start Sharing your car <span> with the world</span>
       </p>
-      <Button value="Log In" handleClick={navigateToLogin} />
+      <Button text="Log In" onClick={navigateToLogin} />
     </div>
   )
 }

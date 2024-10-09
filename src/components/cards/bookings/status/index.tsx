@@ -2,9 +2,9 @@ import { ReactElement, useCallback, useEffect, useMemo, useState } from "react"
 import { BookingState } from "../../../../util/api"
 import StatusWrapper from "./Wrapper"
 import Button from "../../../ui/Button"
-import dayjs from "dayjs"
 import { apiPatch } from "../../../../api"
 import { BookingStatusProps } from "../../../../util/props/bookings"
+import useDateBetween from "../../../../hooks/useDateBetween"
 
 const BookingStatus = ({
   state,
@@ -21,16 +21,14 @@ const BookingStatus = ({
     await apiPatch("bookings", bookingId, { state: BookingState.PICKED_UP })
     setBookingState(BookingState.PICKED_UP)
   }, [bookingId])
-
   const handleReturn = useCallback(async () => {
     await apiPatch("bookings", bookingId, { state: BookingState.RETURNED })
     setBookingState(BookingState.RETURNED)
   }, [bookingId])
-
   const showPickUp = useMemo(
     () =>
-      dayjs().isBetween(startDate, endDate) ? (
-        <Button value="Pick up car" handleClick={handlePickUp} />
+      useDateBetween(startDate, endDate) ? (
+        <Button text="Pick up car" onClick={handlePickUp} />
       ) : (
         <span className="flex flex-col text-Lachs">
           You can not pick up the car
@@ -46,22 +44,22 @@ const BookingStatus = ({
   const pickedUpStatus = useMemo(
     () => (
       <StatusWrapper title="Car picked up.">
-        {!isUsingCar && <Button value="Use Car" handleClick={() => setIsUsingCar(true)} />}
+        {!isUsingCar && <Button text="Use Car" onClick={() => setIsUsingCar(true)} />}
         {isUsingCar && (
           <>
             <Button
-              value="Unlock"
+              text="Unlock"
               type={locked ? "outline" : "disabled"}
-              handleClick={() => setLocked(false)}
+              onClick={() => setLocked(false)}
             />
             <Button
-              value="Lock"
+              text="Lock"
               type={locked ? "disabled" : "outline"}
-              handleClick={() => setLocked(true)}
+              onClick={() => setLocked(true)}
             />
           </>
         )}
-        <Button value="Return" type="outline" handleClick={handleReturn} />
+        <Button text="Return" type="outline" onClick={handleReturn} />
       </StatusWrapper>
     ),
     [isUsingCar, locked, handleReturn],

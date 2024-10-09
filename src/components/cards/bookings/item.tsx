@@ -6,9 +6,11 @@ import dayjs from "dayjs"
 import BookingStatus from "./status/index"
 
 const BookingsItem = ({ car, booking, isOwnerView }: BookingProps): ReactElement => {
-  const { date: startDate, time: startTime } = useFormatDate(booking.startDate)
-  const { date: endDate, time: endTime } = useFormatDate(booking.endDate)
-  const displayText = isOwnerView ? `Requested by ${booking.renter}` : `Owned by ${booking.owner}`
+  const { date: startDate, time: startTime } = useFormatDate(booking?.startDate ?? new Date())
+  const { date: endDate, time: endTime } = useFormatDate(booking?.endDate ?? new Date())
+  const displayText = isOwnerView
+    ? `Requested by ${booking?.renter?.name}`
+    : `Owned by ${car.carOwner}`
 
   return (
     <div className="md:mx-auto md:my-4 md:grid md:w-11/12 md:grid-cols-3 md:gap-5 md:rounded-xl md:py-2">

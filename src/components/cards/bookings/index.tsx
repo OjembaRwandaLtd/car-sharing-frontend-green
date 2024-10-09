@@ -48,9 +48,8 @@ const Bookings = (): ReactElement => {
                   }
                 }
                 booking={{
-                  owner: carsData?.find(car => car.id === booking.carId)?.carOwner,
-                  startDate: booking.startDate.toString(),
-                  endDate: booking.endDate.toString(),
+                  startDate: booking.startDate,
+                  endDate: booking.endDate,
                   state: booking.state,
                   id: booking.id,
                 }}

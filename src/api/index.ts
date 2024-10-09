@@ -22,7 +22,7 @@ const apiDelete = async (url: string, id: number | null, addAuth = true) =>
     headers: getHeaders(addAuth),
   })
 
-const apiPatch = async <T>(url: string, id: number, data: T, addAuth = true) =>
+const apiPatch = async <T>(url: string, id: number | undefined, data: T, addAuth = true) =>
   axios.patch(`${apiUrl}/${url}/${id}`, data, {
     headers: getHeaders(addAuth),
   })
