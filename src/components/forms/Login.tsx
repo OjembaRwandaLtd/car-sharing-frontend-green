@@ -52,7 +52,7 @@ const LoginForm = ({ formData, handleChange, handleSubmit, hasError }: Props): R
         </p>
       )}
       <div className="pt-12">
-        <Button value="Log In" handleClick={handleSubmit} />
+        <Button text="Log In" onClick={handleSubmit} />
       </div>
     </form>
   </div>

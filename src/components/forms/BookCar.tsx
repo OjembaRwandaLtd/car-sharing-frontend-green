@@ -22,7 +22,7 @@ const BookCar = (): ReactElement => {
         <Calendar label="End Date" endDate={endDate} setEndDate={setEndDate} />
       </section>
       <div className="mt-20">
-        <Button value="Search Available Cars" handleClick={handleClick} />
+        <Button text="Search Available Cars" onClick={handleClick} />
       </div>
     </>
   )

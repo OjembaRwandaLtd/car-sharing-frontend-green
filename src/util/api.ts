@@ -1,6 +1,6 @@
 interface UserDto {
-  id: number
-  name: string
+  id: number | undefined
+  name: string | undefined
 }
 
 interface CarTypeDto {
@@ -55,17 +55,17 @@ enum BookingState {
 }
 
 interface BookingDto {
-  id: number
-  startDate: Date
-  endDate: Date
-  carId: number
-  state: BookingState
-  renterId: number
+  id?: number
+  startDate?: Date
+  endDate?: Date
+  carId?: number
+  state?: BookingState
+  renterId?: number
 }
 
 export type BookingWithReferences = BookingDto & {
-  car: CarDto & { owner: UserDto }
-  renter: UserDto
+  car?: CarDto & { owner: UserDto }
+  renter?: UserDto
 }
 
 interface NewBookingDto {
@@ -79,6 +79,18 @@ interface ChangeBookingStateDto {
   state: BookingState
 }
 
+type BookedCar = {
+  id: number
+  carImage?: string
+  carName?: string
+  carOwner?: string
+  licensePlate?: string | null | undefined
+  horsePower?: number | undefined
+  fuelType?: FuelType
+  carInfo?: string | undefined
+  ownerId?: number
+}
+
 export type {
   CarDto,
   NewCarDto,
@@ -88,5 +100,6 @@ export type {
   NewBookingDto,
   ChangeBookingStateDto,
   ChangeCarStateDto,
+  BookedCar,
 }
 export { BookingState, CarState }

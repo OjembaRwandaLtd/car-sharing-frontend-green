@@ -53,14 +53,14 @@ const NewCarForm = ({
       <div className="mx-auto mt-24 flex w-fit gap-1">
         <Button
           width="regular"
-          value="Cancel"
+          text="Cancel"
           type="outline"
-          handleClick={() => setForm(INITIAL_FORM_VALUES)}
+          onClick={() => setForm(INITIAL_FORM_VALUES)}
         />
         <Button
           width="regular"
-          value={isSubmitting ? "Adding Car..." : "Add Car"}
-          handleClick={() => handleSubmit()}
+          text={isSubmitting ? "Adding Car..." : "Add Car"}
+          onClick={() => handleSubmit()}
         />
       </div>
     </form>

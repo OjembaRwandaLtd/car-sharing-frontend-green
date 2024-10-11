@@ -63,7 +63,7 @@ const OwnCarsSection = (): ReactElement => {
           <p className="pb-3 text-center font-lora text-xl text-Lachs"> No car available</p>
         )}
       </div>
-      <Button value="Add Car" handleClick={handleNavigate} />
+      <Button text="Add Car" onClick={handleNavigate} />
       {isDialogOpen && (
         <ConfirmDelete
           handleDelete={handleDelete}

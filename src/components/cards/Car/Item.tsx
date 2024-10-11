@@ -48,11 +48,9 @@ const Item = ({
         </div>
       </div>
     </div>
-    {showDeleteButton && (
-      <Button value="Delete Car" type="outlineLachs" handleClick={handleDelete} />
-    )}
+    {showDeleteButton && <Button text="Delete Car" type="outlineLachs" onClick={handleDelete} />}
     {showBookButton && (
-      <Button value="Book Car" handleClick={() => handleBooking && handleBooking(car.id)} />
+      <Button text="Book Car" onClick={() => handleBooking && handleBooking(car.id)} />
     )}
   </div>
 )

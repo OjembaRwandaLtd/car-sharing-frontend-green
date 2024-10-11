@@ -3,7 +3,7 @@ import Button from "../../ui/Button"
 import { apiPatch } from "../../../api"
 
 interface StatusProps {
-  bookingId: number
+  bookingId: number | undefined
   state: string
 }
 
@@ -23,12 +23,8 @@ const Status = ({ bookingId, state }: StatusProps) => {
     if (status === "DECLINED") return "Booking Declined"
     return (
       <div className="flex flex-col gap-3 lg:flex-row ">
-        <Button value="Accept" handleClick={() => handleBookingStatus("ACCEPTED")} />
-        <Button
-          type="outline"
-          value="Decline"
-          handleClick={() => handleBookingStatus("DECLINED")}
-        />
+        <Button text="Accept" onClick={() => handleBookingStatus("ACCEPTED")} />
+        <Button type="outline" text="Decline" onClick={() => handleBookingStatus("DECLINED")} />
       </div>
     )
   }

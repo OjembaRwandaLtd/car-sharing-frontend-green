@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import Loading from "../ui/Loading"
 import NotFound from "../../pages/404"
 import { useBookings, useCarDetails } from "../../hooks"
@@ -14,9 +15,7 @@ const Booked = () => {
 
   if (loading) return <Loading />
   if (hasError) return <NotFound />
-  const bookedCarIds = bookingData?.filter(booking => booking.renter.id === loggedInUserId)
-  console.log(carsData)
-  console.log(bookedCarIds)
+  const bookedCarIds = bookingData?.filter(booking => booking?.renter?.id === loggedInUserId)
 
   return <div> {JSON.stringify(bookedCarIds, null, 2)}</div>
 }
