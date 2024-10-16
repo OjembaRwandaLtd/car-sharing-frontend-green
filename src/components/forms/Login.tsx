@@ -12,10 +12,10 @@ interface Props {
 }
 
 const LoginForm = ({ formData, handleChange, handleSubmit, hasError }: Props): ReactElement => (
-  <>
+  <div className="absolute left-1/2 -translate-x-1/2">
     <HomeTitle />
     <ToastContainer theme="colored" />
-    <h2 className="mb-8 mt-28 text-center font-lora text-xl font-medium text-white">Log In</h2>
+    <h2 className="mb-8 mt-28 text-center font-lora text-xl font-medium text-white ">Log In</h2>
     <form
       className="spacing-3 flex flex-col items-center space-y-4 pb-10"
       onSubmit={handleSubmit}
@@ -52,10 +52,10 @@ const LoginForm = ({ formData, handleChange, handleSubmit, hasError }: Props): R
         </p>
       )}
       <div className="pt-12">
-        <Button value="Log In" handleClick={handleSubmit} />
+        <Button text="Log In" onClick={handleSubmit} />
       </div>
     </form>
-  </>
+  </div>
 )
 
 export default LoginForm

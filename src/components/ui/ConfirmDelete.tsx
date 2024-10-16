@@ -30,8 +30,8 @@ const ConfirmDelete = ({ handleDelete, isDialogOpen, setDialogOpen }: Prop): Rea
               Are you sure you want to delete the car?
             </p>
             <div className="mt-4 flex justify-center gap-4">
-              <Button value="Cancel" type="outline" width="regular" handleClick={dialogToggle} />
-              <Button value="Delete" width="regular" handleClick={handleDelete} />
+              <Button text="Cancel" type="outline" width="regular" onClick={dialogToggle} />
+              <Button text="Delete" width="regular" onClick={handleDelete} />
             </div>
           </DialogPanel>
         </div>

@@ -28,26 +28,24 @@ export default function Calendar({ label, startDate, endDate, setEndDate, setSta
   }
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <div>
-        <DemoContainer
-          components={[
-            "DateTimePicker",
-            "MobileDateTimePicker",
-            "DesktopDateTimePicker",
-            "StaticDateTimePicker",
-          ]}
-        >
-          <DemoItem label={label}>
-            <MobileDateTimePicker
-              defaultValue={startDate || endDate}
-              sx={pickerStyles}
-              onChange={e => handleInputChange(e)}
-              minDate={startDate || endDate || undefined}
-              className={"rounded-full bg-primary-200"}
-            />
-          </DemoItem>
-        </DemoContainer>
-      </div>
+      <DemoContainer
+        components={[
+          "DateTimePicker",
+          "MobileDateTimePicker",
+          "DesktopDateTimePicker",
+          "StaticDateTimePicker",
+        ]}
+      >
+        <DemoItem label={label}>
+          <MobileDateTimePicker
+            defaultValue={startDate || endDate}
+            sx={pickerStyles}
+            onChange={e => handleInputChange(e)}
+            minDate={startDate || endDate || undefined}
+            className={"rounded-full bg-primary-200"}
+          />
+        </DemoItem>
+      </DemoContainer>
     </LocalizationProvider>
   )
 }

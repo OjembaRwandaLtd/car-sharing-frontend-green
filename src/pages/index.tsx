@@ -23,14 +23,14 @@ const Home = (): ReactElement => {
           <span className="block px-10">Hello {loggedInUserName}</span>
           <span className="block">What are you up to today?</span>
         </p>
-        <Button value="Book car" handleClick={navigateToNewBookings} />
+        <Button text="Book car" onClick={navigateToNewBookings} />
         <span className="font-lora text-xl text-secondary-200 lg:hidden">or</span>
       </div>
       <div>
         <img className="car hidden scale-90 lg:block" src={image} alt="Brabus car" />
         <div className="mt-7 flex flex-col gap-4 lg:-mt-10 lg:flex-row">
-          <Button value="See My Cars" type="outline" handleClick={navigateToMyCar} />
-          <Button value="See My Bookings" type="outline" handleClick={navigateToMyBookings} />
+          <Button text="See My Cars" type="outline" onClick={navigateToMyCar} />
+          <Button text="See My Bookings" type="outline" onClick={navigateToMyBookings} />
         </div>
       </div>
     </section>

@@ -2,18 +2,18 @@ import classNames from "classnames"
 import { ReactElement } from "react"
 
 interface ButtonProp {
-  value: string
+  text: string
   type?: "default" | "outline" | "disabled" | "outlineLachs"
   width?: "default" | "regular"
   buttonType?: "button" | "submit" | "reset"
-  handleClick?: (e: React.FormEvent) => void
+  onClick?: (e: React.FormEvent) => void
 }
 const Button = ({
-  value,
+  text,
   type = "default",
   width = "default",
   buttonType = "button",
-  handleClick,
+  onClick,
 }: ButtonProp): ReactElement => {
   const defaultStyles = "btn h-11 rounded-full mx-auto font-inter font-bold"
   const buttonWidth = {
@@ -32,8 +32,8 @@ const Button = ({
 
   return (
     <div className="align-center flex">
-      <button type={buttonType} onClick={handleClick} className={buttonClasses}>
-        {value}
+      <button type={buttonType} onClick={onClick} className={buttonClasses}>
+        {text}
       </button>
     </div>
   )

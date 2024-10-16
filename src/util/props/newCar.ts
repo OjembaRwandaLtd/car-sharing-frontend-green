@@ -7,6 +7,18 @@ export type NewCarData = {
   horsepower: number
 }
 
+export type CarInfo = {
+  carTypeId: number
+  fuelType: string
+  horsepower: number
+  id: number
+  info: string
+  licensePlate: string
+  name: string
+  ownerId: number
+  state: string
+}
+
 export interface NewCarProps {
   form: {
     name: string
