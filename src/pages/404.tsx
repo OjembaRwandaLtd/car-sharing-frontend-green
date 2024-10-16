@@ -20,9 +20,9 @@ const NotFound = (): ReactElement => {
         <span>We will solve your issue soon.</span>
       </p>
       {token ? (
-        <Button value="Back to Home" handleClick={handleBackHome} />
+        <Button text="Back to Home" onClick={handleBackHome} />
       ) : (
-        <Button value="Back to Login" handleClick={handleBackToLogin} />
+        <Button text="Back to Login" onClick={handleBackToLogin} />
       )}
     </div>
   )

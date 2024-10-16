@@ -4,39 +4,25 @@ import { useLoggedInUserContext } from "../../layout"
 import Loading from "../../ui/Loading"
 import NotFound from "../../../pages/404"
 import BookingsItem from "./Item"
-import Status from "./status"
-
-interface Booking {
-  id: number
-  carId: number
-  car: {
-    ownerId: number
-  }
-  renter: {
-    name: string
-  }
-  startDate: Date
-  endDate: Date
-  state?: string
-}
+import Status from "./Status"
+import { BookedCar, BookingWithReferences } from "../../../util/api"
 
 const ManageBookings = (): ReactElement => {
   const { data, error, loading } = useBookings()
   const { carsData, isLoading, isError } = useCarDetails()
   const { loggedInUserId } = useLoggedInUserContext()
 
-  const bookings = useMemo(
-    () =>
-      data?.filter(
-        booking => booking.car.ownerId === Number(loggedInUserId) && booking.state !== "RETURNED",
-      ),
-    [data, loggedInUserId],
-  )
+  const bookings = useMemo(() => {
+    const filtered = data?.filter(
+      booking => booking?.car?.ownerId === Number(loggedInUserId) && booking.state !== "RETURNED",
+    )
+    const cars = carsData?.filter(car => car.ownerId === Number(loggedInUserId))
 
-  const cars = useMemo(
-    () => carsData?.filter(car => car.ownerId === Number(loggedInUserId)),
-    [carsData, loggedInUserId],
-  )
+    return filtered?.map(booking => ({
+      booking,
+      car: cars?.find(car => car.id === booking.carId) ?? { id: 0, carImage: "", carName: "" },
+    }))
+  }, [data, loggedInUserId])
 
   if (loading || isLoading) return <Loading />
   if (error || isError) return <NotFound />
@@ -46,17 +32,15 @@ const ManageBookings = (): ReactElement => {
       {bookings?.length === 0 ? (
         <p>No bookings found.</p>
       ) : (
-        bookings?.map((booking: Booking) => (
+        bookings?.map(({ car, booking }: { car: BookedCar; booking: BookingWithReferences }) => (
           <div key={booking.id}>
             <BookingsItem
-              car={
-                cars?.find(car => car.id === booking.carId) ?? { id: 0, carImage: "", carName: "" }
-              }
+              car={car}
               isOwnerView={true}
               booking={{
-                renter: booking.renter.name,
-                startDate: booking.startDate.toString(),
-                endDate: booking.endDate.toString(),
+                renter: { name: booking?.renter?.name, id: booking?.renter?.id },
+                startDate: booking.startDate,
+                endDate: booking.endDate,
               }}
             />
             <Status bookingId={booking.id} state={booking.state ?? "PENDING"} />

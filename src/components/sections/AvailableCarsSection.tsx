@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { ReactElement, useState } from "react"
 import { useLocation } from "react-router-dom"
 import { useBookings, useCarDetails } from "../../hooks"
@@ -26,17 +27,17 @@ const AvailableCarsSection = (): ReactElement => {
         endDate: dayjs(searchParams.get("enddate")).toISOString(),
       }
       await apiPost("bookings", JSON.stringify(data))
-      toast.success("Car booked successfully!")
+      toast.success("Booking request sent successfully!")
     } catch (error) {
       setPostingError(true)
-      toast.error("Failed to book the car.")
+      toast.error("You have already requested to book this car.")
     } finally {
       setBookingInProgress(null)
     }
   }
 
   const loading = bookingLoading || isLoading
-  const hasError = bookingError || isError || postingError
+  const hasError = bookingError || isError
 
   if (loading) return <Loading />
   if (hasError) return <NotFound />
@@ -46,7 +47,7 @@ const AvailableCarsSection = (): ReactElement => {
 
   return (
     <>
-      <ToastContainer theme="colored" toastStyle={{ backgroundColor: "#3498DB" }} />
+      <ToastContainer theme="colored" />
       {availableCars?.map(car => (
         <Item
           key={car.id}
